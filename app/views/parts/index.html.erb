@@ -1,0 +1,39 @@
+<h1>Listing parts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Sku</th>
+      <th>Tool</th>
+      <th>Price</th>
+      <th>Po</th>
+      <th>Repair</th>
+      <th>Service</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parts.each do |part| %>
+      <tr>
+        <td><%= part.name %></td>
+        <td><%= part.sku %></td>
+        <td><%= part.tool %></td>
+        <td><%= part.price %></td>
+        <td><%= part.po %></td>
+        <td><%= part.repair %></td>
+        <td><%= part.service %></td>
+        <td><%= link_to 'Show', part %></td>
+        <td><%= link_to 'Edit', edit_part_path(part) %></td>
+        <td><%= link_to 'Destroy', part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @part.name %>
+</p>
+
+<p>
+  <strong>Sku:</strong>
+  <%= @part.sku %>
+</p>
+
+<p>
+  <strong>Tool:</strong>
+  <%= @part.tool %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @part.price %>
+</p>
+
+<p>
+  <strong>Po:</strong>
+  <%= @part.po %>
+</p>
+
+<p>
+  <strong>Repair:</strong>
+  <%= @part.repair %>
+</p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @part.service %>
+</p>
+
+<%= link_to 'Edit', edit_part_path(@part) %> |
+<%= link_to 'Back', parts_path %>

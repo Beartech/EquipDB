@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EquipDB</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">Equipment DB</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "Equipment", tools_path %></li>
+          <li><%= link_to "Repairs", repairs_path %></li>
+          <li><%= link_to "Service", services_path %></li>
+          <li><%= link_to "Parts", parts_path %></li>
+          <li><%= link_to "Reports" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="span2">
+
+    </div>
+    <div class="span10"><%= yield %></div>
+  </div>
+</div>
+
+</body>
+</html>
