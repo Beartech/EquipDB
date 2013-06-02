@@ -63,6 +63,8 @@ gem 'better_errors'
 
 gem 'binding_of_caller'
 
-gem 'sorcery'
+gem 'sorcery', github:'NoamB/sorcery', branch:'master'
 
-gem 'protected_attributes'
+#gem 'protected_attributes'
+
+#gem 'thin'
