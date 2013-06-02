@@ -62,3 +62,7 @@ gem 'jquery-ui-rails'
 gem 'better_errors'
 
 gem 'binding_of_caller'
+
+gem 'sorcery'
+
+gem 'protected_attributes'
