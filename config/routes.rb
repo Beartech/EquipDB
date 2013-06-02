@@ -23,6 +23,8 @@ EquipDB::Application.routes.draw do
   get 'parts'  => 'parts#index'
   get 'repairs' => 'repairs#index'
   get 'services' => 'services#index'
+
+  get 'user_admin' => 'admin/roles#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

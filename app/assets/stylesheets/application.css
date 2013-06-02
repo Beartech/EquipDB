@@ -11,6 +11,8 @@
  *= require_self
  *= require_tree .
  *= require datepicker
+ *= require the_role/bootstrap_sass
+ *= require the_role
  */
 
 .odd {background:lightsteelblue}

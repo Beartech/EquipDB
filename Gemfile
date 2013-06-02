@@ -45,7 +45,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 #gem 'twitter-bootstrap-rails'
-#gem 'bootstrap-sass'
+gem 'bootstrap-sass'
 
 #gem 'kickstrap_rails', github:'tonic20/kickstrap_rails', branch:'master'
 
@@ -64,6 +64,8 @@ gem 'better_errors'
 gem 'binding_of_caller'
 
 gem 'sorcery', github:'NoamB/sorcery', branch:'master'
+
+gem 'the_role', '~> 2.0.0'
 
 #gem 'protected_attributes'
 

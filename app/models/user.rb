@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include TheRoleUserModel
 
   authenticates_with_sorcery!
   #attr_accessible :username, :email, :password, :password_confirmation

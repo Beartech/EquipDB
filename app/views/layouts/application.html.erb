@@ -29,8 +29,36 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="span4">
+    <%=  yield :role_sidebar  %>
+  </div>
+  <div class="span8">
+    <%=  yield :role_main     %>
+  </div>
+</div>
 
-<div id="nav">
+<div>
+  <p id="notice"><%= notice %></p>
+  <p id="alert"><%= alert %></p>
+</div>
+
+<div id="main" role="main">
+  <div class="container">
+    <div class="content">
+  <div class="row">
+    <div class="span2">
+
+    </div>
+    <div class="span10"><%= yield %></div>
+  </div>
+      </div>
+    </div>
+</div>
+
+<div id="navbar navbar-fixed-bottom">
+  <nav class="navbar-inner">
+    <div class="container">
   <% if current_user %>
       <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
       <%= link_to "Logout", :logout %>
@@ -38,19 +66,8 @@
       <%= link_to "Register", new_user_path %> |
       <%= link_to "Login", :login %>
   <% end %>
-</div>
-<div>
-  <p id="notice"><%= notice %></p>
-  <p id="alert"><%= alert %></p>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="span2">
-
     </div>
-    <div class="span10"><%= yield %></div>
-  </div>
+  </nav>
 </div>
 
 </body>
