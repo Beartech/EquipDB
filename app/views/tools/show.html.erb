@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
@@ -45,5 +44,12 @@
   <%= @tool.retired %>
 </p>
 
-<%= link_to 'Edit', edit_tool_path(@tool) %> |
-<%= link_to 'Back', tools_path %>
+<%= link_to 'Edit', edit_tool_path(@tool), :class => 'btn btn-warning' %>
+<%= link_to 'Destroy', @tool, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+
+<div class="row" >
+  <div class="span12" >
+    <%= link_to raw('<i class="icon-arrow-left" ></i> ') + 'Back', tools_path, :class => 'btn btn-large' %>
+  </div>
+</div>
+

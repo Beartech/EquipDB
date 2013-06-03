@@ -6,6 +6,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= yield(:head) %>
 </head>
 <body>
 <div class="navbar navbar-fixed-top">
@@ -19,11 +20,14 @@
       <a class="brand" href="/">Equipment DB</a>
       <div class="nav-collapse">
         <ul class="nav">
-          <li><%= link_to "Equipment", tools_path %></li>
-          <li><%= link_to "Repairs", repairs_path %></li>
-          <li><%= link_to "Service", services_path %></li>
-          <li><%= link_to "Parts", parts_path %></li>
-          <li><%= link_to "Reports" %></li>
+
+          <% if current_user %>
+              <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
+              <li><%= link_to "Logout", :logout %></li>
+          <% else %>
+              <li><%= link_to "Register", new_user_path %></li>
+              <li><%= link_to "Login", :login %></li>
+          <% end %>
         </ul>
       </div>
     </div>
@@ -45,26 +49,35 @@
 <div id="main" role="main">
   <div class="container">
     <div class="content">
-  <div class="row">
-    <div class="span2">
+      <div class="row">
+        <div class="span12">
+
+         <%= render 'layouts/messages' %>
+
+        </div>
+      </div>
+
+      <div class="tabbable tabs-left">
+        <ul class="nav nav-tabs">
+          <li><%= link_to "Equipment", tools_path, :class => 'tab' %></li>
+          <li><%= link_to "Repairs", repairs_path %></li>
+          <li><%= link_to "Service", services_path %></li>
+          <li><%= link_to "Parts", parts_path %></li>
+          <li><%= link_to "Reports" %></li>
+        </ul>
+        <div class="tab-content">
+          <%= yield %>
+        </div>
+      </div>
 
     </div>
-    <div class="span10"><%= yield %></div>
   </div>
-      </div>
-    </div>
 </div>
 
 <div id="navbar navbar-fixed-bottom">
   <nav class="navbar-inner">
     <div class="container">
-  <% if current_user %>
-      <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-      <%= link_to "Logout", :logout %>
-  <% else %>
-      <%= link_to "Register", new_user_path %> |
-      <%= link_to "Login", :login %>
-  <% end %>
+
     </div>
   </nav>
 </div>
