@@ -14,6 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$("input.date_picker").datepicker();
+
 
 

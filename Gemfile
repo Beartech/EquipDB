@@ -65,8 +65,6 @@ gem 'binding_of_caller'
 
 gem 'sorcery', github:'NoamB/sorcery', branch:'master'
 
-gem 'the_role', '~> 2.0.0'
-
-#gem 'protected_attributes'
+gem 'the_role', github:'Beartech/the_role', branch:'master'
 
 #gem 'thin'

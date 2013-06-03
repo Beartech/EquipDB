@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
   alias_method :login_required,     :require_login
   alias_method :role_access_denied, :access_denied
 
+  def role_params
+    params.require(:role).permit(:role)
+  end
+
 end
