@@ -1,6 +1,6 @@
 <h1>KFD Equipment</h1>
 
-<table border='1' cellpadding='10'>
+<table class="table table-striped" border='1' cellpadding='10'>
   <thead>
     <tr>
       <th>Name</th>
@@ -17,7 +17,7 @@
 
   <tbody>
     <% @tools.each do |tool| %>
-      <tr class="<%= cycle("odd", "even") %>" >
+      <tr >
         <td><%= link_to tool.name, tool, :class => 'btn btn-small' %></td>
         <td><%= tool.serial %></td>
         <td><%= tool.location %></td>
