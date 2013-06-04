@@ -1,15 +1,12 @@
 <h1>Service Tickets</h1>
 
-<table>
+<table class="table table-striped" border='1' cellpadding='10'>
   <thead>
     <tr>
       <th>Name</th>
       <th>Due date</th>
       <th>Completed</th>
       <th>Tool</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -19,10 +16,7 @@
         <td><%= service.name %></td>
         <td><%= service.due_date %></td>
         <td><%= service.completed %></td>
-        <td><%= service.tool %></td>
-        <td><%= link_to 'Show', service %></td>
-        <td><%= link_to 'Edit', edit_service_path(service) %></td>
-        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= service.tool.name + '/' + service.tool.serial %></td>
       </tr>
     <% end %>
   </tbody>

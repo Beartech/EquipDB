@@ -1,4 +1,4 @@
-<%= form_for(@repair) do |f| %>
+<%= form_for ([@tool, @repair]) do |f| %>
   <% if @repair.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@repair.errors.count, "error") %> prohibited this repair from being saved:</h2>
@@ -12,21 +12,19 @@
   <% end %>
 
   <div class="field">
+    <%= f.hidden_field :tool_id , :value=>params[:tool_id] %>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :start_date %><br>
-    <%= f.text_field :start_date, :class => 'datepicker' %>
+    <%= f.text_field :start_date %>
   </div>
   <div class="field">
     <%= f.label :end_date %><br>
-    <%= f.text_field :end_date, :class => 'datepicker'%>
+    <%= f.text_field :end_date %>
   </div>
-  <div class="field">
-    <%= f.label :tool %><br>
-    <%= f.text_field :tool %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

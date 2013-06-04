@@ -22,7 +22,8 @@ EquipDB::Application.routes.draw do
   end
 
   root :to => "tools#index"
-
+  post 'services' => 'services#create'
+  post 'repairs' => 'repairs#create'
 
   get 'user_admin' => 'admin/roles#index'
   # The priority is based upon order of creation: first created -> highest priority.

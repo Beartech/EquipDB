@@ -1,4 +1,4 @@
-<%= form_for(@service) do |f| %>
+<%= form_for ([@tool, @service]) do |f| %>
   <% if @service.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
@@ -12,22 +12,19 @@
   <% end %>
 
   <div class="field">
+    <%= f.hidden_field :tool_id , :value=>params[:tool_id] %>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :due_date %><br>
-    <%= f.text_field :due_date, :class => 'datepicker' %>
+    <%= f.date_select :due_date %>
   </div>
   <div class="field">
     <%= f.label :completed %><br>
-    <%= f.text_field :completed, :class => 'datepicker' %>
+    <%= f.date_select :completed %>
   </div>
-  <div class="field">
-    <%= f.label :tool %><br>
-    <%= f.text_field :tool %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <div class="actions">
+    <%= f.submit  %>
   </div>
 <% end %>

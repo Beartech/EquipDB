@@ -28,7 +28,7 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.save
-        format.html { redirect_to @service, notice: 'Service was successfully created.' }
+        format.html { redirect_to tool_path(service_params[:tool_id]), notice: 'Service was successfully created.' }
         format.json { render action: 'show', status: :created, location: @service }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class ServicesController < ApplicationController
   def update
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
+        format.html { redirect_to tool_path(service_params[:tool_id]), notice: 'Service was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -66,6 +66,7 @@ class ServicesController < ApplicationController
     def set_service
       @service = Service.find(params[:id])
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
