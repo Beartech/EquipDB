@@ -50,7 +50,7 @@ gem 'bootstrap-sass'
 
 #gem 'kickstrap_rails', github:'tonic20/kickstrap_rails', branch:'master'
 
-gem 'simple_form'
+#gem 'simple_form'
 
 gem 'therubyracer'
 
@@ -68,4 +68,6 @@ gem 'sorcery', github:'NoamB/sorcery', branch:'master'
 
 gem 'the_role', github:'Beartech/the_role', branch:'master'
 
-#gem 'thin'
+gem 'thin'
+
+gem 'bootstrap-datepicker-rails'

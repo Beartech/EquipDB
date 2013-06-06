@@ -1,6 +1,6 @@
 class RepairsController < ApplicationController
   before_action :set_repair, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_tool, only: [:show, :edit, :update, :destroy]
   # GET /repairs
   # GET /repairs.json
   def index
@@ -65,6 +65,10 @@ class RepairsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_repair
       @repair = Repair.find(params[:id])
+    end
+
+    def set_tool
+      @tool = Tool.find(params[:tool_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

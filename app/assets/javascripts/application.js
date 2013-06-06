@@ -13,13 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap-datepicker
 //= require_tree .
 
-$(document).ready(function(){
-    setTimeout(function(){
-        $('#alert').fadeOut();
-    }, 5000);
-})
 
 
-
+$(document).on("focus", "[data-behaviour~='datepicker']", function(e){
+    $(this).datepicker({"format": "mm-dd-yyyy", "weekStart": 1, "autoclose": true})
+});

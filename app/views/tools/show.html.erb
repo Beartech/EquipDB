@@ -1,48 +1,58 @@
 
-<p>
-  <strong>Name:</strong>
-  <%= @tool.name %>
-</p>
+<table>
+  <tr>
+    <td>
+        <p>
+          <strong>Name:</strong>
+          <%= @tool.name %>
+        </p>
 
-<p>
-  <strong>Serial:</strong>
-  <%= @tool.serial %>
-</p>
+        <p>
+          <strong>Serial:</strong>
+          <%= @tool.serial %>
+        </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @tool.location %>
-</p>
+        <p>
+          <strong>Location:</strong>
+          <%= @tool.location %>
+        </p>
 
-<p>
-  <strong>Purchased:</strong>
-  <%= @tool.purchased %>
-</p>
+        <p>
+          <strong>Purchased:</strong>
+          <%= @tool.purchased %>
+        </p>
 
-<p>
-  <strong>Put in service:</strong>
-  <%= @tool.put_in_service %>
-</p>
+        <p>
+          <strong>Put in service:</strong>
+          <%= @tool.put_in_service %>
+        </p>
 
-<p>
-  <strong>Cost:</strong>
-  <%= @tool.cost %>
-</p>
+        <p>
+          <strong>Cost:</strong>
+          <%= @tool.cost %>
+        </p>
 
-<p>
-  <strong>Value:</strong>
-  <%= @tool.value %>
-</p>
+        <p>
+          <strong>Value:</strong>
+          <%= @tool.value %>
+        </p>
 
-<p>
-  <strong>In service:</strong>
-  <%= @tool.in_service %>
-</p>
+        <p>
+          <strong>In service:</strong>
+          <%= @tool.in_service %>
+        </p>
 
-<p>
-  <strong>Retired:</strong>
-  <%= @tool.retired %>
-</p>
+        <p>
+          <strong>Retired:</strong>
+          <%= @tool.retired %>
+        </p>
+    </td>
+    <td style="vertical-align:top" style="padding-left: 30px">
+      <strong>Notes:</strong>
+      <%= @tool.note %>
+    </td>
+  </tr>
+</table>
 
 <%= render 'repairs' %>
 

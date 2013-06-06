@@ -1,6 +1,6 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_tool, only: [:show, :edit, :update, :destroy]
   # GET /services
   # GET /services.json
   def index
@@ -19,6 +19,7 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
+
   end
 
   # POST /services
@@ -67,9 +68,11 @@ class ServicesController < ApplicationController
       @service = Service.find(params[:id])
     end
 
-
+    def set_tool
+      @tool = Tool.find(params[:tool_id])
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:name, :due_date, :completed, :tool_id)
+      params.require(:service).permit(:id, :name, :due_date, :completed, :tool_id)
     end
 end
