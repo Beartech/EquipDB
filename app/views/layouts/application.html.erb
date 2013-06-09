@@ -11,7 +11,7 @@
 <body>
 <div class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
-    <div class="container">
+    <div class="container-fluid">
       <a class="brand" href="/">Equipment DB</a>
       <div class="nav-collapse">
         <ul class="nav">
@@ -37,20 +37,18 @@
   </div>
 </div>
 
-<div>
+<div class="row">
+  <div class="span12">
 
+    <%= render 'layouts/messages' %>
+
+  </div>
 </div>
 
 <div id="main" role="main">
-  <div class="container">
+  <div class="container-fluid">
     <div class="content">
-      <div class="row">
-        <div class="span12">
 
-         <%= render 'layouts/messages' %>
-
-        </div>
-      </div>
 
       <div class="tabbable tabs-left">
         <ul class="nav nav-tabs">
