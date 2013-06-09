@@ -1,5 +1,5 @@
 /*! =========================================================
- * bootstrap-datepicker.js 
+ * bootstrap-datepicker.js
  * Original Idea: http://www.eyecon.ro/bootstrap-datepicker (Copyright 2012 Stefan Petre)
  * Updated by AymKdn (http://kodono.info - https://github.com/Aymkdn/Datepicker-for-Bootstrap)
  * =========================================================

@@ -13,57 +13,57 @@
 
 
         <div class="field">
-          <%= f.label :name %><br>
+          <%= f.label :name %>
           <%= f.text_field :name %>
         </div>
 
         <div class="field">
-          <%= f.label :serial %><br>
+          <%= f.label :serial %>
           <%= f.text_field :serial %>
         </div>
 
         <div class="field">
-          <%= f.label :location %><br>
+          <%= f.label :location %>
           <%= f.text_field :location %>
         </div>
 
         <div class="field" >
-          <%= f.label :purchased %><br>
+          <%= f.label :purchased %>
           <%= f.text_field :purchased, 'data-behaviour' => 'datepicker'  %>
         </div>
 
         <div class="field" >
-          <%= f.label :put_in_service %><br>
+          <%= f.label :put_in_service %>
           <%= f.text_field :put_in_service, 'data-behaviour' => 'datepicker' %>
         </div>
 
         <div class="field">
-          <%= f.label :cost %><br>
+          <%= f.label :cost %>
           <%= f.text_field :cost %>
         </div>
 
         <div class="field">
-          <%= f.label :value %><br>
+          <%= f.label :value %>
           <%= f.text_field :value %>
         </div>
 
         <div class="field">
-          <%= f.label :in_service %><br>
+          <%= f.label :in_service, "Currently In Service" %>
           <%= f.check_box :in_service %>
         </div>
 
         <div class="field" >
-          <%= f.label :retired %><br>
+          <%= f.label :retired, "Date Retired" %>
           <%= f.text_field :retired, 'data-behaviour' => 'datepicker' %>
         </div>
 
         <div class="field">
-          <%= f.label :condition %><br>
+          <%= f.label :condition %>
           <%= f.select(:condition, [['5',5],['4',4],['3',3],['2',2],['1',1]] ) %>
         </div>
 
         <div class="field">
-          <%= f.label :note %><br>
+          <%= f.label :note %>
           <%= f.text_area :note %>
         </div>
 
