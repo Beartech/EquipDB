@@ -1,14 +1,31 @@
-<%= simple_form_for(@user) do |f| %>
-  <%= f.error_notification %>
+<%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
   <div class="inputs">
-    <%= f.input :username %>
-    <%= f.input :email %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    </div>
+  <div class="inputs">
+    <%=	 f.label "Role" %>
+    <%=	 f.select(:role_id, [['Admin',1],['User',2]] ) %>
+    </div>
   <div class="inputs">
     <%= f.label :password %><br />
     <%= f.password_field :password %>
-    </div>
-    <div class="inputs">
+  </div>
+  <div class="inputs">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation %>
     </div>
