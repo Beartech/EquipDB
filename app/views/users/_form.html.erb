@@ -18,8 +18,12 @@
     <%= f.text_field :email %>
     </div>
   <div class="inputs">
-    <%=	 f.label "Role" %>
-    <%=	 f.select(:role_id, [['Admin',1],['User',2]] ) %>
+    <%=	 f.label "Access Level:" %>
+    <%	 if @user.has_role?(:admin, :system) %>
+            <%= f.select(:role_id, [['Admin',1],['User',2]] ) %>
+        <% else %>
+            <h3><%= @user.role.name %></h3>
+        <% end %>
     </div>
   <div class="inputs">
     <%= f.label :password %><br />

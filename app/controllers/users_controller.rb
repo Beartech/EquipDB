@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_filter :require_login, :only => [:index, :new, :create]
+  before_action :role_required, except: [:index, :show, :edit]
 
   # GET /users
   # GET /users.json
@@ -20,6 +21,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+
   end
 
   # POST /users
