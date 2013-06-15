@@ -1,0 +1,28 @@
+<table class="table table-striped" border='1' cellpadding='10'>
+  <thead>
+  <tr><th>Repair Tickets</th>
+      <th> <%= link_to "New Repair Ticket", new_tool_repair_path(@tool.id), :class => 'btn btn-small' %> </th>
+      <th></th>
+      <th></th>
+      <th></th>
+  </tr>
+  <tr>
+  <th>Name</th>
+  <th>Start date</th>
+  <th>End date</th>
+  <th>Tool</th>
+  <th></th>
+  </thead>
+
+  <tbody>
+  <% @tool.repairs.each do |repair| %>
+      <tr>
+        <td><%= repair.name %></td>
+        <td><%= repair.start_date %></td>
+        <td><%= repair.end_date %></td>
+        <td><%= repair.tool.name %> / <%= repair.tool.serial %></td>
+        <td><%= link_to 'Edit', edit_tool_repair_path(:tool_id => repair.tool_id, :id => repair.id), :class => 'btn btn-small' %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
