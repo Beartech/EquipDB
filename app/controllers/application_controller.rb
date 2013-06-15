@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def access_denied
-    return render(text: 'access_denied: requires a role')
+    redirect_back_or_to(:root, :alert => 'Access denied, incorrect role')
   end
 
   alias_method :login_required,     :require_login

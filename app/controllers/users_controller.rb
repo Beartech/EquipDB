@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :require_login, :only => [:index, :new, :create]
+  skip_before_filter :require_login, :only => [:new, :create]
 
-  before_action :role_required, except: [:index, :show, :edit]
+  before_action :role_required, except: [:index, :show, :edit, :new]
   before_action :owner_required, only:  [:edit, :update, :destroy]
+
 
   # GET /users
   # GET /users.json
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to :users, notice: 'User was successfully created.' }
+        format.html { redirect_to @user.has_role?(:system, :admin) ? :users_path : "/", notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
@@ -77,4 +78,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :email, :password, :password_confirmation, :role, :role_id)
     end
+
 end

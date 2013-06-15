@@ -1,5 +1,6 @@
 class ToolsController < ApplicationController
   before_action :set_tool, only: [:show, :edit, :update, :destroy]
+  before_action :role_required
 
   # GET /tools
   # GET /tools.json

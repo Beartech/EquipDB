@@ -11,7 +11,7 @@ class UserSessionsController < ApplicationController
         format.html { redirect_back_or_to(:users, :notice => 'Login successful.') }
         format.xml { render :xml => @user, :status => :created, :location => @user }
       else
-        format.html { flash.now[:alert] = "Login failed."; render :action => "new" }
+        format.html { flash.now[:alert] = "Login failed. Remember, both your user name and password are case sensitive"; render :action => "new" }
         format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end

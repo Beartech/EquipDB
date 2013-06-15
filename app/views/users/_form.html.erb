@@ -19,10 +19,14 @@
     </div>
   <div class="inputs">
     <%=	 f.label "Access Level:" %>
-    <%	 if @user.has_role?(:admin, :system) %>
+    <%	 if current_user.has_role?(:admin, :system) %>
             <%= f.select(:role_id, [['Admin',1],['User',2]] ) %>
         <% else %>
-            <h3><%= @user.role.name %></h3>
+            <h3><% if @user.role == nil %>
+                    <%= f.select(:role_id, [['Unconfirmed User', 3]]) %>
+                <% else %>
+                  <%= @user.role.name %></h3>
+                <% end %>
         <% end %>
     </div>
   <div class="inputs">
