@@ -23,7 +23,7 @@
 
     var Datepicker = function(element, options){
         this.element = $(element);
-        this.format = DPGlobal.parseFormat(options.format||this.element.data('date-format')||'mm/dd/yyyy');
+        this.format = DPGlobal.parseFormat(options.format||this.element.data('date-format')||'yyyy-mm-dd');
         this.picker = $(DPGlobal.template).appendTo('body').hide().on('mousedown.Datepicker',$.proxy(this.mousedown, this)).on('click.Datepicker',$.proxy(this.click, this));
 
         this.isInput = this.element.is('input') || this.element.is('textarea');
