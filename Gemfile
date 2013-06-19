@@ -72,3 +72,5 @@ gem 'the_role', github:'Beartech/the_role', branch:'master'
 gem 'thin'
 
 gem 'bootstrap-datepicker-rails'
+
+gem 'will_paginate'

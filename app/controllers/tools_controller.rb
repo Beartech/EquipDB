@@ -6,7 +6,9 @@ class ToolsController < ApplicationController
   # GET /tools
   # GET /tools.json
   def index
-    @tools = Tool.order(sort_column + ' ' + sort_direction)
+    #@tools = Tool.order(sort_column + ' ' + sort_direction)
+    #@tools = Tool.order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => page_param)
+    @tools = Tool.search(search_param).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => page_param)
   end
 
   # GET /tools/1
@@ -71,7 +73,7 @@ class ToolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tool_params
-      params.require(:tool).permit(:name, :serial, :location, :purchased, :put_in_service, :cost, :value, :in_service, :retired, :condition, :note)
+      params.require(:tool).permit(:name, :serial, :location, :purchased, :put_in_service, :cost, :value, :in_service, :retired, :condition, :note, :page, :search)
     end
 
     def sort_column
@@ -80,5 +82,13 @@ class ToolsController < ApplicationController
 
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
+    def page_param
+      params[:page]
+    end
+
+    def search_param
+      params[:search]
     end
 end
