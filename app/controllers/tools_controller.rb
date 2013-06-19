@@ -1,11 +1,12 @@
 class ToolsController < ApplicationController
   before_action :set_tool, only: [:show, :edit, :update, :destroy]
   before_action :role_required
+  helper_method :sort_column, :sort_direction
 
   # GET /tools
   # GET /tools.json
   def index
-    @tools = Tool.all
+    @tools = Tool.order(sort_column + ' ' + sort_direction)
   end
 
   # GET /tools/1
@@ -71,5 +72,13 @@ class ToolsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def tool_params
       params.require(:tool).permit(:name, :serial, :location, :purchased, :put_in_service, :cost, :value, :in_service, :retired, :condition, :note)
+    end
+
+    def sort_column
+      Tool.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end
