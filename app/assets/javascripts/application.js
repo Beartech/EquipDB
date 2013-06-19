@@ -29,3 +29,10 @@ $(document).ready(function(){
     });
 
 });
+
+$(function () {
+    $('#tools th a, #tools .pagination a').on('click', function () {
+        $.getScript(this.href);
+        return false;
+    });
+})
