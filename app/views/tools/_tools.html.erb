@@ -1,0 +1,33 @@
+<table class="table pretty" border='1' cellpadding='10'>
+  <thead>
+
+  <%= sortable 'name', 'Name' %>
+  <%= sortable 'serial', 'Serial' %>
+  <%= sortable 'location', 'Location' %>
+  <%= sortable 'purchased', 'Purchased' %>
+  <%= sortable 'put_in_service', 'Put in Service' %>
+  <%= sortable 'cost', 'Cost' %>
+  <%= sortable 'value', 'Value' %>
+  <%= sortable 'in_service', 'In Service' %>
+  <%= sortable 'retired', 'Retired' %>
+  <%= sortable 'condition', 'Condition' %>
+
+  </thead>
+
+  <tbody>
+  <% @tools.each do |tool| %>
+      <tr >
+        <td><%= link_to tool.name, tool, :class => 'btn btn-small' %></td>
+        <td><%= tool.serial %></td>
+        <td><%= tool.location %></td>
+        <td><%= tool.purchased %></td>
+        <td><%= tool.put_in_service %></td>
+        <td><%= tool.cost %></td>
+        <td><%= tool.value %></td>
+        <td><%= tool.in_service %></td>
+        <td><%= tool.retired %></td>
+        <td><%= tool.condition %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
