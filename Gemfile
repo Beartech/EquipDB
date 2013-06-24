@@ -61,7 +61,7 @@ gem 'less-rails'
 
 gem 'jquery-ui-rails'
 
-gem 'better_errors'
+#gem 'better_errors'
 
 #gem 'binding_of_caller'
 
