@@ -13,7 +13,7 @@ class Tool < ActiveRecord::Base
     if search
       where('serial LIKE ?', "%#{search}%")
     else
-      scoped
+      all
     end
   end
 end
