@@ -49,8 +49,6 @@ GEM
     better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
-    binding_of_caller (0.7.2)
-      debug_inspector (>= 0.0.1)
     bootstrap-datepicker-rails (1.1.0.1)
       railties (>= 3.0)
     bootstrap-sass (2.3.2.0)
@@ -66,7 +64,6 @@ GEM
     coffee-script-source (1.6.2)
     commonjs (0.2.6)
     daemons (1.1.9)
-    debug_inspector (0.0.2)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
@@ -175,7 +172,6 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
-  binding_of_caller
   bootstrap-datepicker-rails
   bootstrap-sass
   coffee-rails (~> 4.0.0)
