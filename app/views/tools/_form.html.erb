@@ -1,0 +1,74 @@
+    <%= form_for(@tool)  do |f| %>
+      <% if @tool.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@tool.errors.count, "error") %> prohibited this tool from being saved:</h2>
+
+          <ul>
+          <% @tool.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+
+        <div class="field">
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :serial %>
+          <%= f.text_field :serial %>
+        </div>
+
+        <div class="field">
+          <%= f.label :location %>
+          <%= f.text_field :location %>
+        </div>
+
+        <div class="field" >
+          <%= f.label :purchased %>
+          <%= f.text_field :purchased, 'data-behaviour' => 'datepicker'  %>
+        </div>
+
+        <div class="field" >
+          <%= f.label :put_in_service %>
+          <%= f.text_field :put_in_service, 'data-behaviour' => 'datepicker' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :cost %>
+          <%= f.text_field :cost %>
+        </div>
+
+        <div class="field">
+          <%= f.label :value %>
+          <%= f.text_field :value %>
+        </div>
+
+        <div class="field">
+          <%= f.label :in_service, "Currently In Service" %>
+          <%= f.check_box :in_service %>
+        </div>
+
+        <div class="field" >
+          <%= f.label :retired, "Date Retired" %>
+          <%= f.text_field :retired, 'data-behaviour' => 'datepicker' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :condition %>
+          <%= f.select(:condition, [['5',5],['4',4],['3',3],['2',2],['1',1]] ) %>
+        </div>
+
+        <div class="field">
+          <%= f.label :note %>
+          <%= f.text_area :note %>
+        </div>
+
+
+        <%= f.submit %>
+
+
+    <% end %>

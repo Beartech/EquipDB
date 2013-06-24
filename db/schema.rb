@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130526054158) do
+ActiveRecord::Schema.define(version: 20130607161439) do
 
   create_table "parts", force: true do |t|
     t.string   "name"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 20130526054158) do
 
   add_index "repairs", ["tool_id"], name: "index_repairs_on_tool_id"
 
+  create_table "roles", force: true do |t|
+    t.string   "name",        null: false
+    t.string   "title",       null: false
+    t.text     "description", null: false
+    t.text     "the_role",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "services", force: true do |t|
     t.string   "name"
     t.date     "due_date"
@@ -63,6 +72,18 @@ ActiveRecord::Schema.define(version: 20130526054158) do
     t.date     "retired"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "note"
+    t.integer  "condition"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "username",         null: false
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "role_id"
   end
 
 end

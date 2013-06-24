@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0.rc1'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'sqlite3'
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
@@ -23,6 +24,7 @@ gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.0.1'
@@ -45,11 +47,11 @@ end
 # gem 'debugger', group: [:development, :test]
 
 #gem 'twitter-bootstrap-rails'
-#gem 'bootstrap-sass'
+gem 'bootstrap-sass'
 
 #gem 'kickstrap_rails', github:'tonic20/kickstrap_rails', branch:'master'
 
-gem 'simple_form'
+#gem 'simple_form'
 
 gem 'therubyracer'
 
@@ -61,4 +63,14 @@ gem 'jquery-ui-rails'
 
 gem 'better_errors'
 
-gem 'binding_of_caller'
+#gem 'binding_of_caller'
+
+gem 'sorcery', github:'NoamB/sorcery', branch:'master'
+
+gem 'the_role', github:'Beartech/the_role', branch:'master'
+
+gem 'thin'
+
+gem 'bootstrap-datepicker-rails'
+
+gem 'will_paginate'

@@ -1,0 +1,73 @@
+
+<table>
+  <tr>
+    <td>
+        <p>
+          <strong>Name:</strong>
+          <%= @tool.name %>
+        </p>
+
+        <p>
+          <strong>Serial:</strong>
+          <%= @tool.serial %>
+        </p>
+
+        <p>
+          <strong>Location:</strong>
+          <%= @tool.location %>
+        </p>
+
+        <p>
+          <strong>Purchased:</strong>
+          <%= @tool.purchased %>
+        </p>
+
+        <p>
+          <strong>Put in service:</strong>
+          <%= @tool.put_in_service %>
+        </p>
+
+        <p>
+          <strong>Cost:</strong>
+          <%= @tool.cost %>
+        </p>
+
+        <p>
+          <strong>Value:</strong>
+          <%= @tool.value %>
+        </p>
+
+        <p>
+          <strong>In service:</strong>
+          <%= @tool.in_service %>
+        </p>
+
+        <p>
+          <strong>Retired:</strong>
+          <%= @tool.retired %>
+        </p>
+        <p>
+          <strong>Condition:</strong>
+          <%= @tool.condition %>
+        </p>
+    </td>
+    <td style="vertical-align:top" style="padding-left: 30px">
+      <strong>Notes:</strong>
+      <%= @tool.note %>
+    </td>
+  </tr>
+</table>
+
+<%= render 'repairs' %>
+
+<%= render 'services' %>
+
+<%= link_to 'Edit', edit_tool_path(@tool), :class => 'btn btn-warning' %>
+<%= link_to 'Destroy', @tool, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+
+<div class="row" >
+  <div class="span12" >
+    <%= link_to raw('<i class="icon-arrow-left" ></i> ') + 'Back', tools_path, :class => 'btn btn-large' %>
+  </div>
+</div>
+

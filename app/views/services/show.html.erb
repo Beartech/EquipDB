@@ -1,0 +1,21 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @service.name %>
+</p>
+
+<p>
+  <strong>Due date:</strong>
+  <%= @service.due_date %>
+</p>
+
+<p>
+  <strong>Completed:</strong>
+  <%= @service.completed %>
+</p>
+
+<p>
+  <strong>Tool:</strong>
+  <%= @service.tool.name + '/' + @service.tool.serial %>
+</p>
+

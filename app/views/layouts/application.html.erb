@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EquipDB</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= yield(:head) %>
+</head>
+<body>
+<div class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="brand" href="/">Equipment DB</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+
+          <% if current_user %>
+              <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
+              <li><%= link_to "Logout", :logout %></li>
+              <li><%= link_to "Logged in as: " + current_user.username, edit_user_path(current_user.id) %></li>
+          <% else %>
+              <li><%= link_to "Register", new_user_path %></li>
+              <li><%= link_to "Login", :login %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <%=  yield :role_sidebar  %>
+  </div>
+  <div class="span8">
+    <%=  yield :role_main     %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+
+    <%= render 'layouts/messages' %>
+
+  </div>
+</div>
+
+<div id="main" role="main">
+  <div class="container-fluid">
+    <div class="content">
+
+
+      <div class="tabable tabs-left">
+        <ul class="nav nav-tabs">
+          <li><%= link_to "Equipment", tools_path %></li>
+          <li><%= link_to "Repairs", repairs_path %></li>
+          <li><%= link_to "Service", services_path %></li>
+          <li><%= link_to "Parts", parts_path %></li>
+          <li><%= link_to "Reports" %></li>
+        </ul>
+        <div class="tab-content">
+          <%= yield %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="navbar navbar-fixed-bottom">
+  <nav class="navbar-inner">
+    <div class="container">
+
+    </div>
+  </nav>
+</div>
+
+</body>
+</html>
