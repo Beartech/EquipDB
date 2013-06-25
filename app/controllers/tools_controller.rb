@@ -9,7 +9,7 @@ class ToolsController < ApplicationController
   def index
     #@tools = Tool.order(sort_column + ' ' + sort_direction)
     #@tools = Tool.order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => page_param)
-    @tools = Tool.search(search_param).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => page_param)
+    @tools = Tool.search(search_param).order(sort_column + ' ' + sort_direction)#.paginate(:per_page => 10, :page => page_param)
   end
 
   # GET /tools/1
@@ -78,7 +78,7 @@ class ToolsController < ApplicationController
     end
 
     def sort_column
-      Tool.column_names.include?(params[:sort]) ? params[:sort] : "name"
+      Tool.column_names.include?(params[:sort]) ? params[:sort] : "serial"
     end
 
     def sort_direction
