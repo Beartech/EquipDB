@@ -2,6 +2,7 @@ class ToolsController < ApplicationController
   before_action :set_tool, only: [:show, :edit, :update, :destroy]
   before_action :role_required
   helper_method :sort_column, :sort_direction
+  before_action :set_categories
 
   # GET /tools
   # GET /tools.json
@@ -90,5 +91,9 @@ class ToolsController < ApplicationController
 
     def search_param
       params[:search]
+    end
+
+    def set_categories
+      @categories = Dropdown.find_by_name("categories").list
     end
 end

@@ -1,31 +1,43 @@
-<table class="table pretty" border='1' cellpadding='10'>
-  <thead>
+<div class="tabable tabs-top">
+  <ul class="nav nav-tabs">
 
-  <%= sortable 'name', 'Name' %>
-  <%= sortable 'serial', 'Serial' %>
-  <%= sortable 'station', 'Station' %>
-  <%= sortable 'apparatus', 'Apparatus' %>
-  <%= sortable 'purchased', 'Purchased' %>
-  <%= sortable 'put_in_service', 'Put in Service' %>
-  <%= sortable 'in_service', 'In Service' %>
-  <%= sortable 'retired', 'Retired' %>
-  <%= sortable 'condition', 'Condition' %>
+    <% @categories.each do |category| %>
+        <li><%= link_to "#{category}", tools_path("@#{category}s") %></li>
+    <% end %>
 
-  </thead>
+  </ul>
+  <div class="tab-content">
+    <table class="table pretty" border='1' cellpadding='10'>
+      <thead>
 
-  <tbody>
-  <% @tools.each do |tool| %>
-      <tr >
-        <td><%= link_to tool.name, tool, :class => 'btn btn-small' %></td>
-        <td><%= tool.serial %></td>
-        <td><%= tool.station %></td>
-        <td><%= tool.apparatus %></td>
-        <td><%= tool.purchased %></td>
-        <td><%= tool.put_in_service %></td>
-        <td><%= tool.in_service %></td>
-        <td><%= tool.retired %></td>
-        <td><%= tool.condition %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+      <%= sortable 'name', 'Name' %>
+      <%= sortable 'serial', 'Serial' %>
+      <%= sortable 'station', 'Station' %>
+      <%= sortable 'apparatus', 'Apparatus' %>
+      <%= sortable 'purchased', 'Purchased' %>
+      <%= sortable 'put_in_service', 'Put in Service' %>
+      <%= sortable 'in_service', 'In Service' %>
+      <%= sortable 'retired', 'Retired' %>
+      <%= sortable 'condition', 'Condition' %>
+
+      </thead>
+
+      <tbody>
+      <% @tools.each do |tool| %>
+          <tr >
+            <td><%= link_to tool.name, tool, :class => 'btn btn-small' %></td>
+            <td><%= tool.serial %></td>
+            <td><%= tool.station %></td>
+            <td><%= tool.apparatus %></td>
+            <td><%= tool.purchased %></td>
+            <td><%= tool.put_in_service %></td>
+            <td><%= tool.in_service %></td>
+            <td><%= tool.retired %></td>
+            <td><%= tool.condition %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
