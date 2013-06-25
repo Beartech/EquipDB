@@ -21,7 +21,7 @@ EquipDB::Application.routes.draw do
     end
   end
 
-  root :to => "tools#index"
+  root :to => "dashboard#dashboard"
   post 'services' => 'services#create'
   post 'repairs' => 'repairs#create'
 

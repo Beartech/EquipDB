@@ -1,0 +1,19 @@
+<center><h1>Dashboard</h1></center>
+<p></p>
+
+<div class="tabable tabs-top">
+  <ul class="nav nav-tabs">
+    <% @categories.each do |category| %>
+      <li><%= link_to "#{category}", tools_path("@#{category}s") %></li>
+      <% end %>
+    <li><%= link_to "Dashboard", root_path %><li>
+    <li><%= link_to "Equipment", tools_path %></li>
+    <li><%= link_to "Repairs", repairs_path %></li>
+    <li><%= link_to "Service", services_path %></li>
+    <li><%= link_to "Parts", parts_path %></li>
+    <li><%= link_to "Reports" %></li>
+  </ul>
+  <div class="tab-content">
+    <%= yield %>
+  </div>
+</div>

@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130607161439) do
+ActiveRecord::Schema.define(version: 20130624215522) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "parts", force: true do |t|
     t.string   "name"
@@ -25,9 +28,9 @@ ActiveRecord::Schema.define(version: 20130607161439) do
     t.datetime "updated_at"
   end
 
-  add_index "parts", ["repair_id"], name: "index_parts_on_repair_id"
-  add_index "parts", ["service_id"], name: "index_parts_on_service_id"
-  add_index "parts", ["tool_id"], name: "index_parts_on_tool_id"
+  add_index "parts", ["repair_id"], name: "index_parts_on_repair_id", using: :btree
+  add_index "parts", ["service_id"], name: "index_parts_on_service_id", using: :btree
+  add_index "parts", ["tool_id"], name: "index_parts_on_tool_id", using: :btree
 
   create_table "repairs", force: true do |t|
     t.string   "name"
@@ -38,7 +41,7 @@ ActiveRecord::Schema.define(version: 20130607161439) do
     t.datetime "updated_at"
   end
 
-  add_index "repairs", ["tool_id"], name: "index_repairs_on_tool_id"
+  add_index "repairs", ["tool_id"], name: "index_repairs_on_tool_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name",        null: false
@@ -58,12 +61,11 @@ ActiveRecord::Schema.define(version: 20130607161439) do
     t.datetime "updated_at"
   end
 
-  add_index "services", ["tool_id"], name: "index_services_on_tool_id"
+  add_index "services", ["tool_id"], name: "index_services_on_tool_id", using: :btree
 
   create_table "tools", force: true do |t|
     t.string   "name"
     t.string   "serial"
-    t.string   "location"
     t.date     "purchased"
     t.date     "put_in_service"
     t.decimal  "cost"
@@ -74,6 +76,8 @@ ActiveRecord::Schema.define(version: 20130607161439) do
     t.datetime "updated_at"
     t.text     "note"
     t.integer  "condition"
+    t.text     "station"
+    t.text     "apparatus"
   end
 
   create_table "users", force: true do |t|
