@@ -36,7 +36,7 @@
                 <% if tool.name == category %>
                   <tr >
                     <td><%= link_to tool.serial, tool, :class => 'btn btn-small' %></td>
-                    <td><%= tool.name %></td>
+                    <td><%= tool.name.singularize %></td>
                     <td><%= tool.station %></td>
                     <td><%= tool.apparatus %></td>
                     <td><%= tool.purchased %></td>
