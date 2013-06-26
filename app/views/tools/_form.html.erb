@@ -13,23 +13,23 @@
 
 
         <div class="field">
-          <%= f.label :name %>
-          <%= f.text_field :name %>
-        </div>
-
-        <div class="field">
           <%= f.label :serial %>
           <%= f.text_field :serial %>
         </div>
 
         <div class="field">
+          <%= f.label "Type" %>
+          <%= f.select :name, @categories %>
+        </div>
+
+        <div class="field">
           <%= f.label :station %>
-          <%= f.text_field :station %>
+          <%= f.select :station, @stations %>
         </div>
 
         <div class="field">
           <%= f.label :apparatus %>
-          <%= f.text_field :apparatus %>
+          <%= f.select :apparatus, @apparatus %>
         </div>
 
         <div class="field" >

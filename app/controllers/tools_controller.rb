@@ -74,7 +74,7 @@ class ToolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tool_params
-      params.require(:tool).permit(:name, :serial, :location, :purchased, :put_in_service, :cost, :value, :in_service, :retired, :condition, :note, :page, :search)
+      params.require(:tool).permit(:name, :serial, :station, :apparatus, :purchased, :put_in_service, :cost, :value, :in_service, :retired, :condition, :note, :page, :search)
     end
 
     def sort_column
@@ -95,5 +95,7 @@ class ToolsController < ApplicationController
 
     def set_categories
       @categories = Dropdown.find_by_name("categories").list
+      @stations = Dropdown.find_by_name("stations").list
+      @apparatus = Dropdown.find_by_name("apparatus").list
     end
 end

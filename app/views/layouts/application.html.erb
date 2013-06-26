@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= yield(:head) %>
 </head>
-<body>
+<body onload="updateClock(); setInterval('updateClock()', 60000 )">
 <div class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container-fluid">
@@ -24,6 +24,7 @@
               <li><%= link_to "Register", new_user_path %></li>
               <li><%= link_to "Login", :login %></li>
           <% end %>
+
         </ul>
       </div>
     </div>
@@ -75,6 +76,12 @@
 
     </div>
   </nav>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <span id="clock">&nbsp;</span>
+  </div>
 </div>
 
 </body>
