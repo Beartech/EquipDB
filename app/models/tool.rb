@@ -9,6 +9,7 @@ class Tool < ActiveRecord::Base
 
   validates :name, :serial, :purchased, :cost, :value, :condition, :presence => true
 
+
   def self.search(search)
     if search
       where('serial LIKE ?', "%#{search}%")

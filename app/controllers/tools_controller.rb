@@ -2,7 +2,7 @@ class ToolsController < ApplicationController
   before_action :set_tool, only: [:show, :edit, :update, :destroy]
   before_action :role_required
   helper_method :sort_column, :sort_direction
-  before_action :set_categories
+  before_action :set_categories, :set_tab
 
   # GET /tools
   # GET /tools.json
@@ -74,7 +74,7 @@ class ToolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tool_params
-      params.require(:tool).permit(:name, :serial, :station, :apparatus, :purchased, :put_in_service, :cost, :value, :in_service, :retired, :condition, :note, :page, :search)
+      params.require(:tool).permit(:name, :serial, :station, :apparatus, :purchased, :put_in_service, :cost, :value, :in_service, :retired, :condition, :note, :tab, :search)
     end
 
     def sort_column
@@ -97,5 +97,9 @@ class ToolsController < ApplicationController
       @categories = Dropdown.find_by_name("categories").list
       @stations = Dropdown.find_by_name("stations").list
       @apparatus = Dropdown.find_by_name("apparatus").list
+    end
+
+    def set_tab
+      params[:tab] ? params[:tab] : "#0"
     end
 end

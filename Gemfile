@@ -63,9 +63,12 @@ gem 'less-rails'
 
 gem 'jquery-ui-rails'
 
-#gem 'better_errors'
+group :development do
+  gem 'better_errors'
 
-#gem 'binding_of_caller'
+  gem 'binding_of_caller'
+
+end
 
 gem 'sorcery', github:'NoamB/sorcery', branch:'master'
 
