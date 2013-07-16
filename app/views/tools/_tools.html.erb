@@ -22,8 +22,7 @@
               <%= sortable 'serial', 'Serial' %>
               <%= sortable 'name', 'Type' %>
               <%= sortable 'model', 'Model' %>
-              <%= sortable 'station', 'Station' %>
-              <%= sortable 'apparatus', 'Apparatus' %>
+              <%= sortable 'location', 'Location' %>
               <%= sortable 'in_service', 'In Service' %>
               <%= sortable 'retired', 'Retired' %>
               <%= sortable 'condition', 'Condition' %>
@@ -37,8 +36,7 @@
                     <td><%= link_to tool.serial, tool, :class => 'btn btn-small' %></td>
                     <td><%= tool.name.singularize %></td>
                     <td><%= tool.model %></td>
-                    <td><%= tool.station %></td>
-                    <td><%= tool.apparatus %></td>
+                    <td><%= tool.location %></td>
                     <td><%= tool.in_service %></td>
                     <td><%= tool.retired %></td>
                     <td><%= tool.condition %></td>

@@ -6,8 +6,8 @@ class DashboardController < ApplicationController
 
   def dashboard
     @dashboard = {}
-    @stations.each do |station|
-      @dashboard[station] = Tool.where('station LIKE ?', station)
+    @locations.each do |location|
+      @dashboard[location] = Tool.where('location LIKE ?', location)
     end
 
   end
@@ -19,6 +19,7 @@ class DashboardController < ApplicationController
     @categories = Dropdown.find_by('name like ?', 'categories').list
     @stations = Dropdown.find_by('name like ?', 'stations').list
     @apparatus = Dropdown.find_by('name like ?', 'apparatus').list
+    @locations = @stations + @apparatus
   end
 
 

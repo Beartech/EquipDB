@@ -1,17 +1,17 @@
 <center><h1>Dashboard</h1></center>
 
-  <% @stations.each do |station| %>
+  <% @locations.each do |tool_location| %>
       <p><div class="row">
 
           <div class="span2">
 
-          <h4><%= "#{station}" %></h4>
+          <h4><%= "#{tool_location}" %></h4>
 
             <div class="span10" >
-            <% @dashboard[station].each do |tool| %>
+            <% @dashboard[tool_location].each do |tool| %>
 
-                    <% button_link = "#{tool.apparatus}-#{tool.name.singularize} \n #{tool.serial}" %>
-                    <%= link_to button_link, tool, :class => (tool.in_service  ? 'btn btn-success btn-large custombutton' : 'btn btn-warning btn-large custombutton') %>
+                    <% button_link = "#{tool.location}-#{tool.name.singularize} \n #{tool.serial}" %>
+                    <%= link_to button_link, tool, :class => (tool.in_service  ? 'btn btn-success custombutton' : 'btn btn-warning custombutton') %>
 
             <% end %>
             </div>
