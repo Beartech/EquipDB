@@ -7,8 +7,8 @@
 
           <%= "#{station}" %>
             <% @dashboard[station].each do |tool| %>
-
-                <%= link_to "#{tool.apparatus}-#{tool.name.chop}", tool, :class => 'btn btn-small' %>
+                <% button_link = "#{tool.apparatus}-#{tool.name.chop} \n #{tool.serial}" %>
+                <%= link_to button_link, tool, :class => (tool.in_service  ? 'btn btn-success btn-large custombutton btnspace' : 'btn btn-warning btn-large custombutton btnspace') %>
 
             <% end %>
 
