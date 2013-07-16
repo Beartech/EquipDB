@@ -28,6 +28,8 @@ EquipDB::Application.routes.draw do
   get 'user_admin' => 'admin/roles#index'
 
   resources :reports
+
+  get 'drop_down_menus' => 'dropdown#index'
   #get 'reports' => 'reports#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -5,10 +5,6 @@ class DashboardController < ApplicationController
 
 
   def dashboard
-    #@dashboard = @stations.each do |location|
-     # {name: location, equipment: [Tool.where(station: location)]}
-     # end
-    #@dashboard = Tool.all.station_order.app_order
     @dashboard = {}
     @stations.each do |station|
       @dashboard[station] = Tool.where('station LIKE ?', station)
@@ -16,7 +12,6 @@ class DashboardController < ApplicationController
 
   end
 
-  #comment to force heroku update
 
   private
 

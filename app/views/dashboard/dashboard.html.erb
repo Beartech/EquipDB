@@ -10,7 +10,7 @@
             <div class="span10" >
             <% @dashboard[station].each do |tool| %>
 
-                    <% button_link = "#{tool.apparatus}-#{tool.name.chop} \n #{tool.serial}" %>
+                    <% button_link = "#{tool.apparatus}-#{tool.name.singularize} \n #{tool.serial}" %>
                     <%= link_to button_link, tool, :class => (tool.in_service  ? 'btn btn-success btn-large custombutton' : 'btn btn-warning btn-large custombutton') %>
 
             <% end %>
