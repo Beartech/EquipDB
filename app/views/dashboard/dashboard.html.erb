@@ -3,14 +3,18 @@
   <% @stations.each do |station| %>
       <p><div class="row">
 
-          <div class="span12">
+          <div class="span2">
 
-          <%= "#{station}" %>
+          <h4><%= "#{station}" %></h4>
+
+            <div class="span10" >
             <% @dashboard[station].each do |tool| %>
-                <% button_link = "#{tool.apparatus}-#{tool.name.chop} \n #{tool.serial}" %>
-                <%= link_to button_link, tool, :class => (tool.in_service  ? 'btn btn-success btn-large custombutton btnspace' : 'btn btn-warning btn-large custombutton btnspace') %>
+
+                    <% button_link = "#{tool.apparatus}-#{tool.name.chop} \n #{tool.serial}" %>
+                    <%= link_to button_link, tool, :class => (tool.in_service  ? 'btn btn-success btn-large custombutton' : 'btn btn-warning btn-large custombutton') %>
 
             <% end %>
+            </div>
 
           </div>
 
