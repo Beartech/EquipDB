@@ -1,0 +1,12 @@
+UPDATE public.tools SET name='Blowers' WHERE name='Blower';
+UPDATE public.tools SET name='Chainsaws' WHERE name='Chainsaw';
+UPDATE public.tools SET name='Circular Saws' WHERE name='Circular Saw';
+UPDATE public.tools SET name='Generators' WHERE name='Generator';
+UPDATE public.tools SET name='Hydraulic Combi-Tools' WHERE name='Hydraulic Combi-Tool';
+UPDATE public.tools SET name='Hydraulic Cutters' WHERE name='Hydraulic Cutter';
+UPDATE public.tools SET name='Hydraulic EAPJs' WHERE name='Hydraulic EAPJ';
+UPDATE public.tools SET name='Hydraulic Powerheads' WHERE name='Hydraulic Powerhead';
+UPDATE public.tools SET name='Hydraulic Rams' WHERE name='Hydraulic Ram';
+UPDATE public.tools SET name='Hydraulic Spreaders' WHERE name='Hydraulic Spreader';
+UPDATE public.tools SET name='Prosser Pumps' WHERE name='Prosser Pump';
+UPDATE public.tools SET name='Vacuums' WHERE name='Vacuum';

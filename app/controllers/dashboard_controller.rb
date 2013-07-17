@@ -19,7 +19,7 @@ class DashboardController < ApplicationController
     @categories = Dropdown.find_by('name like ?', 'categories').list
     @stations = Dropdown.find_by('name like ?', 'stations').list
     @apparatus = Dropdown.find_by('name like ?', 'apparatus').list
-    @locations = @stations + @apparatus
+    @locations = @apparatus + @stations
   end
 
 

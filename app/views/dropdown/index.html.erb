@@ -1,6 +1,7 @@
 <div class='row'>
   <div class='span12'>
     <h1>Drop Down Menu Settings</h1>
+    <div id='important_red'><p>Think before adding to these!</p></div>
   </div>
 </div>
 
@@ -12,7 +13,7 @@
           <% value.each do |dropdown| %>
             <p><%= dropdown.to_s.upcase %></p>
           <% end %>
-        </p>
-      </div>
+        <%= render "#{key.to_s}" %>
+        </div>
     <% end %>
 </div>
