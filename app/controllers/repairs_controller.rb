@@ -1,4 +1,5 @@
 class RepairsController < ApplicationController
+  before_action :role_required
   before_action :set_repair, only: [:show, :edit, :update, :destroy]
   before_action :set_tool, only: [:show, :edit, :update, :destroy]
   # GET /repairs

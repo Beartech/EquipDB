@@ -1,4 +1,5 @@
 class PartsController < ApplicationController
+  before_action :role_required
   before_action :set_part, only: [:show, :edit, :update, :destroy]
 
   # GET /parts

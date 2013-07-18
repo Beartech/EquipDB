@@ -1,5 +1,5 @@
 class DropdownController < ApplicationController
-
+  before_action :role_required
   before_action :set_categories
 
   def index
