@@ -10,6 +10,7 @@ class ToolsController < ApplicationController
     #@tools = Tool.order(sort_column + ' ' + sort_direction)
     #@tools = Tool.order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => page_param)
     @tools = Tool.search(search_param).order(sort_column + ' ' + sort_direction)#.paginate(:per_page => 10, :page => page_param)
+
   end
 
   # GET /tools/1
@@ -95,6 +96,7 @@ class ToolsController < ApplicationController
 
     def set_categories
       @categories = Dropdown.find_by_name("categories").list
+      @categories.unshift("all")
       @stations = Dropdown.find_by_name("stations").list
       @apparatus = Dropdown.find_by_name("apparatus").list
       @locations = @stations + @apparatus
