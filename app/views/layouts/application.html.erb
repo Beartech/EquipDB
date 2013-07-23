@@ -50,23 +50,27 @@
 <div id="main" role="main">
   <div class="container-fluid">
     <div class="content">
+       <div class="row-fluid">
 
-
-      <div class="tabable tabs-left">
-        <ul class="nav nav-tabs">
-          <li><%= link_to "Dashboard", root_path %><li>
-          <li><%= link_to "Equipment", tools_path %></li>
-          <li><%= link_to "Repairs", repairs_path %></li>
-          <li><%= link_to "Service", services_path %></li>
-          <li><%= link_to "Parts", parts_path %></li>
-          <li><%= link_to "Reports" %></li>
-          <li><%= link_to 'Menu Settings', drop_down_menus_path %></li>
-        </ul>
-        <div class="tab-content">
-          <%= yield %>
-        </div>
-      </div>
-
+          <div class="span2">
+            <div class="tabbable tabs-left">
+                <ul class="nav nav-tabs">
+                  <li class=<%= current_page?(root_path) ? "active" : "" %>><%= link_to "Dashboard", root_path %><li>
+                  <li class=<%= current_page?(tools_path) ? "active" : "" %>><%= link_to "Equipment", tools_path %></li>
+                  <li class=<%= current_page?(repairs_path) ? "active" : "" %>><%= link_to "Repairs", repairs_path %></li>
+                  <li class=<%= current_page?(services_path) ? "active" : "" %>><%= link_to "Service", services_path %></li>
+                  <li class=<%= current_page?(parts_path) ? "active" : "" %>><%= link_to "Parts", parts_path%></li>
+                  <li class=<%= current_page?(reports_path) ? "active" : "" %>><%= link_to "Reports" %></li>
+                  <li class=<%= current_page?(drop_down_menus_path) ? "active" : "" %>><%= link_to 'Menu Settings', drop_down_menus_path %></li>
+                </ul>
+            </div>
+          </div>
+         <div class="span10">
+            <div class="tab-content">
+               <%= yield %>
+            </div>
+         </div>
+       </div>
     </div>
   </div>
 </div>
