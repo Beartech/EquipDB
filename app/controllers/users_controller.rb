@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_filter :require_login, :only => [:new, :create]
 
-  before_action :role_required, except: [:index, :show, :edit, :new]
+  before_action :role_required, except: [:index, :show, :edit, :update, :new]
   before_action :owner_required, only:  [:edit, :update, :destroy]
 
 
@@ -24,7 +24,6 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-
   end
 
   # POST /users
@@ -34,7 +33,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user.has_role?(:system, :admin) ? :users_path : "/", notice: 'User was successfully created.' }
+        format.html { redirect_to :users_path, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
@@ -76,7 +75,12 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation, :role, :role_id)
+      if current_user.has_role?(:system, :admin)
+        params.require(:user).permit(:username, :email, :password, :password_confirmation, :role, :role_id)
+      else
+        params.require(:user).permit(:username, :email, :password, :password_confirmation, :role)
+      end
+
     end
 
 end
