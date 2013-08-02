@@ -20,25 +20,17 @@
 
 
 $(document).on("focus", "[data-behaviour~='datepicker']", function(e){
-    $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 0, "autoclose": true })
+    $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 0, "autoclose": true });
 });
 
-$(document).ready(function(){
-
+$(document).ready(function() {
     $('.multiSort').click(function(){
         window.location.href = $(this).data('link');
     });
-
-});
-
-$(function () {
     $('#tools th a, #tools .pagination a').on('click', function () {
         $.getScript(this.href);
         return false;
     });
-})
-
-$(document).ready(function() {
     $('.alert').delay(500).fadeIn('normal', function() {
         $(this).delay(2500).fadeOut();
     });

@@ -1,0 +1,16 @@
+Predefined service types:
+		Parts needed - scan in parts
+		predefined time, can be overridden
+		can be scheduled ahead of time
+
+Predefined repairs
+		Parts needed - scan in parts
+		predefined time, can be overridden
+
+Custom repairs
+
+Repairs and services pull parts from inventory
+
+Parts get scanned in on arrival
+
+
