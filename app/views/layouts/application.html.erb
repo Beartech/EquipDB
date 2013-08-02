@@ -39,20 +39,13 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="span12">
-
-    <%= render 'layouts/messages' %>
-
-  </div>
-</div>
-
 <div id="main" role="main">
   <div class="container-fluid">
+    <%= render 'layouts/messages' %>
     <div class="content">
        <div class="row-fluid">
 
-          <div class="span2">
+          <div class="span1">
             <div class="tabbable tabs-left">
                 <ul class="nav nav-tabs">
                   <li><%= link_to "Dashboard", root_path, :data_toggle => 'tab' %><li>
@@ -65,7 +58,7 @@
                 </ul>
             </div>
           </div>
-         <div class="span10">
+         <div class="span11">
             <div class="tab-content">
                <%= yield %>
             </div>

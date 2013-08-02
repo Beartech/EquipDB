@@ -1,20 +1,20 @@
  <div class="tabbable" style="margin-bottom: 18px;">
   <ul class="nav nav-tabs">
-    <% active = 'active' %>
+
     <% @categories.each do |category| %>
       <% tabnum = @categories.index("#{category}") %>
-        <li class="<%= "#{active}" %>">
+        <li <%= tabnum == 0 ? 'class =active' : '' %> >
           <a href="#<%= tabnum %>" data-toggle="tab"><%= "#{category}" %></a>
         </li>
-        <% active = '' %>
+
     <% end %>
   </ul>
 
   <div class="tab-content">
-    <% active = 'active' %>
+
     <% @categories.each do |category| %>
         <% tabnum = @categories.index("#{category}") %>
-        <div class="tab-pane <%= "#{active}" %>" id="<%= "#{tabnum}" %>">
+        <div class="tab-pane  <%= tabnum == 0 ? 'active' : '' %>"   id="<%= tabnum %>">
             <table class="table pretty" border='1' cellpadding='10'>
               <thead>
               <%= sortable 'serial', 'Serial' %>
@@ -44,7 +44,8 @@
               </tbody>
             </table>
         </div>
-        <% active = '' %>
+
     <% end %>
   </div>
+
 </div>
