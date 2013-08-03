@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require server-time
+//= require advancedtable
 //= require_tree .
 
 
@@ -23,7 +24,10 @@ $(document).on("focus", "[data-behaviour~='datepicker']", function(e){
     $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 0, "autoclose": true });
 });
 
+
+
 $(document).ready(function() {
+
     $('.multiSort').click(function(){
         window.location.href = $(this).data('link');
     });
@@ -34,5 +38,10 @@ $(document).ready(function() {
     $('.alert').delay(500).fadeIn('normal', function() {
         $(this).delay(2500).fadeOut();
     });
+    $("#searchtable").show();
+    $("#table0").advancedtable(
+        {searchField: "#search", loadElement: "#loader", searchCaseSensitive: false, ascImage: "assets/up.png", descImage: "assets/down.png"
+    });
+
 });
 

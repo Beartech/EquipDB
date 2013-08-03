@@ -3,7 +3,7 @@
 
     <% @categories.each do |category| %>
       <% tabnum = @categories.index("#{category}") %>
-        <li <%= tabnum == 0 ? 'class =active' : '' %> >
+        <li <%= tabnum == 0 ? 'class=active' : '' %>>
           <a href="#<%= tabnum %>" data-toggle="tab"><%= "#{category}" %></a>
         </li>
 
@@ -15,22 +15,23 @@
     <% @categories.each do |category| %>
         <% tabnum = @categories.index("#{category}") %>
         <div class="tab-pane  <%= tabnum == 0 ? 'active' : '' %>"   id="<%= tabnum %>">
-            <table class="table pretty" border='1' cellpadding='10'>
+            <table width="100%" id="table<%=tabnum %>" class="myadvancedtable" border="0" >
               <thead>
-              <%= sortable 'serial', 'Serial' %>
-              <%= sortable 'name', 'Type' %>
-              <%= sortable 'model', 'Model' %>
-              <%= sortable 'location', 'Location' %>
-              <%= sortable 'in_service', 'In Service' %>
-              <%= sortable 'retired', 'Retired' %>
-              <%= sortable 'condition', 'Condition' %>
-
+              <tr>
+              <th> Serial </th>
+              <th> Type </th>
+              <th> Model </th>
+              <th> Location </th>
+              <th> In Service </th>
+              <th> Retired </th>
+              <th> Condition </th>
+              </tr>
               </thead>
 
               <tbody>
               <% @tools.each do |tool| %>
                 <% if (tool.name == category) || (category == 'all') %>
-                  <tr >
+                  <tr>
                     <td><%= link_to tool.serial, tool, :class => 'btn btn-small' %></td>
                     <td><%= tool.name.singularize %></td>
                     <td><%= tool.model %></td>
