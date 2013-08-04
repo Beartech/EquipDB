@@ -17,7 +17,7 @@
         <div class="tab-pane  <%= tabnum == 0 ? 'active' : '' %>"   id="<%= tabnum %>">
             <table id="table<%= tabnum %>" class="table pretty" border='0' >
               <thead>
-              <th class="sortable sorted-asc">Serial</th>
+              <th class="sortable">Serial</th>
               <th class="sortable">Type</th>
               <th class="sortable">Model</th>
               <th class="sortable">Location</th>
@@ -46,7 +46,7 @@
         </div>
       <script>
           $(document).ready(function() {
-              table_sorter( "#table<%= tabnum %>" ).hover().filter( '#filter1' );
+              table_sorter( "#table<%= tabnum %>").sort(0).hover().filter( '#filter1' );
           })
       </script>
     <% end %>
