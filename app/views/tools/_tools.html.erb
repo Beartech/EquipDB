@@ -15,7 +15,7 @@
     <% @categories.each do |category| %>
         <% tabnum = @categories.index("#{category}") %>
         <div class="tab-pane  <%= tabnum == 0 ? 'active' : '' %>"   id="<%= tabnum %>">
-            <table id="table<%= tabnum %>" class="table pretty" border='0' >
+            <table id="table<%= tabnum %>" class="table pretty" border='0'>
               <thead>
               <th class="sortable">Serial</th>
               <th class="sortable">Type</th>
@@ -31,7 +31,7 @@
               <% @tools.each do |tool| %>
                 <% if (tool.name == category) || (category == 'all') %>
                   <tr >
-                    <td><%= link_to tool.serial, tool, :class => 'btn btn-small' %></td>
+                    <td><%= link_to tool.serial, tool, :class => 'btn btn-small btn-info' %></td>
                     <td><%= tool.name.singularize %></td>
                     <td><%= tool.model %></td>
                     <td><%= tool.location %></td>
