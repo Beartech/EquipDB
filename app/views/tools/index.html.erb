@@ -2,14 +2,12 @@
 
     <h1>KFD Equipment <%= link_to 'Add Equipment', new_tool_path, :class => 'btn btn-success' %></h1>
 
-    <label for="filter1">Filter</label>
+    <label for="filter1">Filter Equipment List</label>
     <input type="text" name="filter1" value="" id="filter1">
+    <input type="button" id="clearFilter" value="Clear Filter">
 
     <div id="tools"><%= render 'tools' %></div>
 
 
 
     <br>
-
-
-
