@@ -1,28 +1,14 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+EquipDB is a program to manage and track service and repairs on small power equipment.
 
-Things you may want to cover:
+Omniauth integration is on the omniauth branch.
 
-* Ruby version
+When logging in with github you can see the info received from github which the program then
+uses to look up the user in the user table.
 
-* System dependencies
+<img src="cmd_line.png">
 
-* Configuration
+The second photo shows the notification after logging in.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+<img src="github_login.png">
