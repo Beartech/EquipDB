@@ -87,3 +87,5 @@ group :production do
   gem 'rails_12factor'
 
 end
+
+gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
