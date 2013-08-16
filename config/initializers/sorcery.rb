@@ -86,7 +86,7 @@ Rails.application.config.sorcery.configure do |config|
   config.github.key = ENV["GITHUB_KEY"]
   config.github.secret = ENV["GITHUB_SECRET"]
   config.github.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=github"
-  config.github.user_info_mapping = {:email => "info/email", :username => "info/nickname"}
+  config.github.user_info_mapping = {:username => "login"}
 
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
