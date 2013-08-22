@@ -85,7 +85,7 @@ Rails.application.config.sorcery.configure do |config|
 
   config.github.key = ENV["GITHUB_KEY"]
   config.github.secret = ENV["GITHUB_SECRET"]
-  config.github.callback_url = "http://localhost:3000/oauth/callback?provider=github"
+  config.github.callback_url = "http://equip-db-test.herokuapp.com/oauth/callback?provider=github"
   config.github.user_info_mapping = {:username => "login"}
 
 
