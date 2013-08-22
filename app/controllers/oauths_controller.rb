@@ -12,7 +12,7 @@ class OauthsController < ApplicationController
       begin
         @user = create_from(provider)
         # NOTE: this is the place to add '@user.activate!' if you are using user_activation submodule
-
+        @user.update(:role_id => 4)
         reset_session # protect from session fixation attack
         auto_login(@user)
         redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
@@ -27,6 +27,6 @@ class OauthsController < ApplicationController
   private
 
   def auth_params
-    params.permit(:code, :provider, :uid, :user_id, :email, :nickname, :role_id => 4 )
+    params.permit(:code, :provider, :uid, :user_id, :email, :nickname)
   end
 end
