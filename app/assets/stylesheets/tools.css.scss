@@ -1,15 +1,17 @@
 
 th {
-  background-color: lightblue;
+  color: #E6E6E6;
+  background-color: rgb(221, 72, 20);
 }
 
 /* add hover effect for table rows */
-/* td.hovered {
-  background-color: lightyellow;
-} */
+ td.hovered {
+  background-color: rgb(255, 255, 244);
+}
 
 
 th.sortable {
+  color: #E6E6E6;
   cursor: pointer;
   padding-right: 23px;
   background-repeat: no-repeat;
@@ -20,7 +22,7 @@ th.sortable {
 th.sortable.sorted-asc,
 th.sortable.sorted-desc  {
   color: white;
-  background-color: lightskyblue;
+  background-color: rgb(255, 83, 24);
 }
 
 th.sortable.sorted-asc {
@@ -34,7 +36,7 @@ th.sortable.sorted-desc {
 
 th.sortable:hover {
   color: black;
-  background-color: yellow;
+  background-color: rgb(255, 160, 90);
   text-decoration: underline;
 }
 

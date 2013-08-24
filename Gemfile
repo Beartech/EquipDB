@@ -91,3 +91,5 @@ end
 gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
 
 gem 'figaro'
+
+gem 'bootswatch-rails'

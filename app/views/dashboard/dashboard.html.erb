@@ -11,8 +11,8 @@
 
                  <div class="span10">
                     <% @dashboard[tool_location].each do |tool| %>
-                        <% button_link = "#{tool.location}-#{tool.name.singularize} \n #{tool.serial}" %>
-                        <%= link_to button_link, tool, :class => (tool.in_service  ? 'btn btn-success custombutton' : 'btn btn-warning custombutton') %>
+                        <% button_link = "#{tool.location}-#{tool.name.singularize}"+'<br>'+" #{tool.serial}" %>
+                        <%= link_to raw(button_link), tool, :class => (tool.in_service  ? 'btn btn-success custombutton' : 'btn btn-warning custombutton') %>
 
                     <% end %>
                    <hr class="style-two">

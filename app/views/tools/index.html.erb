@@ -1,13 +1,11 @@
 
 
-    <h1>KFD Equipment <%= link_to 'Add Equipment', new_tool_path, :class => 'btn btn-success' %></h1>
+    <h1>KFD Equipment <%= link_to 'Add New Equipment', new_tool_path, :class => 'btn' %></h1>
 
     <label for="filter1">Filter Equipment List</label>
     <input type="text" name="filter1" value="" id="filter1">
-    <input type="button" id="clearFilter" value="Clear Filter">
+    Press the "esc" key to clear filter
 
     <div id="tools"><%= render 'tools' %></div>
-
-
 
     <br>

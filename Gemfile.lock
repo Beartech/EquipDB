@@ -75,6 +75,8 @@ GEM
       railties (>= 3.0)
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
+    bootswatch-rails (0.5.0)
+      railties (>= 3.1)
     builder (3.1.4)
     coderay (1.0.9)
     coffee-rails (4.0.0)
@@ -221,6 +223,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-datepicker-rails
   bootstrap-sass
+  bootswatch-rails
   coffee-rails (~> 4.0.0)
   figaro
   jbuilder (~> 1.0.1)

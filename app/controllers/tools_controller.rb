@@ -1,5 +1,5 @@
 class ToolsController < ApplicationController
-  before_action :set_tool, only: [:show, :edit, :update, :destroy]
+  before_action :set_tool, only: [:show, :edit, :update, :destroy, :in_service, :out_service]
   before_action :role_required
   helper_method :sort_column, :sort_direction
   before_action :set_categories, :set_tab
@@ -64,6 +64,24 @@ class ToolsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def in_service
+     @tool.update(:in_service => true)
+     respond_to do |format|
+       format.html { redirect_to(tools_url) }
+       format.js   { render :nothing => true }
+     end
+  end
+
+
+  def out_service
+    @tool.update(:in_service => false)
+    respond_to do |format|
+      format.html { redirect_to(tools_url) }
+      format.js   { render :nothing => true }
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
