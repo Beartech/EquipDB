@@ -32,16 +32,10 @@
                 <% if (tool.name == category) || (category == 'all') %>
                   <tr >
                     <td>
-                      <div class="btn-group">
+
                         <%= link_to tool.serial, tool, :class => 'btn btn-small btn-primary' %>
-                        <button class="btn btn-small btn-primary dropdown-toggle" data-toggle="dropdown">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><%= link_to "In Service", update_in_service_path(:id => tool.id), :method => :post, :class => 'status', :remote=>true %></li>
-                          <li><%= link_to "Out of Service", update_out_service_path(:id => tool.id), :method => :post, :class => 'status', :remote=>true %></li>
-                        </ul>
-                      </div>
+
+
                     </td>
                     <td><%= tool.name.singularize %></td>
                     <td><%= tool.model %></td>

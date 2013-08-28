@@ -68,8 +68,8 @@ class ToolsController < ApplicationController
   def in_service
      @tool.update(:in_service => true)
      respond_to do |format|
-       format.html { redirect_to(tools_url) }
-       format.js   { render :nothing => true }
+       format.html { redirect_to(root_path) }
+       format.js
      end
   end
 
@@ -77,8 +77,8 @@ class ToolsController < ApplicationController
   def out_service
     @tool.update(:in_service => false)
     respond_to do |format|
-      format.html { redirect_to(tools_url) }
-      format.js   { render :nothing => true }
+      format.html { redirect_to(root_path) }
+      format.js
     end
   end
 
