@@ -1,0 +1,6 @@
+
+
+$('.in_service').bind('ajax:success', function() {
+    $(alert("put in of service"));
+    $(this).closest('.btn').addClass('.btn-success').removeClass('.btn-warning');
+});
