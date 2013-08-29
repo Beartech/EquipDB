@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require server-time
+//= require jquery-table
 //= require_tree .
 
 
@@ -24,15 +25,13 @@ $(document).on("focus", "[data-behaviour~='datepicker']", function(e){
 });
 
 $(document).ready(function() {
-    $('.multiSort').click(function(){
-        window.location.href = $(this).data('link');
-    });
-    $('#tools th a, #tools .pagination a').on('click', function () {
-        $.getScript(this.href);
-        return false;
-    });
     $('.alert').delay(500).fadeIn('normal', function() {
         $(this).delay(2500).fadeOut();
     });
+
 });
+
+
+
+
 

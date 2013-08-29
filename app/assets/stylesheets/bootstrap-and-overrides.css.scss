@@ -1,31 +1,10 @@
+@import "bootswatch/united/variables";
+
 @import "bootstrap";
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
-table th.header {
-  cursor:pointer;
-}
-table th.headerSortUp{background-image:url('glyphicons/tablesorter-indicators.png');background-position:right -23px;background-repeat:no-repeat;background-color:rgba(141, 192, 219, 0.25);-moz-border-radius:3px 3px 0 0;border-radius:3px 3px 0 0;text-shadow:0 1px 1px rgba(255, 255, 255, 0.75);}
-table th.headerSortDown{background-image:url('glyphicons/tablesorter-indicators.png');background-position:right -23px;background-repeat:no-repeat;background-color:rgba(141, 192, 219, 0.25);-moz-border-radius:3px 3px 0 0;border-radius:3px 3px 0 0;text-shadow:0 1px 1px rgba(255, 255, 255, 0.75);}
-table th.header:hover{background-image:url('glyphicons/tablesorter-indicators.png');background-position:right 15px;background-repeat:no-repeat;}
-table th.actions:hover{background-color:#cdeacd;}
-table th.headerSortDown{background-position:right -25px;}
-table th.headerSortDown:hover{background-position:right -25px;}
-table th.headerSortUp{background-position:right -65px;}
-table th.headerSortUp:hover{background-position:right -65px;}
-table th.blue{color:#08b5fb;border-bottom-color:#08b5fb;}
-table th.headerSortUp.blue,table th.headerSortDown.blue{background-color:#d1f1fe;}
-table th.green{color:#46a546;border-bottom-color:#46a546;}
-table th.headerSortUp.green,table th.headerSortDown.green{background-color:#cdeacd;}
-table th.red{color:#9d261d;border-bottom-color:#9d261d;}
-table th.headerSortUp.red,table th.headerSortDown.red{background-color:#f4c8c5;}
-table th.yellow{color:#ffc40d;border-bottom-color:#ffc40d;}
-table th.headerSortUp.yellow,table th.headerSortDown.yellow{background-color:#fff6d9;}
-table th.orange{color:#f89406;border-bottom-color:#f89406;}
-table th.headerSortUp.orange,table th.headerSortDown.orange{background-color:#fee9cc;}
-table th.purple{color:#7a43b6;border-bottom-color:#7a43b6;}
-table th.headerSortUp.purple,table th.headerSortDown.purple{background-color:#e2d5f0;}
-
+@import "bootswatch/united/bootswatch";
 
 .custombutton {
   width: 170px !important;
@@ -36,30 +15,13 @@ table th.headerSortUp.purple,table th.headerSortDown.purple{background-color:#e2
   padding-right: 5px !important;
 }
 
-#important_red  {
-  color: #d14;
+.custom-drop {
+  height: 35px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
 }
-
-.sidebar-nav-fixed {
-  position:fixed;
-  top:60px;
-  width:21.97%;
-}
-
-@media (max-width: 767px) {
-  .sidebar-nav-fixed {
-    width:auto;
-  }
-}
-
-@media (max-width: 979px) {
-  .sidebar-nav-fixed {
-    position:static;
-    width: auto;
-  }
-}
-
-/* Gradient transparent - color - transparent */
 
 hr.style-two {
   border: 0;
@@ -70,3 +32,19 @@ hr.style-two {
   background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
 }
 
+hr.style-eight {
+  padding: 0;
+  border: none;
+  border-top: medium double #333;
+  color: #333;
+  text-align: center;
+}
+hr.style-eight:after {
+  content: "§";
+  display: inline-block;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.5em;
+  padding: 0 0.25em;
+  background: white;
+}

@@ -9,13 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
- *= require datepicker
- *= require bootstrap
- *= require the_role/bootstrap_sass
- *= require the_role
  *= require bootstrap-datepicker
+ *= require_tree .
  */
 
-.odd {background:lightsteelblue}
-.even {background:whitesmoke}

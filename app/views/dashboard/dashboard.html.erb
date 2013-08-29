@@ -1,7 +1,7 @@
 
 
 <center><h1>Dashboard</h1></center>
-
+        <% btn_count = 0 %>
         <% @locations.each do |tool_location| %>
           <% /^\d+$/ =~ tool_location ? (app = 'App. ') : (app = '')%>
             <div class="row">
@@ -9,13 +9,36 @@
                    <%= "#{app}#{tool_location}" %>
                  </div>
 
-                 <div class="span10">
-                    <% @dashboard[tool_location].each do |tool| %>
-                        <% button_link = "#{tool.location}-#{tool.name.singularize} \n #{tool.serial}" %>
-                        <%= link_to button_link, tool, :class => (tool.in_service  ? 'btn btn-success custombutton' : 'btn btn-warning custombutton') %>
+                 <div class="span10" >
 
+
+                    <% @dashboard[tool_location].each_slice(5) do |five_tools| %>
+                       <div class="row">
+                       <% five_tools.each do |tool| %>
+
+                            <% button_link = "#{tool.location}-#{tool.name.singularize}"+'<br>'+" #{tool.serial}" %>
+                            <div class="btn-group">
+                             <a class="btn custombutton dropdown-toggle <%= (tool.in_service  ? 'btn-success' : 'btn-warning') %>" data-toggle="dropdown" href="#" id="btn<%=btn_count%>" >
+                               <%=  raw(button_link) %>
+                             </a>
+
+                             <ul class="dropdown-menu">
+                               <li><%= link_to "In Service", update_in_service_path(:id => tool.id), :method => :post, :id => 'in_service', :remote => true %></li>
+                               <li><%= link_to "Out of Service", update_out_service_path(:id => tool.id), :method => :post, :id => 'out_service', :remote => true %></li>
+                               <li><%= link_to "view Details", tool_path(tool.id) %></li>
+                             </ul>
+                           </div>
+                           <% btn_count += 1 %>
+
+                       <% end %>
+                         <p></p>
+                       </div>
                     <% end %>
-                   <hr class="style-two">
+
+                   <hr class="style-eight">
+
                  </div>
           </div>
         <% end %>
+
+

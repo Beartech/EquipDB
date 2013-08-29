@@ -9,7 +9,7 @@
   <%= yield(:head) %>
 </head>
 <body onload="updateClock(); setInterval('updateClock()', 60000 )">
-<div class="navbar navbar-fixed-top navbar-inverse">
+<div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container-fluid">
       <a class="brand" href="/">Equipment DB</a>
@@ -21,9 +21,8 @@
               <li><%= link_to "Logout", :logout %></li>
               <li><%= link_to "Logged in as: " + current_user.username, edit_user_path(current_user.id) %></li>
           <% else %>
-              <li><%= link_to "Register", new_user_path %></li>
-              <li><%= link_to "Login", :login %></li>
-          <% end %>
+              <%= link_to 'Login with Github', auth_at_provider_path(:provider => :github) %>
+        <% end %>
 
         </ul>
       </div>

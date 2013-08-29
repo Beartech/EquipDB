@@ -1,5 +1,5 @@
 class ToolsController < ApplicationController
-  before_action :set_tool, only: [:show, :edit, :update, :destroy]
+  before_action :set_tool, only: [:show, :edit, :update, :destroy, :in_service, :out_service]
   before_action :role_required
   helper_method :sort_column, :sort_direction
   before_action :set_categories, :set_tab
@@ -7,9 +7,7 @@ class ToolsController < ApplicationController
   # GET /tools
   # GET /tools.json
   def index
-    #@tools = Tool.order(sort_column + ' ' + sort_direction)
-    #@tools = Tool.order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => page_param)
-    @tools = Tool.search(search_param).order(sort_column + ' ' + sort_direction)
+    @tools = Tool.all.to_a
 
   end
 
@@ -67,6 +65,24 @@ class ToolsController < ApplicationController
     end
   end
 
+  def in_service
+     @tool.update(:in_service => true)
+     respond_to do |format|
+       format.html { redirect_to(root_path) }
+       format.js
+     end
+  end
+
+
+  def out_service
+    @tool.update(:in_service => false)
+    respond_to do |format|
+      format.html { redirect_to(root_path) }
+      format.js
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tool
@@ -75,23 +91,7 @@ class ToolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tool_params
-      params.require(:tool).permit(:name, :serial, :model, :location, :purchased, :put_in_service, :cost, :value, :in_service, :retired, :condition, :note, :tab, :search)
-    end
-
-    def sort_column
-      Tool.column_names.include?(params[:sort]) ? params[:sort] : "serial"
-    end
-
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    end
-
-    def page_param
-      params[:page]
-    end
-
-    def search_param
-      params[:search]
+      params.require(:tool).permit(:name, :serial, :model, :location, :purchased, :put_in_service, :cost, :value, :in_service, :retired, :condition, :note, :tab)
     end
 
     def set_categories

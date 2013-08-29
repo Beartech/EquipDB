@@ -1,0 +1,3 @@
+$('.out_service').bind('ajax:success', function() {
+    $(this).closest('a.btn').addClass('.btn-warning').removeClass('.btn-success');
+});

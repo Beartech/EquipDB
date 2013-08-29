@@ -67,7 +67,7 @@ group :development do
   gem 'better_errors'
 
   gem 'binding_of_caller'
-
+  gem 'pry-rails'
 end
 
 gem 'sorcery', github:'NoamB/sorcery', branch:'master'
@@ -87,3 +87,9 @@ group :production do
   gem 'rails_12factor'
 
 end
+
+gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
+
+gem 'figaro'
+
+gem 'bootswatch-rails'
