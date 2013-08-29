@@ -1,0 +1,21 @@
+
+
+<center><h1>Dashboard</h1></center>
+
+        <% @locations.each do |tool_location| %>
+          <% /^\d+$/ =~ tool_location ? (app = 'App. ') : (app = '')%>
+            <div class="row">
+                 <div class="span1 offset1">
+                   <%= "#{app}#{tool_location}" %>
+                 </div>
+
+                 <div class="span10">
+                    <% @dashboard[tool_location].each do |tool| %>
+                        <% button_link = "#{tool.location}-#{tool.name.singularize} \n #{tool.serial}" %>
+                        <%= link_to button_link, tool, :class => (tool.in_service  ? 'btn btn-success custombutton' : 'btn btn-warning custombutton') %>
+
+                    <% end %>
+                   <hr class="style-two">
+                 </div>
+          </div>
+        <% end %>

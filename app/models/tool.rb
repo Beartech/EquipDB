@@ -7,7 +7,8 @@ class Tool < ActiveRecord::Base
   accepts_nested_attributes_for :repairs
   accepts_nested_attributes_for :services
 
-  validates :name, :serial, :purchased, :cost, :value, :condition, :presence => true
+  #validates :name, :serial, :purchased, :cost, :value, :condition, :presence => true
+
 
   def self.search(search)
     if search

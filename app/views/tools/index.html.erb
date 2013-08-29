@@ -1,19 +1,21 @@
-<h1>KFD Equipment</h1>
-
-<%= form_tag tools_path, :method => 'get' do %>
-    <%= hidden_field_tag :direction, params[:direction] %>
-    <%= hidden_field_tag :sort, params[:sort] %>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search by Serial #", :name => nil, :class => 'btn btn-mini' %>
-
-<% end %>
 
 
-<div id="tools"><%= render 'tools' %></div>
+    <h1>KFD Equipment <%= link_to 'Add Equipment', new_tool_path, :class => 'btn btn-success' %></h1>
 
-<%= will_paginate @tools %>
+    <%= form_tag tools_path, :method => 'get' do %>
+        <%= hidden_field_tag :direction, params[:direction] %>
+        <%= hidden_field_tag :sort, params[:sort] %>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "Search by Serial #", :name => nil, :class => 'btn btn-mini' %>
 
-<br>
+    <% end %>
 
 
-<%= link_to 'New Equipment', new_tool_path, :class => 'btn btn-success' %>
+    <div id="tools"><%= render 'tools' %></div>
+
+
+
+    <br>
+
+
+

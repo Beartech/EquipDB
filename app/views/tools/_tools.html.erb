@@ -1,33 +1,51 @@
-<table class="table pretty" border='1' cellpadding='10'>
-  <thead>
+ <div class="tabbable" style="margin-bottom: 18px;">
+  <ul class="nav nav-tabs">
 
-  <%= sortable 'name', 'Name' %>
-  <%= sortable 'serial', 'Serial' %>
-  <%= sortable 'location', 'Location' %>
-  <%= sortable 'purchased', 'Purchased' %>
-  <%= sortable 'put_in_service', 'Put in Service' %>
-  <%= sortable 'cost', 'Cost' %>
-  <%= sortable 'value', 'Value' %>
-  <%= sortable 'in_service', 'In Service' %>
-  <%= sortable 'retired', 'Retired' %>
-  <%= sortable 'condition', 'Condition' %>
+    <% @categories.each do |category| %>
+      <% tabnum = @categories.index("#{category}") %>
+        <li <%= tabnum == 0 ? 'class =active' : '' %> >
+          <a href="#<%= tabnum %>" data-toggle="tab"><%= "#{category}" %></a>
+        </li>
 
-  </thead>
+    <% end %>
+  </ul>
 
-  <tbody>
-  <% @tools.each do |tool| %>
-      <tr >
-        <td><%= link_to tool.name, tool, :class => 'btn btn-small' %></td>
-        <td><%= tool.serial %></td>
-        <td><%= tool.location %></td>
-        <td><%= tool.purchased %></td>
-        <td><%= tool.put_in_service %></td>
-        <td><%= tool.cost %></td>
-        <td><%= tool.value %></td>
-        <td><%= tool.in_service %></td>
-        <td><%= tool.retired %></td>
-        <td><%= tool.condition %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+  <div class="tab-content">
+
+    <% @categories.each do |category| %>
+        <% tabnum = @categories.index("#{category}") %>
+        <div class="tab-pane  <%= tabnum == 0 ? 'active' : '' %>"   id="<%= tabnum %>">
+            <table class="table pretty" border='1' cellpadding='10'>
+              <thead>
+              <%= sortable 'serial', 'Serial' %>
+              <%= sortable 'name', 'Type' %>
+              <%= sortable 'model', 'Model' %>
+              <%= sortable 'location', 'Location' %>
+              <%= sortable 'in_service', 'In Service' %>
+              <%= sortable 'retired', 'Retired' %>
+              <%= sortable 'condition', 'Condition' %>
+
+              </thead>
+
+              <tbody>
+              <% @tools.each do |tool| %>
+                <% if (tool.name == category) || (category == 'all') %>
+                  <tr >
+                    <td><%= link_to tool.serial, tool, :class => 'btn btn-small' %></td>
+                    <td><%= tool.name.singularize %></td>
+                    <td><%= tool.model %></td>
+                    <td><%= tool.location %></td>
+                    <td><%= tool.in_service %></td>
+                    <td><%= tool.retired %></td>
+                    <td><%= tool.condition %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+              </tbody>
+            </table>
+        </div>
+
+    <% end %>
+  </div>
+
+</div>

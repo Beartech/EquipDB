@@ -13,18 +13,23 @@
 
 
         <div class="field">
-          <%= f.label :name %>
-          <%= f.text_field :name %>
-        </div>
-
-        <div class="field">
           <%= f.label :serial %>
           <%= f.text_field :serial %>
         </div>
 
         <div class="field">
+          <%= f.label "Type" %>
+          <%= f.select :name, @categories %>
+        </div>
+
+        <div class="field">
+          <%= f.label :model %>
+          <%= f.text_field :model %>
+        </div>
+
+        <div class="field">
           <%= f.label :location %>
-          <%= f.text_field :location %>
+          <%= f.select :location, @locations %>
         </div>
 
         <div class="field" >

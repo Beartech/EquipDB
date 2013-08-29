@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= yield(:head) %>
 </head>
-<body>
+<body onload="updateClock(); setInterval('updateClock()', 60000 )">
 <div class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container-fluid">
@@ -24,6 +24,7 @@
               <li><%= link_to "Register", new_user_path %></li>
               <li><%= link_to "Login", :login %></li>
           <% end %>
+
         </ul>
       </div>
     </div>
@@ -38,32 +39,33 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="span12">
-
-    <%= render 'layouts/messages' %>
-
-  </div>
-</div>
-
 <div id="main" role="main">
   <div class="container-fluid">
+    <%= render 'layouts/messages' %>
     <div class="content">
+       <div class="row-fluid">
 
+          <div class="span1">
+            <div class="tabbable tabs-left">
+                <ul class="nav nav-tabs">
+                  <li><%= link_to "Dashboard", root_path, :data_toggle => 'tab' %><li>
+                  <li><%= link_to "Equipment", tools_path, :data_toggle => 'tab' %></li>
+                  <li><%= link_to "Repairs", repairs_path, :data_toggle => 'tab' %></li>
+                  <li><%= link_to "Service", services_path, :data_toggle => 'tab' %></li>
+                  <li><%= link_to "Parts", parts_path, :data_toggle => 'tab' %></li>
+                  <li><%= link_to "Reports" , :data_toggle => 'tab'%></li>
+                  <li><%= link_to 'Menu Settings', drop_down_menus_path, :data_toggle => 'tab' %></li>
+                </ul>
+            </div>
+          </div>
+         <div class="span11">
+            <div class="tab-content">
 
-      <div class="tabable tabs-left">
-        <ul class="nav nav-tabs">
-          <li><%= link_to "Equipment", tools_path %></li>
-          <li><%= link_to "Repairs", repairs_path %></li>
-          <li><%= link_to "Service", services_path %></li>
-          <li><%= link_to "Parts", parts_path %></li>
-          <li><%= link_to "Reports" %></li>
-        </ul>
-        <div class="tab-content">
-          <%= yield %>
-        </div>
-      </div>
+               <%= yield %>
 
+            </div>
+         </div>
+       </div>
     </div>
   </div>
 </div>
@@ -74,6 +76,12 @@
 
     </div>
   </nav>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <span id="clock">&nbsp;</span>
+  </div>
 </div>
 
 </body>

@@ -1,0 +1,20 @@
+<%= form_for @add_station, :url => { :action => "update_stations"}, :html => {:method => :put}  do |f| %>
+    <% if @stations.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@stations.errors.count, "error") %> prohibited this change from being saved:</h2>
+
+          <ul>
+            <% @stations.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <p>
+    <div class="field">
+      <%= f.label 'Add Station' %>
+      <%= f.text_field :add_station %>
+    </div>
+    <%= f.submit %>
+
+<% end %>

@@ -1,4 +1,6 @@
 class ReportsController < ApplicationController
+  before_action :role_required
+
   def index
 
   end

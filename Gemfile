@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0.rc1'
 
@@ -61,9 +63,12 @@ gem 'less-rails'
 
 gem 'jquery-ui-rails'
 
-#gem 'better_errors'
+group :development do
+  gem 'better_errors'
 
-#gem 'binding_of_caller'
+  gem 'binding_of_caller'
+
+end
 
 gem 'sorcery', github:'NoamB/sorcery', branch:'master'
 
@@ -74,3 +79,11 @@ gem 'thin'
 gem 'bootstrap-datepicker-rails'
 
 gem 'will_paginate'
+
+group :production do
+  gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
+  gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
+
+  gem 'rails_12factor'
+
+end

@@ -1,0 +1,2 @@
+
+INSERT INTO public.tools (id, name, serial, purchased, put_in_service, cost, value, in_service, retired, created_at, updated_at, note, condition, location, model) VALUES (2, 'Chainsaws', '134989652', null, null, null, null, true, null, '2013-07-17 06:12:59', '2013-07-17 06:12:59', '', 5, 'Sta. 75', 'Stihl 066');

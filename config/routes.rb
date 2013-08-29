@@ -21,13 +21,22 @@ EquipDB::Application.routes.draw do
     end
   end
 
-  root :to => "tools#index"
+  root :to => "dashboard#dashboard"
   post 'services' => 'services#create'
   post 'repairs' => 'repairs#create'
 
   get 'user_admin' => 'admin/roles#index'
 
   resources :reports
+
+  get 'drop_down_menus' => 'dropdown#index'
+  put 'update_categories' => 'dropdown#update_categories'
+  put 'update_stations' => 'dropdown#update_stations'
+  put 'update_apparatus' => 'dropdown#update_apparatus'
+  #patch 'edit_drop_down_menus' => 'dropdown'
+
+
+
   #get 'reports' => 'reports#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
