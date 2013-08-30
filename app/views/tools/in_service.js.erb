@@ -1,5 +1,4 @@
-
-
-$('.in_service').click(function() {
-    $(this).parent().parent().children('.btn').addClass('.btn-success').removeClass('.btn-warning');
+$('#in_service').bind('ajax:success', function() {
+    $(this).closest('a.btn').addClass('.btn-success').removeClass('.btn-warning');
 });
+

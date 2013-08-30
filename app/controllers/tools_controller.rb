@@ -69,7 +69,7 @@ class ToolsController < ApplicationController
      @tool.update(:in_service => true)
      respond_to do |format|
        format.html { redirect_to(root_path) }
-       format.js
+       format.js   { render :nothing => true }
      end
   end
 
@@ -78,7 +78,7 @@ class ToolsController < ApplicationController
     @tool.update(:in_service => false)
     respond_to do |format|
       format.html { redirect_to(root_path) }
-      format.js
+      format.js  { render :nothing => true }
     end
   end
 
