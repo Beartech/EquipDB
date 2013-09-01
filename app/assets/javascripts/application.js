@@ -16,6 +16,7 @@
 //= require bootstrap-datepicker
 //= require server-time
 //= require jquery-table
+//= require jquery.dropdown
 //= require_tree .
 
 

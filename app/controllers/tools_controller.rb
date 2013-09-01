@@ -69,7 +69,7 @@ class ToolsController < ApplicationController
      @tool.update(:in_service => true)
      respond_to do |format|
        format.html { redirect_to(root_path) }
-       format.js   { render :nothing => true }
+       format.js
      end
   end
 
@@ -78,7 +78,7 @@ class ToolsController < ApplicationController
     @tool.update(:in_service => false)
     respond_to do |format|
       format.html { redirect_to(root_path) }
-      format.js  { render :nothing => true }
+      format.js
     end
   end
 
@@ -91,7 +91,7 @@ class ToolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tool_params
-      params.require(:tool).permit(:name, :serial, :model, :location, :purchased, :put_in_service, :cost, :value, :in_service, :retired, :condition, :note, :tab)
+      params.require(:tool).permit(:btn, :name, :serial, :model, :location, :purchased, :put_in_service, :cost, :value, :in_service, :retired, :condition, :note, :tab)
     end
 
     def set_categories
