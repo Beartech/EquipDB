@@ -18,9 +18,9 @@
 
                             <% button_link = "#{tool.location}-#{tool.name.singularize}"+'<br>'+" #{tool.serial}" %>
                             <div class="btn-group">
-                             <a class="btn custombutton dropdown-toggle <%= (tool.in_service  ? 'btn-success' : 'btn-warning') %>" data-toggle="dropdown" href="#" id="btn<%=btn_count%>" >
+                             <span class="btn custombutton dropdown-toggle <%= (tool.in_service  ? 'btn-success' : 'btn-warning') %>" data-toggle="dropdown" href="#" id="btn<%=btn_count%>" >
                                <%=  raw(button_link) %>
-                             </a>
+                             </span>
 
                              <ul class="dropdown-menu">
                                <li><%= link_to "In Service", update_in_service_path(:id => tool.id, :btn => 'btn'+"#{btn_count}"), :method => :post, :id => 'in_service', :remote => true %></li>
