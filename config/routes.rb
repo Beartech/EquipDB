@@ -43,4 +43,6 @@ EquipDB::Application.routes.draw do
 
   post 'update_in_service' => 'tools#in_service'
   post 'update_out_service' => 'tools#out_service'
+
+  resources :parts
 end
