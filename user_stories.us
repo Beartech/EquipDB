@@ -1,0 +1,42 @@
+Predefined service types:
+		Parts needed - scan in parts
+		predefined time, can be overridden
+		can be scheduled ahead of time
+
+Predefined repairs
+		Parts needed - scan in parts
+		predefined time, can be overridden
+
+Custom repairs
+
+Repairs and services pull parts from inventory
+
+Parts get scanned in on arrival:
+    Form to scan in parts -> scan SKU and add to inventory -> if multiple, loop through creating records
+        If SKU not recognized offer to add new SKU to database
+        Parts table is profile of part, inventory held in inventory table.
+
+
+# remove Tool Repair Service from Parts table and rename table to sku
+
+# create Parts table with part_id price tool_id service_id repair_id po_id
+
+SKU entries describe a part. Parts holds a record for each physical part with a price and what
+tool/service/repair it belongs to.
+
+#Tools/Service/Repairs have many parts
+
+#Parts belong to Tools/Service/Repairs/POs
+
+#create Purchase_order table with po_number, vendor, notes, received, scanned_image
+
+#Purchase_orders have many parts
+
+Invoices table holds scans of invoices for parts order, outside tool repairs, etc.
+
+#create Invoices table with title, po_id, amount, paid(t/f), scanned_image
+
+
+
+
+
