@@ -19,12 +19,16 @@ EquipDB::Application.routes.draw do
     resources :services do
       resources :parts
     end
+
     resources :repairs do
       resources :parts
     end
+
+
   end
 
   root :to => "dashboard#dashboard"
+
   post 'services' => 'services#create'
   post 'repairs' => 'repairs#create'
 
@@ -41,6 +45,5 @@ EquipDB::Application.routes.draw do
   get "oauth/callback" => "oauths#callback"
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 
-  post 'update_in_service' => 'tools#in_service'
-  post 'update_out_service' => 'tools#out_service'
+  get 'toggle_in_service' => 'tools#toggle_in_service'
 end

@@ -32,8 +32,8 @@
                 <% if (tool.name == category) || (category == 'all') %>
                   <tr >
                     <td>
-
-                        <%= link_to tool.serial, tool, :class => 'btn btn-small btn-primary' %>
+                        <% status = tool.in_service ? "btn-success" : "btn-warning" %>
+                        <%= link_to tool.serial, tool, :class => "btn btn-small #{status}" %>
 
 
                     </td>

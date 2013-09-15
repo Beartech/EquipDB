@@ -16,18 +16,10 @@
                        <div class="row">
                        <% five_tools.each do |tool| %>
 
-                            <% button_link = "#{tool.location}-#{tool.name.singularize}"+'<br>'+" #{tool.serial}" %>
-                            <div class="btn-group">
-                             <a class="btn custombutton dropdown-toggle <%= (tool.in_service  ? 'btn-success' : 'btn-warning') %>" data-toggle="dropdown" href="#" id="btn<%=btn_count%>" >
-                               <%=  raw(button_link) %>
-                             </a>
+                            <% button_link = "#{tool.location}-#{tool.name.singularize}"+"\n"+" #{tool.serial}" %>
+                             <% btn_color = tool.in_service  ? 'btn-success' : 'btn-warning' %>
+                             <%= link_to button_link,  tool_path(tool.id), :class => "btn custombutton #{btn_color}",  :id => "btn#{btn_count}" %>
 
-                             <ul class="dropdown-menu">
-                               <li><%= link_to "In Service", update_in_service_path(:id => tool.id), :method => :post, :id => 'in_service', :remote => true %></li>
-                               <li><%= link_to "Out of Service", update_out_service_path(:id => tool.id), :method => :post, :id => 'out_service', :remote => true %></li>
-                               <li><%= link_to "view Details", tool_path(tool.id) %></li>
-                             </ul>
-                           </div>
                            <% btn_count += 1 %>
 
                        <% end %>

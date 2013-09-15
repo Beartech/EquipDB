@@ -1,5 +1,5 @@
 class ToolsController < ApplicationController
-  before_action :set_tool, only: [:show, :edit, :update, :destroy, :in_service, :out_service]
+  before_action :set_tool, only: [:show, :edit, :update, :destroy, :toggle_in_service]
   before_action :role_required
   helper_method :sort_column, :sort_direction
   before_action :set_categories, :set_tab
@@ -65,21 +65,13 @@ class ToolsController < ApplicationController
     end
   end
 
-  def in_service
-     @tool.update(:in_service => true)
+  def toggle_in_service
+     status = @tool.in_service ?  false : true
+     @tool.update(in_service: status)
      respond_to do |format|
-       format.html { redirect_to(root_path) }
+       format.html {redirect_to @tool }
        format.js
      end
-  end
-
-
-  def out_service
-    @tool.update(:in_service => false)
-    respond_to do |format|
-      format.html { redirect_to(root_path) }
-      format.js
-    end
   end
 
 

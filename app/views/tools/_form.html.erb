@@ -19,6 +19,7 @@
 
         <div class="field">
           <%= f.label "Type" %>
+          <% @categories.shift %>
           <%= f.select :name, @categories %>
         </div>
 
@@ -29,7 +30,7 @@
 
         <div class="field">
           <%= f.label :location %>
-          <%= f.select :location, @locations %>
+          <%= f.select :location, @locations.sort %>
         </div>
 
         <div class="field" >
