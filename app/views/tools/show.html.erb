@@ -3,61 +3,62 @@
   <tr>
     <td>
         <p>
-          <strong>Type:</strong>
+          <strong>Type: </strong>
           <%= @tool.name %>
         </p>
 
         <p>
-          <strong>Serial:</strong>
+          <strong>Serial: </strong>
           <%= @tool.serial %>
         </p>
 
         <p>
-          <strong>Model:</strong>
+          <strong>Model: </strong>
           <%= @tool.model %>
         </p>
 
         <p>
-          <strong>Location:</strong>
+          <strong>Location: </strong>
           <%= @tool.location %>
         </p>
 
         <p>
-          <strong>Purchased:</strong>
+          <strong>Purchased: </strong>
           <%= @tool.purchased %>
         </p>
 
         <p>
-          <strong>Put in service:</strong>
+          <strong>Put in service: </strong>
           <%= @tool.put_in_service %>
         </p>
 
         <p>
-          <strong>Cost:</strong>
+          <strong>Cost: </strong>
           <%= @tool.cost %>
         </p>
 
         <p>
-          <strong>Value:</strong>
+          <strong>Value: </strong>
           <%= @tool.value %>
         </p>
 
         <p>
+          <div id="stat_btn">
+          <strong>Status: </strong>
           <% btn_value = @tool.in_service ? ["In Service<br>click to toggle status", 'btn-success'] : ["Out of Service<br>click to toggle status", 'btn-warning'] %>
-          <%= link_to raw(btn_value[0]), toggle_in_service_path(:id => @tool.id), :class => "btn custombutton #{btn_value[1]}"  %>
-        </p>
-
+          <%= link_to raw(btn_value[0]), toggle_in_service_path(:id => @tool.id), :class => "btn custombutton #{btn_value[1]}", :remote => true  %>
+          </div>
         <p>
-          <strong>Retired:</strong>
+          <strong>Retired: </strong>
           <%= @tool.retired %>
         </p>
         <p>
-          <strong>Condition:</strong>
+          <strong>Condition: </strong>
           <%= @tool.condition %>
         </p>
     </td>
     <td style="vertical-align:top" style="padding-left: 30px">
-      <strong>Notes:</strong>
+      <strong>Notes: </strong>
       <%= @tool.note %>
     </td>
   </tr>

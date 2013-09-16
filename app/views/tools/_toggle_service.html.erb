@@ -1,0 +1,3 @@
+<strong>Status: </strong>
+<% btn_value = @tool.in_service ? ["In Service<br>click to toggle status", 'btn-success'] : ["Out of Service<br>click to toggle status", 'btn-warning'] %>
+<%= link_to raw(btn_value[0]), toggle_in_service_path(:id => @tool.id), :class => "btn custombutton #{btn_value[1]}", :remote => true  %>
