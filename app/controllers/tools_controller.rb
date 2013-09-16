@@ -69,7 +69,7 @@ class ToolsController < ApplicationController
      status_change = @tool.in_service ? false : true
      @tool.update(:in_service => status_change)
      respond_to do |format|
-       format.html { redirect_to(root_path) }
+       format.html { redirect_to(@tool) }
        format.js
      end
   end
