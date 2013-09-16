@@ -41,6 +41,6 @@ EquipDB::Application.routes.draw do
   get "oauth/callback" => "oauths#callback"
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 
-  post 'update_in_service' => 'tools#in_service'
-  post 'update_out_service' => 'tools#out_service'
+  post 'toggle_in_service' => 'tools#toggle_in_service'
+
 end

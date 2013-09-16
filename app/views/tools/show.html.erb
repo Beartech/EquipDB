@@ -43,8 +43,8 @@
         </p>
 
         <p>
-          <strong>In service:</strong>
-          <%= @tool.in_service %>
+          <strong>Status:</strong>
+          <%= @tool.in_service ? "In Service" : "Out of Service" %>
         </p>
 
         <p>

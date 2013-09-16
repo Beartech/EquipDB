@@ -1,0 +1,4 @@
+<% btn_id = "btn#{@tool.id}" %>
+
+$('#<%=btn_id%>').removeClass('.open').html('<%= escape_javascript(render :partial => "toggle_button") %>');
+

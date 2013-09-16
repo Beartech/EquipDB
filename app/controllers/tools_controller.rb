@@ -1,5 +1,5 @@
 class ToolsController < ApplicationController
-  before_action :set_tool, only: [:show, :edit, :update, :destroy, :in_service, :out_service]
+  before_action :set_tool, only: [:show, :edit, :update, :destroy, :toggle_in_service, ]
   before_action :role_required
   helper_method :sort_column, :sort_direction
   before_action :set_categories, :set_tab
@@ -65,21 +65,13 @@ class ToolsController < ApplicationController
     end
   end
 
-  def in_service
-     @tool.update(:in_service => true)
+  def toggle_in_service
+     status_change = @tool.in_service ? false : true
+     @tool.update(:in_service => status_change)
      respond_to do |format|
        format.html { redirect_to(root_path) }
        format.js
      end
-  end
-
-
-  def out_service
-    @tool.update(:in_service => false)
-    respond_to do |format|
-      format.html { redirect_to(root_path) }
-      format.js
-    end
   end
 
 
@@ -91,7 +83,7 @@ class ToolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tool_params
-      params.require(:tool).permit(:name, :serial, :model, :location, :purchased, :put_in_service, :cost, :value, :in_service, :retired, :condition, :note, :tab)
+      params.require(:tool).permit(:name, :serial, :model, :location, :purchased, :cost, :value, :in_service, :retired, :condition, :note, :tab)
     end
 
     def set_categories
