@@ -20,8 +20,6 @@
               <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
               <li><%= link_to "Logout", :logout %></li>
               <li><%= link_to "Logged in as: " + current_user.username, edit_user_path(current_user.id) %></li>
-          <% else %>
-              <%= link_to 'Login with Github', auth_at_provider_path(:provider => :github) %>
         <% end %>
 
         </ul>
@@ -43,9 +41,8 @@
     <%= render 'layouts/messages' %>
     <div class="content">
        <div class="row-fluid">
-
-          <div class="span1">
-            <div class="tabbable tabs-left">
+          <div class="span1" >
+            <div class="tabbable tabs-left" >
                 <ul class="nav nav-tabs">
                   <li><%= link_to "Dashboard", root_path, :data_toggle => 'tab' %><li>
                   <li><%= link_to "Equipment", tools_path, :data_toggle => 'tab' %></li>

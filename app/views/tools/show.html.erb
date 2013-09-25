@@ -43,8 +43,8 @@
         </p>
 
         <p>
-          <strong>In service:</strong>
-          <%= @tool.in_service %>
+          <strong>Status:</strong>
+          <%= @tool.in_service ? "In Service" : "Out of Service" %>
         </p>
 
         <p>
@@ -71,9 +71,6 @@
 <%= link_to 'Edit', edit_tool_path(@tool), :class => 'btn btn-warning' %>
 <%= link_to 'Destroy', @tool, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
 
-<div class="row" >
-  <div class="span12" >
+    <p>
     <%= link_to raw('<i class="icon-arrow-left" ></i> ') + 'Back', tools_path, :class => 'btn btn-large' %>
-  </div>
-</div>
-
+    </p>

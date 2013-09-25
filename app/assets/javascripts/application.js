@@ -26,7 +26,7 @@ $(document).on("focus", "[data-behaviour~='datepicker']", function(e){
 
 $(document).ready(function() {
     $('.alert').delay(500).fadeIn('normal', function() {
-        $(this).delay(2500).fadeOut();
+        $(this).delay(1000).fadeOut();
     });
 
 });
