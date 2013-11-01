@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130815153738) do
+ActiveRecord::Schema.define(version: 20131101192043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20130815153738) do
     t.integer  "condition"
     t.text     "location"
     t.string   "model"
+    t.boolean  "loaner",         default: false
   end
 
   create_table "users", force: true do |t|

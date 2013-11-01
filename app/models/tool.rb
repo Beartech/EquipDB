@@ -9,4 +9,5 @@ class Tool < ActiveRecord::Base
 
   #validates :name, :serial, :purchased, :cost, :value, :condition, :presence => true
 
+
 end

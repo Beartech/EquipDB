@@ -4,7 +4,7 @@
     <td>
         <p>
           <strong>Type:</strong>
-          <%= @tool.name %>
+          <%= @tool.name.singularize %>
         </p>
 
         <p>
@@ -44,7 +44,16 @@
 
         <p>
           <strong>Status:</strong>
+          <button class= "btn <%= btn_color(@tool) %>">
           <%= @tool.in_service ? "In Service" : "Out of Service" %>
+          </button>
+        </p>
+
+        <p>
+          <strong>Loaner Tool?:</strong>
+          <button class= "btn <%= btn_color(@tool) %>">
+          <%= @tool.loaner ? "Yes" : "No" %>
+          </button>
         </p>
 
         <p>

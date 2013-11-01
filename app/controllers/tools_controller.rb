@@ -4,6 +4,7 @@ class ToolsController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_action :set_categories, :set_tab
 
+
   # GET /tools
   # GET /tools.json
   def index
@@ -75,15 +76,20 @@ class ToolsController < ApplicationController
   end
 
 
+
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+
+
+
+  # Use callbacks to share common setup or constraints between actions.
     def set_tool
       @tool = Tool.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tool_params
-      params.require(:tool).permit(:name, :serial, :model, :location, :purchased, :cost, :value, :in_service, :retired, :condition, :note, :tab)
+      params.require(:tool).permit(:name, :serial, :model, :location, :purchased, :cost, :value, :in_service, :loaner, :retired, :condition, :note, :tab)
     end
 
     def set_categories

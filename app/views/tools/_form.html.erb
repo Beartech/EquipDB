@@ -1,4 +1,4 @@
-    <%= form_for(@tool)  do |f| %>
+    <%= form_for(@tool, :html => { :class => "form-horizontal" } )  do |f| %>
       <% if @tool.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@tool.errors.count, "error") %> prohibited this tool from being saved:</h2>
@@ -55,6 +55,11 @@
         <div class="field">
           <%= f.label :in_service, "Currently In Service" %>
           <%= f.check_box :in_service %>
+        </div>
+
+        <div class="field">
+          <%= f.label :loaner, "This is a loaner tool" %>
+          <%= f.check_box :loaner %>
         </div>
 
         <div class="field" >
