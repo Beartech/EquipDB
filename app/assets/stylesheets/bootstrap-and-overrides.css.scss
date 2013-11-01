@@ -48,3 +48,13 @@ hr.style-eight:after {
   padding: 0 0.25em;
   background: white;
 }
+
+.btn-in-service {
+  @extend .btn-success;
+}
+.btn-out-service{
+  @extend .btn-warning;
+}
+.btn-loaner {
+  @extend .btn-info;
+}

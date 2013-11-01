@@ -32,7 +32,7 @@
                 <% if (tool.name == category) || (category == 'all') %>
                   <tr >
                     <td>
-                        <% btn_status = tool.in_service ? 'btn-success' : 'btn-warning' %>
+                        <% btn_status = tool.in_service ? 'btn-in-service' : 'btn-out-service' %>
                         <%= link_to tool.serial, tool, :class => "btn btn-small #{btn_status}" %>
 
 

@@ -20,7 +20,7 @@
                             <% button_link = "#{tool.location}-#{tool.name.singularize}"+'<br>'+" #{tool.serial}" %>
                             <div class="btn-group" id="btn<%= tool.id %>" >
 
-                             <a class="btn custombutton dropdown-toggle <%= (tool.in_service  ? 'btn-success' : 'btn-warning') %>" data-toggle="dropdown" href="#"  >
+                             <a class="btn custombutton dropdown-toggle <%= (tool.in_service  ? 'btn-in-service' : 'btn-out-service') %>" data-toggle="dropdown" href="#"  >
                                <%=  raw(button_link) %>
                              </a>
 
