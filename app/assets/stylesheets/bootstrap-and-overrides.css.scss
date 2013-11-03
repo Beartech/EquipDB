@@ -58,3 +58,7 @@ hr.style-eight:after {
 .btn-loaner {
   @extend .btn-info;
 }
+.btn-app {
+  @extend .btn-primary;
+  width: 85px !important;
+}

@@ -5,8 +5,12 @@
         <% @locations.each do |tool_location| %>
           <% /^\d+$/ =~ tool_location ? (app = 'App. ') : (app = '')%>
             <div class="row">
-                 <div class="span1 offset1">
-                   <%= "#{app}#{tool_location}" %>
+                 <div class="span2">
+                   <div class="span1 offset4">
+                       <button class="btn btn-app">
+                         <%= "#{app}#{tool_location}" %>
+                       </button>
+                   </div>
                  </div>
 
                  <div class="span10" >
