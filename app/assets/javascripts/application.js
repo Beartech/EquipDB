@@ -34,7 +34,7 @@ $(document).ready(function() {
     });
 
     $(function() {
-        $(this).tool.draggable();
+        $( "#draggable" ).draggable();
     });
 
 });

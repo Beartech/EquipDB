@@ -1,8 +1,15 @@
-<h1><%= @loc %></h1>
+<h1><%= @loc %> Swap Equipment</h1>
+    <%= form_for update_apparatus_path do |f| %>
 
-    <% @tools.each do |tool| %>
-      <div class="tool" class="ui-widget-content">
-       <%= tool.name.singularize + " " + tool.serial %><br>
-      </div>
+      <% @tools.each do |tool| %>
+
+        <div class="field">
+            <%= f.check_box :apparatus %>
+            <%= f.label :apparatus, tool.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %>
+
+        </div>
+
+
+      <% end %>
+    <%= f.submit %>
     <% end %>
-
