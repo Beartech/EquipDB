@@ -12,6 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.core
+//= require jquery.ui.widget
+//= require jquery.ui.mouse
+//= require jquery.ui.draggable
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require server-time
@@ -27,6 +31,10 @@ $(document).on("focus", "[data-behaviour~='datepicker']", function(e){
 $(document).ready(function() {
     $('.alert').delay(500).fadeIn('normal', function() {
         $(this).delay(1000).fadeOut();
+    });
+
+    $(function() {
+        $(this).tool.draggable();
     });
 
 });

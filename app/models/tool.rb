@@ -9,5 +9,8 @@ class Tool < ActiveRecord::Base
 
   #validates :name, :serial, :purchased, :cost, :value, :condition, :presence => true
 
+  def self.location_group(app)
+    where('location = ?', app)
+  end
 
 end

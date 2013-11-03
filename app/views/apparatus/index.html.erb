@@ -1,0 +1,8 @@
+<h1><%= @loc %></h1>
+
+    <% @tools.each do |tool| %>
+      <div class="tool" class="ui-widget-content">
+       <%= tool.name.singularize + " " + tool.serial %><br>
+      </div>
+    <% end %>
+

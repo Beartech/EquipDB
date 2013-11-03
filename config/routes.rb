@@ -43,4 +43,5 @@ EquipDB::Application.routes.draw do
 
   post 'toggle_in_service' => 'tools#toggle_in_service'
 
+  get 'location/:app' => 'apparatus#index'
 end
