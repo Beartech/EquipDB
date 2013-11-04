@@ -1,15 +1,58 @@
-<h1><%= @loc %> Swap Equipment</h1>
-    <%= form_for update_apparatus_path do |f| %>
 
-      <% @tools.each do |tool| %>
+<div class="row">
+  <div class="span12 text-center">
+    <h1><%= @loc %> Swap Equipment</h1>
+    <br>
+    <br>
+  </div>
+</div>
 
-        <div class="field">
-            <%= f.check_box :apparatus %>
-            <%= f.label :apparatus, tool.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %>
+    <%= form_for(:apparatus, {:url => :tool_location_update }) do |f| %>
+        <div class="row">
+            <div class="span4 offset1" >
+
+              <input type="checkbox" id="selectAll" value="selectAll"> Select / Deselect All<br/><br/>
+
+                  <% @tools.each do |tool| %>
+
+                    <div class="field">
+
+                        <%= f.check_box tool.id, {:class => 'inline'}, '1', nil %>
+                        <%= f.label :apparatus, tool.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %>
+
+                    </div>
+
+                  <% end %>
+
+            </div>
+            <div class="span7">
+
+
+              <div class="field">
+                <%= f.label :location, 'Move to: ' %>
+                <%= f.select :location, get_locations, :class => 'inline' %>
+
+              </div>
+
+              <br>
+              <br>
+
+              Pull from Loaner Pool:
+                <% get_loaners.each do |tool| %>
+
+                  <div class="field">
+
+                    <%= f.check_box tool.id, {:class => 'inline'}, @loc, nil %>
+                    <%= f.label :apparatus, tool.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %>
+
+                  </div>
+
+                <% end %>
+
+            </div>
 
         </div>
-
-
-      <% end %>
-    <%= f.submit %>
+        <br>
+        <br>
+        <%= f.submit('Update Tools') %>
     <% end %>

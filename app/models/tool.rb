@@ -13,4 +13,8 @@ class Tool < ActiveRecord::Base
     where('location = ?', app)
   end
 
+  def self.loaner_tools
+    where('loaner = ?', true)
+  end
+
 end

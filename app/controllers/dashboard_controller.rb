@@ -5,6 +5,7 @@ class DashboardController < ApplicationController
 
 
   def dashboard
+
     @dashboard = {}
     @locations.each do |location|
       @dashboard[location] = Tool.location_group(location)
