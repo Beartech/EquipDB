@@ -43,6 +43,6 @@ EquipDB::Application.routes.draw do
 
   post 'toggle_in_service' => 'tools#toggle_in_service'
 
-  get 'location/:app' => 'apparatus#index'
+  get 'location/:app' => 'apparatus#index', :as => :apparatus_index
   post 'location/:app' => 'apparatus#update', :as => :tool_location_update
 end

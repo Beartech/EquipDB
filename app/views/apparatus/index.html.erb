@@ -11,13 +11,13 @@
         <div class="row">
             <div class="span4 offset1" >
 
-              <input type="checkbox" id="selectAll" value="selectAll"> Select / Deselect All<br/><br/>
+              <input class="app_tools" type="checkbox" id="selectAll" value="selectAll"> Select / Deselect All<br/><br/>
 
                   <% @tools.each do |tool| %>
 
                     <div class="field">
 
-                        <%= f.check_box tool.id, {:class => 'inline'}, '1', nil %>
+                        <%= f.check_box 'relocate', {:class => 'inline app_tools', :multiple => true}, tool.id, nil %>
                         <%= f.label :apparatus, tool.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %>
 
                     </div>
@@ -42,8 +42,8 @@
 
                   <div class="field">
 
-                    <%= f.check_box tool.id, {:class => 'inline'}, @loc, nil %>
-                    <%= f.label :apparatus, tool.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %>
+                    <%= f.check_box 'swap', {:class => 'inline', :multiple => true}, tool.id, nil %>
+                    <%= f.label :loaners, tool.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %>
 
                   </div>
 

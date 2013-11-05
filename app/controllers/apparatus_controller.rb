@@ -6,13 +6,14 @@ class ApparatusController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if
-        format.html {  }
-      else
-        format.html { render action: 'edit' }
-      end
-    end
+    @my_tools = Tool.find(app_params['apparatus']['relocate'])
+    @move_to = app_params['apparatus']['location']
+    @swap_tools = Tool.find(app_params['apparatus']['swap'])
+    @my_app = app_params[:app]
+
+
+
+    #redirect_to apparatus_index_path
   end
 
   private
@@ -22,12 +23,16 @@ class ApparatusController < ApplicationController
   end
 
   def app_params
-    params.permit(:app)
+    params.permit(:app, :apparatus).tap do |whitelisted|
+      whitelisted[:apparatus] = params[:apparatus]
+    end
+    #params.fetch(:app).permit(:location, :app, relocate: [], swap: [])
+
   end
 
   def get_locations
-    stations = Dropdown.find_by_name("stations").list
-    apparatus = Dropdown.find_by_name("apparatus").list
+    stations = Dropdown.find_by_name('stations').list
+    apparatus = Dropdown.find_by_name('apparatus').list
     locations = stations + apparatus
   end
 
@@ -38,6 +43,5 @@ class ApparatusController < ApplicationController
   end
 
   helper_method :get_loaners
-
 
 end

@@ -39,11 +39,11 @@ $(document).ready(function() {
 
     $('#selectAll').click(function() {
         if (this.checked) {
-            $(':checkbox').each(function() {
+            $('.app_tools').each(function() {
                 this.checked = true;
             });
         } else {
-            $(':checkbox').each(function() {
+            $('.app_tools').each(function() {
                 this.checked = false;
             });
         }
