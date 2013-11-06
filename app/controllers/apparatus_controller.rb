@@ -6,14 +6,8 @@ class ApparatusController < ApplicationController
   end
 
   def update
-    @my_tools = Tool.find(app_params['apparatus']['relocate'])
-    @move_to = app_params['apparatus']['location']
-    @swap_tools = Tool.find(app_params['apparatus']['swap'])
-    @my_app = app_params[:app]
-
-
-
-    #redirect_to apparatus_index_path
+    Tool.swap_tools(app_params)
+    redirect_to apparatus_index_path
   end
 
   private
