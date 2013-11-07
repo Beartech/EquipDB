@@ -19,11 +19,11 @@ class Tool < ActiveRecord::Base
 
   def self.swap_tools(app_params)
     if app_params['apparatus']['relocate']
-      Tool.update_all({location: app_params['apparatus']['location']}, {id: app_params['apparatus']['relocate']})
+      Tool.where(id: app_params['apparatus']['relocate']).update_all(location: app_params['apparatus']['location'])
     end
 
     if app_params['apparatus']['swap']
-      Tool.update_all({location: app_params[:app]}, {id: app_params['apparatus']['swap']})
+      Tool.where(id: app_params['apparatus']['swap']).update_all(location: app_params[:app])
     end
   end
 
