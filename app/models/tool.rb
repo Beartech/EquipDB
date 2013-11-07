@@ -10,11 +10,11 @@ class Tool < ActiveRecord::Base
   #validates :name, :serial, :purchased, :cost, :value, :condition, :presence => true
 
   def self.location_group(app)
-    where('location = ?', app)
+    where('location = ?', app).order(:name)
   end
 
   def self.loaner_tools
-    where('loaner = ?', true)
+    where('location = ?', 'Loaners').order(:name)
   end
 
   def self.swap_tools(app_params)
