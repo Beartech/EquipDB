@@ -1,0 +1,49 @@
+<%= form_for(:apparatus, {:url => :tool_location_update }) do |f| %>
+    <div class="row">
+      <div class="span4 offset1" >
+
+        <input class="app_tools" type="checkbox" id="selectAll" value="selectAll"> Select / Deselect All<br/><br/>
+
+        <% @tools.each do |tool| %>
+
+            <div class="field">
+
+              <%= f.check_box 'relocate', {:class => 'inline app_tools', :multiple => true}, tool.id, nil %>
+              <%= f.label :apparatus, tool.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %>
+
+            </div>
+
+        <% end %>
+
+      </div>
+      <div class="span7">
+
+
+        <div class="field">
+          <%= f.label :location, 'Move to: ' %>
+          <%= f.select :location, get_locations, :class => 'inline' %>
+
+        </div>
+
+        <br>
+        <br>
+
+        Pull from Loaner Pool:
+        <% get_loaners.each do |tool| %>
+
+            <div class="field">
+
+              <%= f.check_box 'swap', {:class => 'inline', :multiple => true}, tool.id, nil %>
+              <%= f.label :loaners, tool.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %>
+
+            </div>
+
+        <% end %>
+
+      </div>
+
+    </div>
+    <br>
+    <br>
+    <%= f.submit('Update Tools') %>
+<% end %>
