@@ -3,7 +3,7 @@ EquipDB::Application.routes.draw do
   get "oauths/oauth"
   get "oauths/callback"
 
-  get 'parts'  => 'parts#index'
+  #get 'parts'  => 'parts#index'
   get 'repairs' => 'repairs#index'
   get 'services' => 'services#index'
 
@@ -16,13 +16,11 @@ EquipDB::Application.routes.draw do
   get 'logout' => 'user_sessions#destroy', :as => :logout
 
   resources :tools do
-    resources :services do
-      resources :parts
-    end
-    resources :repairs do
-      resources :parts
-    end
+    resources :services
+    resources :repairs
   end
+
+  resources :parts
 
   root :to => "dashboard#dashboard"
   post 'services' => 'services#create'

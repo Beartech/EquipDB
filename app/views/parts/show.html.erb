@@ -10,28 +10,13 @@
 </p>
 
 <p>
-  <strong>Tool:</strong>
-  <%= @part.tool %>
+  <strong># On Hand:</strong>
+  <%= @part.inventory %>
 </p>
 
 <p>
-  <strong>Price:</strong>
-  <%= @part.price %>
-</p>
-
-<p>
-  <strong>Po:</strong>
-  <%= @part.po %>
-</p>
-
-<p>
-  <strong>Repair:</strong>
-  <%= @part.repair %>
-</p>
-
-<p>
-  <strong>Service:</strong>
-  <%= @part.service %>
+  <strong>Reorder At:</strong>
+  <%= @part.minimum %>
 </p>
 
 <%= link_to 'Edit', edit_part_path(@part) %> |
