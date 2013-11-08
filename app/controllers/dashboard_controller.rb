@@ -7,8 +7,9 @@ class DashboardController < ApplicationController
   def dashboard
 
     @dashboard = {}
+    all_tools = Tool.all.order(:location)
     @locations.each do |location|
-      @dashboard[location] = Tool.location_group(location).order(:name)
+      @dashboard[location] = all_tools.where('location = ?', location).order(:name)
     end
 
   end
