@@ -19,7 +19,9 @@
 
         <div class="field">
           <%= f.label "Type" %>
-          <%= f.select :name, @categories %>
+          <% categories = @categories - ['all'] %>
+          <% categories.map {|c| c.singularize} %>
+          <%= f.select :name, categories %>
         </div>
 
         <div class="field">

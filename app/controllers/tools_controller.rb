@@ -20,6 +20,7 @@ class ToolsController < ApplicationController
   # GET /tools/new
   def new
     @tool = Tool.new
+
   end
 
   # GET /tools/1/edit
