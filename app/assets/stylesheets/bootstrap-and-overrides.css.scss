@@ -81,3 +81,21 @@ hr.style-eight:after {
 .btn-inverse {
   @include buttonBackground(lighten($btnInverseBackground, 15%), $btnInverseBackground);
 }
+
+.btn-submit {
+  @extend .button-danger;
+  background-color: hsl(348, 44%, 29%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#bb5267", endColorstr="#6a2936");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#bb5267), to(#6a2936));
+  background-image: -moz-linear-gradient(top, #bb5267, #6a2936);
+  background-image: -ms-linear-gradient(top, #bb5267, #6a2936);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #bb5267), color-stop(100%, #6a2936));
+  background-image: -webkit-linear-gradient(top, #bb5267, #6a2936);
+  background-image: -o-linear-gradient(top, #bb5267, #6a2936);
+  background-image: linear-gradient(#bb5267, #6a2936);
+  border-color: #6a2936 #6a2936 hsl(348, 44%, 23%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.39);
+  -webkit-font-smoothing: antialiased;
+}
