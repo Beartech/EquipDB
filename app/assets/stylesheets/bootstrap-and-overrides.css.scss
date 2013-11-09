@@ -59,11 +59,25 @@ hr.style-eight:after {
   @extend .btn-info;
 }
 .btn-app {
-  @extend .btn-primary;
+  @extend .btn-inverse;
   width: 85px !important;
   height: 20px !important;
   padding-top: 3px !important;
   padding-bottom: 5px !important;
   padding-left: 5px !important;
   padding-right: 5px !important;
+}
+
+.label-warn {
+  @extend .label-warning;
+  background-color:  #EFB73E;
+}
+
+.badge-warn {
+  @extend .badge-warning;
+  background-color: #EFB73E;
+}
+
+.btn-inverse {
+  @include buttonBackground(lighten($btnInverseBackground, 15%), $btnInverseBackground);
 }

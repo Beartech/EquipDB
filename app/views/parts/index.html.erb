@@ -4,17 +4,16 @@
     <%= link_to "Show Current Inventory Levels", "parts/inventory_levels", :class => "btn btn-warning" %></h2>
 
 
-<table>
+<table id="parts_table" class="table pretty" border='0'>
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Sku</th>
-      <th># On Hand</th>
-      <th>Reorder At</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+      <th class="sortable">Name</th>
+      <th class="sortable">Sku</th>
+      <th class="sortable"># On Hand</th>
+      <th class="sortable">Reorder</th>
+      <th class="sortable">Inventory Level </th>
+      <th><i class="icon-search"></i> </th>
+      <th><i class="icon-edit"></i></th>
+      <th><i class="icon-trash"></i></th>
   </thead>
 
   <tbody>
@@ -22,8 +21,9 @@
       <tr>
         <td><%= part.name %></td>
         <td><%= part.sku %></td>
-        <td><%= part.inventory %></td>
+        <td><span class="badge <%= inventory_badge(part) %>"><%= part.inventory %></span></td>
         <td><%= part.minimum %></td>
+        <td><%= inventory_indicator(part) %></td>
         <td><%= link_to 'Show', part %></td>
         <td><%= link_to 'Edit', edit_part_path(part) %></td>
         <td><%= link_to 'Destroy', part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,7 +31,4 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-
