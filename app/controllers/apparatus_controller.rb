@@ -38,4 +38,6 @@ class ApparatusController < ApplicationController
 
   helper_method :get_loaners
 
+
+
 end

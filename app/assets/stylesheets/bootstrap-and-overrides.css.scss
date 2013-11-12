@@ -49,6 +49,24 @@ hr.style-eight:after {
   background: white;
 }
 
+.btn-submit {
+  @extend .button-danger;
+  background-color: hsl(300, 100%, 16%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b700b7", endColorstr="#510051");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#b700b7), to(#510051));
+  background-image: -moz-linear-gradient(top, #b700b7, #510051);
+  background-image: -ms-linear-gradient(top, #b700b7, #510051);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b700b7), color-stop(100%, #510051));
+  background-image: -webkit-linear-gradient(top, #b700b7, #510051);
+  background-image: -o-linear-gradient(top, #b700b7, #510051);
+  background-image: linear-gradient(#b700b7, #510051);
+  border-color: #510051 #510051 hsl(300, 100%, 11%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+  -webkit-font-smoothing: antialiased;
+}
+
 .btn-in-service {
   @extend .btn-success;
 }
@@ -56,7 +74,7 @@ hr.style-eight:after {
   @extend .btn-warning;
 }
 .btn-loaner {
-  @extend .btn-info;
+  @extend .btn-submit;
 }
 .btn-app {
   @extend .btn-inverse;
@@ -73,6 +91,11 @@ hr.style-eight:after {
   background-color:  #EFB73E;
 }
 
+.label-loaner {
+  @extend .label-info;
+  background-color: hsl(300, 100%, 25%);
+}
+
 .badge-warn {
   @extend .badge-warning;
   background-color: #EFB73E;
@@ -82,20 +105,6 @@ hr.style-eight:after {
   @include buttonBackground(lighten($btnInverseBackground, 15%), $btnInverseBackground);
 }
 
-.btn-submit {
-  @extend .button-danger;
-  background-color: hsl(348, 44%, 29%) !important;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#bb5267", endColorstr="#6a2936");
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#bb5267), to(#6a2936));
-  background-image: -moz-linear-gradient(top, #bb5267, #6a2936);
-  background-image: -ms-linear-gradient(top, #bb5267, #6a2936);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #bb5267), color-stop(100%, #6a2936));
-  background-image: -webkit-linear-gradient(top, #bb5267, #6a2936);
-  background-image: -o-linear-gradient(top, #bb5267, #6a2936);
-  background-image: linear-gradient(#bb5267, #6a2936);
-  border-color: #6a2936 #6a2936 hsl(348, 44%, 23%);
-  color: #fff !important;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.39);
-  -webkit-font-smoothing: antialiased;
+.loaner {
+  color: purple;
 }
