@@ -16,7 +16,7 @@
 /tmp
 *idea*
 
-secret_token.rb
+*secret_token.rb
 
 # Ignore application configuration
 /config/application.yml
