@@ -34,6 +34,7 @@ hr.style-two {
 
 hr.style-eight {
   padding: 0;
+  width: 90%;
   border: none;
   border-top: medium double #333;
   color: #333;
@@ -107,4 +108,18 @@ hr.style-eight:after {
 
 .loaner {
   color: purple;
+}
+
+.stick {
+  position:fixed;
+}
+
+.table {
+  @extend .table;
+  width: 95%;
+}
+
+.icon-drop-down {
+  @extend .icon-pencil;
+  margin-left: 15px;
 }

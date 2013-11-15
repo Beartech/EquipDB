@@ -42,6 +42,7 @@
     <div class="content">
        <div class="row-fluid">
           <div class="span1" >
+            <div class="stick">
             <div class="tabbable tabs-left" >
                 <ul class="nav nav-tabs">
                   <li><%= link_to "Dashboard", root_path, :data_toggle => 'tab' %><li>
@@ -58,9 +59,9 @@
               <span class="label label-warn">Out of Service</span><br>
               <span class="label label-loaner">Loaner Tool</span><br>
              </H2>
-
+            </div>
           </div>
-         <div class="span11">
+         <div class="span11 offset1">
             <div class="tab-content">
 
                <%= yield %>
@@ -69,20 +70,6 @@
          </div>
        </div>
     </div>
-  </div>
-</div>
-
-<div id="navbar navbar-fixed-bottom">
-  <nav class="navbar-inner">
-    <div class="container">
-
-    </div>
-  </nav>
-</div>
-
-<div class="row">
-  <div class="span12">
-    <span id="clock">&nbsp;</span>
   </div>
 </div>
 
