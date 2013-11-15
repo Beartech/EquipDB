@@ -51,7 +51,7 @@ hr.style-eight:after {
 }
 
 .btn-submit {
-  @extend .button-danger;
+  @extend .btn-warning;
   background-color: hsl(300, 100%, 16%) !important;
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b700b7", endColorstr="#510051");
