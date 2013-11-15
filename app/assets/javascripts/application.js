@@ -37,6 +37,8 @@ $(document).ready(function() {
         $( "#draggable" ).draggable();
     });
 
+    $('#filter1').focus();
+
     $('#selectAll').click(function() {
         if (this.checked) {
             $('.app_tools').each(function() {
