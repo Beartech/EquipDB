@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to :users_path, notice: 'User was successfully created.' }
+        format.html { redirect_to '/users' ; gflash :success => 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user; gflash :success => 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -76,9 +76,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       if current_user.has_role?(:system, :admin)
-        params.require(:user).permit(:username, :email, :password, :password_confirmation, :role, :role_id)
+        params.require(:user).permit(:username, :email, :password, :role, :role_id)
       else
-        params.require(:user).permit(:username, :email, :password, :password_confirmation, :role)
+        params.require(:user).permit(:username, :email, :password, :role)
       end
 
     end

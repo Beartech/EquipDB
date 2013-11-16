@@ -14,7 +14,7 @@ class DropdownController < ApplicationController
     @categories.list.sort!
     respond_to do |format|
       if @categories.save
-        format.html { redirect_to drop_down_menus_path, notice: 'menu was successfully updated.' }
+        format.html { redirect_to drop_down_menus_path; gflash :success => 'menu was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { redirect_to drop_down_menus_path }
@@ -29,7 +29,7 @@ class DropdownController < ApplicationController
     @stations.list.sort!
     respond_to do |format|
       if @stations.save
-        format.html { redirect_to drop_down_menus_path, notice: 'menu was successfully updated.' }
+        format.html { redirect_to drop_down_menus_path; gflash :success => 'menu was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { redirect_to drop_down_menus_path }
@@ -44,7 +44,7 @@ class DropdownController < ApplicationController
     @apparatus.list.sort!
     respond_to do |format|
       if @apparatus.save
-        format.html { redirect_to drop_down_menus_path, notice: 'menu was successfully updated.' }
+        format.html { redirect_to drop_down_menus_path; gflash :success => 'menu was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { redirect_to drop_down_menus_path }

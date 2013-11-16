@@ -9,6 +9,7 @@
   <%= yield(:head) %>
 </head>
 <body>
+<%= gflash %>
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container-fluid">
@@ -38,7 +39,7 @@
 
 <div id="main" role="main">
   <div class="container-fluid">
-    <%= render 'layouts/messages' %>
+
     <div class="content">
        <div class="row-fluid">
           <div class="span1" >

@@ -34,7 +34,7 @@ class ToolsController < ApplicationController
 
     respond_to do |format|
       if @tool.save
-        format.html { redirect_to @tool, notice: 'Tool was successfully created.' }
+        format.html { redirect_to @tool; gflash :success => 'Tool was successfully created.' }
         format.json { render action: 'show', status: :created, location: @tool }
       else
         format.html { render action: 'new' }
@@ -48,7 +48,7 @@ class ToolsController < ApplicationController
   def update
     respond_to do |format|
       if @tool.update(tool_params)
-        format.html { redirect_to @tool, notice: 'Tool was successfully updated.' }
+        format.html { redirect_to @tool; gflash :success => 'Tool was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

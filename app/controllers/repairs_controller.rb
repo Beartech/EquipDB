@@ -29,7 +29,7 @@ class RepairsController < ApplicationController
 
     respond_to do |format|
       if @repair.save
-        format.html { redirect_to tool_path(repair_params[:tool_id]), notice: 'Repair was successfully created.' }
+        format.html { redirect_to tool_path(repair_params[:tool_id]); gflash :success => 'Repair was successfully created.' }
         format.json { render action: 'show', status: :created, location: @repair }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ class RepairsController < ApplicationController
   def update
     respond_to do |format|
       if @repair.update(repair_params)
-        format.html { redirect_to tool_path(repair_params[:tool_id]), notice: 'Repair was successfully updated.' }
+        format.html { redirect_to tool_path(repair_params[:tool_id]); gflash :success => 'Repair was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

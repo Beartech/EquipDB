@@ -8,10 +8,10 @@ class UserSessionsController < ApplicationController
   def create
     respond_to do |format|
       if @user = login(params[:username],params[:password])
-        format.html { redirect_back_or_to(:users, :notice => 'Login successful.') }
+        format.html { gflash :success => 'Login successful.'; redirect_back_or_to(:users)  }
         format.xml { render :xml => @user, :status => :created, :location => @user }
       else
-        format.html { flash.now[:alert] = "Login failed. Remember, both your user name and password are case sensitive"; render :action => "new" }
+        format.html { gflash :warning => "Login failed. Remember, both your user name and password are case sensitive"; render :action => "new" }
         format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
@@ -19,6 +19,7 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to("/", :notice => 'Logged out!')
+    redirect_to("/")
+    gflash :success => 'Logged out!'
   end
 end
