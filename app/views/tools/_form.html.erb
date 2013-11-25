@@ -12,73 +12,73 @@
       <% end %>
 
 
-        <div class="field">
+        <div class="form-inline">
           <%= f.label :serial %>
           <%= f.text_field :serial %>
         </div>
-
-        <div class="field">
+        <br>
+        <div class="form-inline">
           <%= f.label "Type" %>
           <% categories = @categories - ['all'] %>
           <% categories.map {|c| c.singularize} %>
           <%= f.select :name, categories %>
         </div>
-
-        <div class="field">
+        <br>
+        <div class="form-inline">
           <%= f.label :model %>
           <%= f.text_field :model %>
         </div>
-
-        <div class="field">
+        <br>
+        <div class="form-inline">
           <%= f.label :location %>
           <%= f.select :location, @locations %>
         </div>
-
-        <div class="field" >
+        <br>
+        <div class="form-inline" >
           <%= f.label :purchased %>
           <%= f.text_field :purchased, 'data-behaviour' => 'datepicker'  %>
         </div>
-
-        <div class="field" >
+        <br>
+        <div class="form-inline" >
           <%= f.label :put_in_service %>
           <%= f.text_field :put_in_service, 'data-behaviour' => 'datepicker' %>
         </div>
-
-        <div class="field">
+        <br>
+        <div class="form-inline">
           <%= f.label :cost %>
           <%= f.text_field :cost %>
         </div>
-
-        <div class="field">
+        <br>
+        <div class="form-inline">
           <%= f.label :value %>
           <%= f.text_field :value %>
         </div>
-
+        <br>
         <div class="field">
           <%= f.check_box :in_service %>
           <%= f.label :in_service, "Currently In Service", :class => "checkbox inline" %>
         </div>
-
+        <br>
         <div class="field">
           <%= f.check_box :loaner %>
           <%= f.label :loaner, "This is a loaner tool", :class => "checkbox inline" %>
         </div>
-
-        <div class="field" >
+        <br>
+        <div class="form-inline" >
           <%= f.label :retired, "Date Retired" %>
           <%= f.text_field :retired, 'data-behaviour' => 'datepicker' %>
         </div>
-
-        <div class="field">
+        <br>
+        <div class="form-inline">
           <%= f.label :condition %>
           <%= f.select(:condition, [['5',5],['4',4],['3',3],['2',2],['1',1]] ) %>
         </div>
-
-        <div class="field">
+        <br>
+        <div class="form-inline ">
           <%= f.label :note %>
           <%= f.text_area :note %>
         </div>
-
+        <br>
 
         <%= f.submit %>
 
