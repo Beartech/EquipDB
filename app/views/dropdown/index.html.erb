@@ -9,7 +9,9 @@
         <h3><%= key.to_s.upcase %>:</h3>
         <p>
           <% value.each do |dropdown| %>
-            <p><%= dropdown.to_s.upcase %></p>
+            <p>
+              <%= dropdown.to_s.upcase %>
+
           <% end %>
         <%= render "#{key.to_s}" %>
         </div>

@@ -10,7 +10,11 @@ class DropdownController < ApplicationController
   end
 
   def update_categories
-    @categories.list.push(dropdown_params[:add_category])
+    if dropdown_params[:delete_me]
+      @categories.list.delete(dropdown_params[:add_category])
+    else
+      @categories.list.push(dropdown_params[:add_category]) unless dropdown_params[:add_category] == ''
+    end
     @categories.list.sort!
     respond_to do |format|
       if @categories.save
@@ -25,7 +29,11 @@ class DropdownController < ApplicationController
   end
 
   def update_stations
-    @stations.list.push(dropdown_params[:add_station])
+    if dropdown_params[:delete_me]
+      @stations.list.delete(dropdown_params[:add_station])
+    else
+      @stations.list.push(dropdown_params[:add_station]) unless dropdown_params[:add_station] == ''
+    end
     @stations.list.sort!
     respond_to do |format|
       if @stations.save
@@ -40,7 +48,11 @@ class DropdownController < ApplicationController
   end
 
   def update_apparatus
-    @apparatus.list.push(dropdown_params[:add_apparatus])
+    if dropdown_params[:delete_me]
+      @apparatus.list.delete(dropdown_params[:add_apparatus])
+    else
+      @apparatus.list.push(dropdown_params[:add_apparatus]) unless dropdown_params[:add_apparatus] == ''
+    end
     @apparatus.list.sort!
     respond_to do |format|
       if @apparatus.save
@@ -61,7 +73,7 @@ class DropdownController < ApplicationController
   private
 
   def dropdown_params
-    params.permit(:categories, :stations, :apparatus, :add_category, :add_station, :add_apparatus)
+    params.permit(:categories, :stations, :apparatus, :add_category, :add_station, :add_apparatus, :delete_me)
   end
 
   def set_categories
