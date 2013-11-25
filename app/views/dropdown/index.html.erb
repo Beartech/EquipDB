@@ -10,7 +10,7 @@
         <p>
           <% value.each do |dropdown| %>
             <p>
-              <%= dropdown.to_s.upcase %>
+              <%= dropdown.to_s.titleize %>
 
           <% end %>
         <%= render "#{key.to_s}" %>

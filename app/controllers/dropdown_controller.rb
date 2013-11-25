@@ -10,10 +10,10 @@ class DropdownController < ApplicationController
   end
 
   def update_categories
-    if dropdown_params[:delete_me]
-      @categories.list.delete(dropdown_params[:add_category])
+    if dropdown_params[:delete_me] == '1'
+      @categories.list.delete(dropdown_params[:add_category].titleize)
     else
-      @categories.list.push(dropdown_params[:add_category]) unless dropdown_params[:add_category] == ''
+      @categories.list.push(dropdown_params[:add_category].titleize) unless dropdown_params[:add_category] == ''
     end
     @categories.list.sort!
     respond_to do |format|
@@ -29,10 +29,10 @@ class DropdownController < ApplicationController
   end
 
   def update_stations
-    if dropdown_params[:delete_me]
-      @stations.list.delete(dropdown_params[:add_station])
+    if dropdown_params[:delete_me] == '1'
+      @stations.list.delete(dropdown_params[:add_station].titleize)
     else
-      @stations.list.push(dropdown_params[:add_station]) unless dropdown_params[:add_station] == ''
+      @stations.list.push(dropdown_params[:add_station].titleize) unless dropdown_params[:add_station] == ''
     end
     @stations.list.sort!
     respond_to do |format|
@@ -48,10 +48,10 @@ class DropdownController < ApplicationController
   end
 
   def update_apparatus
-    if dropdown_params[:delete_me]
-      @apparatus.list.delete(dropdown_params[:add_apparatus])
+    if dropdown_params[:delete_me] == '1'
+      @apparatus.list.delete(dropdown_params[:add_apparatus].titleize)
     else
-      @apparatus.list.push(dropdown_params[:add_apparatus]) unless dropdown_params[:add_apparatus] == ''
+      @apparatus.list.push(dropdown_params[:add_apparatus].titleize) unless dropdown_params[:add_apparatus] == ''
     end
     @apparatus.list.sort!
     respond_to do |format|
