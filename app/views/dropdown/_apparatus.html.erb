@@ -11,14 +11,16 @@
         </div>
     <% end %>
     <p>
+    <div class="form-inline">
+      <%= f.radio_button 'delete_me', '0', :checked => true %>
+      <%= label 'delete_me', 'Add Apparatus' %>
+      <%= f.radio_button 'delete_me', '1' %>
+      <%= label 'delete_me', 'Delete Apparatus' %>
+    </div>
     <div class="field">
-      <%= f.label 'Add Apparatus' %>
       <%= f.text_field :add_apparatus %>
     </div>
-    <div class="field">
-      <%= f.check_box 'delete_me', :class => 'inline' %>
-      <%= f.label :delete_flag, 'delete this apparatus', :class => 'checkbox inline' %>
-    </div>
+
     <%= f.submit %>
 
 <% end %>
