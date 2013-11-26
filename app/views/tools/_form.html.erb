@@ -17,7 +17,7 @@
         </div>
         <br>
         <div class="form-inline">
-          <%= f.label "Type" %>
+          <%= f.label 'Type' %>
           <% categories = @categories - ['all'] %>
           <% categories.map {|c| c.singularize} %>
           <%= f.select :name, categories %>
