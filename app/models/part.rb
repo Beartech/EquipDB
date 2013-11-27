@@ -1,4 +1,3 @@
 class Part < ActiveRecord::Base
-  belongs_to :repair
-  belongs_to :service
+  has_and_belongs_to_many :service_types
 end

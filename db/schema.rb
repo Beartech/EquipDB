@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131108211823) do
+ActiveRecord::Schema.define(version: 20131127191508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,11 @@ ActiveRecord::Schema.define(version: 20131108211823) do
     t.integer  "minimum"
   end
 
+  create_table "parts_service_types", id: false, force: true do |t|
+    t.integer "service_type_id", null: false
+    t.integer "part_id",         null: false
+  end
+
   create_table "repairs", force: true do |t|
     t.string   "name"
     t.date     "start_date"
@@ -56,6 +61,13 @@ ActiveRecord::Schema.define(version: 20131108211823) do
     t.string   "title",       null: false
     t.text     "description", null: false
     t.text     "the_role",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "service_types", force: true do |t|
+    t.string   "name"
+    t.float    "hours"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
