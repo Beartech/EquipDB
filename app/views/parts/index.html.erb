@@ -1,7 +1,7 @@
 <h1>Listing parts</h1>
 
-<h2><%= link_to "Add Parts To Inventory", "parts/add_parts.html", :class => "btn btn-success"  %>
-    <%= link_to "Show Current Inventory Levels", "parts/inventory_levels", :class => "btn btn-warning" %></h2>
+<h2><%= link_to 'Add Parts To Inventory', 'parts/add_parts.html', :class => 'btn btn-success'  %>
+    <%= link_to 'Show Current Inventory Levels', 'parts/inventory_levels', :class => 'btn btn-warning' %></h2>
 
 
 <table id="parts_table" class="table pretty" border='0'>
@@ -31,4 +31,9 @@
     <% end %>
   </tbody>
 </table>
+<script>
+    $(document).ready(function() {
+        table_sorter( "#parts_table").sort(0).hover();
+    })
+</script>
 <br>
