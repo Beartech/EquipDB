@@ -1,10 +1,6 @@
 EquipDB::Application.routes.draw do
 
-  get "service_types/add"
-  get "service_types/edit"
-  get "service_types/index"
-  get "service_types/new"
-  get "service_types/show"
+
   get "oauths/oauth"
   get "oauths/callback"
 
@@ -26,6 +22,7 @@ EquipDB::Application.routes.draw do
   end
 
   resources :parts
+  resources :service_types
 
   root :to => "dashboard#dashboard"
   post 'services' => 'services#create'

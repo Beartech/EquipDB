@@ -1,2 +1,21 @@
-<h1>ServiceTypes#show</h1>
-<p>Find me in app/views/service_types/show.html.erb</p>
+<h1>ServiceType:</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @service_type.name %>
+</p>
+
+<p>
+  <strong>Hours:</strong>
+  <%= @service_type.hours %>
+</p>
+
+<p>
+  <strong>Default Parts:</strong>
+    <%= @service_type.default_parts.join(',') %>
+</p>
+
+<%= link_to 'Edit', edit_part_path(@part) %> |
+<%= link_to 'Back', parts_path %>
+
+<p></p>
