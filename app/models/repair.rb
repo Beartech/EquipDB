@@ -1,8 +1,6 @@
 class Repair < ActiveRecord::Base
   belongs_to :tool
-  has_many :parts
-
-  accepts_nested_attributes_for :parts
+  has_many :service_types
 
   default_scope order('start_date DESC')
 end
