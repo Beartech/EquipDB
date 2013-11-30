@@ -94,10 +94,10 @@ class ToolsController < ApplicationController
     end
 
     def set_categories
-      @categories = Dropdown.find_by_name('categories').list
+      @categories = Category.list
       @categories.unshift('all')
-      @stations = Dropdown.find_by_name('stations').list
-      @apparatus = Dropdown.find_by_name('apparatus').list
+      @stations = Location.stations
+      @apparatus = Location.vehicle_locations
       @locations = @stations + @apparatus
     end
 
