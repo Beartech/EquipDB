@@ -1,10 +1,10 @@
-<%= form_for @add_apparatus, :url => { :action => "update_apparatus"}, :html => {:method => :put}  do |f| %>
-    <% if @apparatus.errors.any? %>
+<%= form_for @vehicle_locations, :url => { :action => 'update_apparatus'}, :html => {:method => :put}  do |f| %>
+    <% if @vehicle_locations.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@apparatus.errors.count, "error") %> prohibited this change from being saved:</h2>
+          <h2><%= pluralize(@vehicle_locations.errors.count, 'error') %> prohibited this change from being saved:</h2>
 
           <ul>
-            <% @apparatus.errors.full_messages.each do |msg| %>
+            <% @vehicle_locations.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
             <% end %>
           </ul>
@@ -18,7 +18,7 @@
       <%= label 'delete_me', 'Delete Apparatus' %>
     </div>
     <div class="field">
-      <%= f.text_field :add_apparatus %>
+      <%= f.text_field :mod_apparatus %>
     </div>
 
     <%= f.submit %>

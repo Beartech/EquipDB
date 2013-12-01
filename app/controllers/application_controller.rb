@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  helper_method :vehicle_locations, :stations
 
   include TheRoleController
 
@@ -21,6 +22,18 @@ class ApplicationController < ActionController::Base
 
   def role_params
     params.require(:role).permit(:role)
+  end
+
+  def vehicle_locations
+    Location.where(:vehicle => true).order(:name).pluck(:name)
+  end
+
+  def stations
+    Location.where(:vehicle => false).order(:name).pluck(:name)
+  end
+
+  def categories
+    Category.pluck(:category)
   end
 
 end

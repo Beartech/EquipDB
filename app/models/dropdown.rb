@@ -1,4 +1,5 @@
 class Dropdown < ActiveRecord::Base
-  serialize :list, Array
+  has_many :locations
+  has_many :categories
 
 end

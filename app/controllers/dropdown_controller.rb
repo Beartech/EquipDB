@@ -1,28 +1,25 @@
 class DropdownController < ApplicationController
   before_action :role_required
-  before_action :set_categories
+  before_action :set_dropdowns
 
   def index
-    categories = Dropdown.find_by('name like ?', 'categories').list
-    stations = Dropdown.find_by('name like ?', 'stations').list
-    apparatus = Dropdown.find_by('name like ?', 'apparatus').list
-    @dropdown = {categories: categories, stations: stations, apparatus: apparatus}
+    @dropdown = {categories: categories, stations: stations, apparatus: vehicle_locations}
+
   end
 
   def update_categories
     if dropdown_params[:delete_me] == '1'
-      @categories.list.delete(dropdown_params[:add_category].titleize)
+      @category = Category.where(category: dropdown_params[:mod_category].titleize)
+      @categories.destroy(@category)
     else
-      @categories.list.push(dropdown_params[:add_category].titleize) unless dropdown_params[:add_category] == ''
+      @category = Category.new(category: dropdown_params[:add_category].titleize) unless dropdown_params[:add_category] == ''
     end
-    @categories.list.sort!
+
     respond_to do |format|
-      if @categories.save
+      if @categories.save || @category.save
         format.html { redirect_to drop_down_menus_path; gflash :success => 'menu was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { redirect_to drop_down_menus_path }
-        format.json { render json: @categories.errors, status: :unprocessable_entity }
       end
     end
 
@@ -30,18 +27,17 @@ class DropdownController < ApplicationController
 
   def update_stations
     if dropdown_params[:delete_me] == '1'
-      @stations.list.delete(dropdown_params[:add_station].titleize)
+      delete_me = Location.where(name: dropdown_params[:mod_category].titleize)
+      @stations.destroy(delete_me)
     else
-      @stations.list.push(dropdown_params[:add_station].titleize) unless dropdown_params[:add_station] == ''
+      Location.new(name: dropdown_params[:add_category].titleize, vehicle: false) unless dropdown_params[:add_category] == ''
     end
-    @stations.list.sort!
+
     respond_to do |format|
       if @stations.save
         format.html { redirect_to drop_down_menus_path; gflash :success => 'menu was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { redirect_to drop_down_menus_path }
-        format.json { render json: @stations.errors, status: :unprocessable_entity }
       end
     end
 
@@ -49,18 +45,17 @@ class DropdownController < ApplicationController
 
   def update_apparatus
     if dropdown_params[:delete_me] == '1'
-      @apparatus.list.delete(dropdown_params[:add_apparatus].titleize)
+      delete_me = Location.where(name: dropdown_params[:mod_category].titleize)
+      @vehicle_locations.destroy(delete_me)
     else
-      @apparatus.list.push(dropdown_params[:add_apparatus].titleize) unless dropdown_params[:add_apparatus] == ''
+      Location.new(name: dropdown_params[:add_category].titleize, vehicle: true) unless dropdown_params[:add_category] == ''
     end
-    @apparatus.list.sort!
+
     respond_to do |format|
-      if @apparatus.save
+      if @vehicle_locations.save
         format.html { redirect_to drop_down_menus_path; gflash :success => 'menu was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { redirect_to drop_down_menus_path }
-        format.json { render json: @apparatus.errors, status: :unprocessable_entity }
       end
     end
 
@@ -73,15 +68,13 @@ class DropdownController < ApplicationController
   private
 
   def dropdown_params
-    params.permit(:categories, :stations, :apparatus, :add_category, :add_station, :add_apparatus, :delete_me)
+    params.permit(:categories, :stations, :apparatus, :mod_category, :mod_station, :mod_apparatus, :delete_me)
   end
 
-  def set_categories
-    @categories = Dropdown.find_by('name like ?', 'categories')
-    @stations = Dropdown.find_by('name like ?', 'stations')
-    @apparatus = Dropdown.find_by('name like ?', 'apparatus')
-    @add_category = ''
-    @add_station = ''
-    @add_apparatus = ''
+  def set_dropdowns
+    @categories = Category.all
+    @stations = Location.where(:vehicle => false)
+    @vehicle_locations = Location.where(:vehicle => true)
   end
+
 end
