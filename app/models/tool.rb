@@ -9,21 +9,34 @@ class Tool < ActiveRecord::Base
   #validates :name, :serial, :purchased, :cost, :value, :condition, :presence => true
 
   def self.location_group(app)
-    where('location = ?', app).order(:name)
+    loc = Location.find_by_name(app)
+    where('location_id = ?', loc.id).order(:name)
   end
 
   def self.loaner_tools
-    where('location = ?', 'Loaners').order(:name)
+    loc = Location.find_by_name('Loaners')
+    where('location_id = ?', loc.id).order(:name)
   end
 
   def self.swap_tools(app_params)
     if app_params['apparatus']['relocate']
-      Tool.where(id: app_params['apparatus']['relocate']).update_all(location: app_params['apparatus']['location'])
+      loc_id = Location.where(name: app_params['apparatus']['location'])
+      Tool.where(id: app_params['apparatus']['relocate']).update_all(location_id: loc_id)
     end
 
     if app_params['apparatus']['swap']
-      Tool.where(id: app_params['apparatus']['swap']).update_all(location: app_params[:app])
+      Tool.where(id: app_params['apparatus']['swap']).update_all(location_id: Location.where(name: app_params[:app]))
     end
+  end
+
+  def category_id?(name)
+    c = Category.find_by_name(name)
+    c.id
+  end
+
+  def location_id?(loc)
+    l = Location.find_by_name(loc)
+    l.id
   end
 
 end

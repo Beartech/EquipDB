@@ -1,9 +1,11 @@
 class ApparatusController < ApplicationController
   before_action :set_app, :only => (:index)
   before_action :role_required
+  before_action :set_categories
 
   def index
-    @tools = Tool.location_group(@loc)
+    loc = Location.find_by_name(@loc)
+    @tools = Tool.where(location_id: loc.id).order(:name)
   end
 
   def update
@@ -29,14 +31,6 @@ class ApparatusController < ApplicationController
     #params.fetch(:app).permit(:location, :app, relocate: [], swap: [])
 
   end
-
-  def get_locations
-    stations = Dropdown.find_by_name('stations').list
-    apparatus = Dropdown.find_by_name('apparatus').list
-    locations = stations + apparatus
-  end
-
-  helper_method :get_locations
 
   def get_loaners
     Tool.loaner_tools.order(:name)

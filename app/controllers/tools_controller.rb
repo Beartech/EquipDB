@@ -3,6 +3,7 @@ class ToolsController < ApplicationController
   before_action :role_required
   helper_method :sort_column, :sort_direction
   before_action :set_categories, :set_tab
+  before_action :set_form_drop_down, only: [:new, :edit, :update]
 
 
   # GET /tools
@@ -90,10 +91,15 @@ class ToolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tool_params
-      params.require(:tool).permit(:name, :serial, :model, :location_id, :category_id, :purchased, :cost, :value, :in_service, :loaner, :retired, :condition, :note, :tab)
+      params.require(:tool).permit(:name, :serial, :model, :location, :location_id, :category_id, :purchased, :cost, :value, :in_service, :loaner, :retired, :condition, :note, :tab)
     end
 
-
+    def set_form_drop_down
+      @form_categories = {}
+      Category.all.each {|cat| @form_categories[cat.name] = cat.id}
+      @form_locations = {}
+      Location.all.each {|loc| @form_locations[loc.name] = loc.id}
+    end
 
     def set_tab
       params[:tab] ? params[:tab] : '#0'
