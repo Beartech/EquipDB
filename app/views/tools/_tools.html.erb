@@ -33,12 +33,7 @@
               <% @tools.each do |tool| %>
                 <% if (tool.name == category) || (category == 'all') %>
                   <tr >
-                    <td>
-
-                        <%= link_to tool.serial, tool, :class => "btn btn-small #{btn_color(tool)}" %>
-
-
-                    </td>
+                    <td><%= link_to tool.serial, tool, :class => "btn btn-small #{btn_color(tool)}" %></td>
                     <td><%= tool.name.singularize %></td>
                     <td><%= tool.model %></td>
                     <td><%= tool.location %></td>

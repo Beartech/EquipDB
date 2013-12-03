@@ -1,4 +1,3 @@
 class Dropdown < ActiveRecord::Base
-  serialize :list, Array
-
+   belongs_to :tool
 end

@@ -1,8 +1,8 @@
 class Tool < ActiveRecord::Base
   has_many :repairs
   has_many :services
-
-
+  belongs_to :category
+  belongs_to :location
   accepts_nested_attributes_for :repairs
   accepts_nested_attributes_for :services
 
