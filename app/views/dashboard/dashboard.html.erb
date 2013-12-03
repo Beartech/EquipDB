@@ -2,13 +2,13 @@
 
 <center><h1>Dashboard</h1></center>
         <% btn_count = 0 %>
-        <% @locations.each do |tool_location| %>
-          <% /^\d+$/ =~ tool_location ? (app = 'App. ') : (app = '')%>
+        <% @loc_id.each do |tool_location| %>
+          <% /^\d+$/ =~ tool_location.name ? (app = 'App. ') : (app = '')%>
             <div class="row">
                  <div class="span2">
                    <div class="span1 offset3">
-                       <a class="btn btn-app" href="/location/<%= tool_location %>" >
-                         <%= "#{app}#{tool_location}" %>
+                       <a class="btn btn-app" href="/location/<%= tool_location.name %>" >
+                         <%= "#{app}#{tool_location.name}" %>
                        </a>
                    </div>
                  </div>
@@ -16,12 +16,12 @@
                  <div class="span10" >
 
 
-                    <% @dashboard[tool_location].each_slice(5) do |five_tools| %>
+                    <% @dashboard[tool_location.id].each_slice(5) do |five_tools| %>
                        <div class="row">
                        <% five_tools.each do |tool| %>
                             <% status_link = tool.in_service ? "Put Out of Service" : "Put In Service" %>
 
-                            <% button_link = "#{tool.location}-#{tool.name.singularize}"+'<br>'+" #{tool.serial}" %>
+                            <% button_link = "#{tool.location.name}-#{tool.category.name.singularize}"+'<br>'+" #{tool.serial}" %>
                             <div class="btn-group" id="btn<%= tool.id %>" >
 
                              <a class="btn custombutton dropdown-toggle <%= btn_color(tool) %>" data-toggle="dropdown" href="#"  >

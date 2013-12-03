@@ -8,7 +8,7 @@ class ToolsController < ApplicationController
   # GET /tools
   # GET /tools.json
   def index
-    @tools = Tool.all.to_a
+    @tools = Tool.all
 
   end
 
@@ -90,16 +90,10 @@ class ToolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tool_params
-      params.require(:tool).permit(:name, :serial, :model, :location, :purchased, :cost, :value, :in_service, :loaner, :retired, :condition, :note, :tab)
+      params.require(:tool).permit(:name, :serial, :model, :location_id, :category_id, :purchased, :cost, :value, :in_service, :loaner, :retired, :condition, :note, :tab)
     end
 
-    def set_categories
-      @categories = Dropdown.find_by_name('categories').list
-      @categories.unshift('all')
-      @stations = Dropdown.find_by_name('stations').list
-      @apparatus = Dropdown.find_by_name('apparatus').list
-      @locations = @stations + @apparatus
-    end
+
 
     def set_tab
       params[:tab] ? params[:tab] : '#0'

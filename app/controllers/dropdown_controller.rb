@@ -1,6 +1,7 @@
 class DropdownController < ApplicationController
   before_action :role_required
   before_action :set_categories
+  before_action :set_add_categories
 
   def index
     categories = Dropdown.find_by('name like ?', 'categories').list
@@ -76,10 +77,7 @@ class DropdownController < ApplicationController
     params.permit(:categories, :stations, :apparatus, :add_category, :add_station, :add_apparatus, :delete_me)
   end
 
-  def set_categories
-    @categories = Dropdown.find_by('name like ?', 'categories')
-    @stations = Dropdown.find_by('name like ?', 'stations')
-    @apparatus = Dropdown.find_by('name like ?', 'apparatus')
+  def set_add_categories
     @add_category = ''
     @add_station = ''
     @add_apparatus = ''

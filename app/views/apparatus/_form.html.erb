@@ -9,7 +9,7 @@
             <div class="field">
 
               <%= f.check_box 'relocate', {:class => 'inline app_tools', :multiple => true}, tool.id, nil %>
-              <span class=<%= tool.loaner ? 'loaner' : '' %> ><%= f.label :apparatus, tool.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %></span>
+              <span class=<%= tool.loaner ? 'loaner' : '' %> ><%= f.label :apparatus, tool.category.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %></span>
 
             </div>
 
@@ -34,7 +34,7 @@
             <div class="field">
 
               <%= f.check_box 'swap', {:class => 'inline', :multiple => true}, tool.id, nil %>
-              <span class=<%= tool.loaner ? 'loaner' : '' %> ><%= f.label :loaners, tool.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %></span>
+              <span class=<%= tool.loaner ? 'loaner' : '' %> ><%= f.label :loaners, tool.category.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %></span>
 
             </div>
 

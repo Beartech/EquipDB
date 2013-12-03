@@ -1,4 +1,4 @@
-<% button_link = "#{@tool.location}-#{@tool.name.singularize}"+'<br>'+" #{@tool.serial}" %>
+<% button_link = "#{@tool.location.name}-#{@tool.category.name.singularize}"+'<br>'+" #{@tool.serial}" %>
 <% status_link = @tool.in_service ? "Put Out of Service" : "Put In Service" %>
 <a class="btn custombutton dropdown-toggle <%= btn_color(@tool) %>" data-toggle="dropdown" href="#"  >
   <%=  raw(button_link) %>

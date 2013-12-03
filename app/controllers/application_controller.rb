@@ -23,4 +23,13 @@ class ApplicationController < ActionController::Base
     params.require(:role).permit(:role)
   end
 
+  def set_categories
+    @categories = Category.pluck(:name)
+    @categories.unshift('all')
+    @stations = Station.pluck(:name)
+    @apparatus = Vehicle.pluck(:name)
+    @locations = Location.pluck(:name)
+  end
+
+  helper_method :set_categories
 end

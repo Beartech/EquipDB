@@ -7,9 +7,10 @@ class DashboardController < ApplicationController
   def dashboard
 
     @dashboard = {}
-    all_tools = Tool.all.order(:location)
-    @locations.each do |location|
-      @dashboard[location] = all_tools.where('location = ?', location).order(:name)
+    all_tools = Tool.all
+    @loc_id = Location.all.order(:name)
+    @loc_id.each do |location|
+      @dashboard[location.id] = all_tools.where('location_id = ?', location.id).order(:name)
     end
 
   end
@@ -17,12 +18,6 @@ class DashboardController < ApplicationController
 
   private
 
-  def set_categories
-    @categories = Dropdown.find_by('name like ?', 'categories').list
-    @stations = Dropdown.find_by('name like ?', 'stations').list
-    @apparatus = Dropdown.find_by('name like ?', 'apparatus').list
-    @locations = @apparatus + @stations
-  end
 
 
 

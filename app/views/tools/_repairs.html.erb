@@ -20,7 +20,7 @@
         <td><%= repair.name %></td>
         <td><%= repair.start_date %></td>
         <td><%= repair.end_date %></td>
-        <td><%= repair.tool.name %> / <%= repair.tool.serial %></td>
+        <td><%= repair.tool.category.name %> / <%= repair.tool.serial %></td>
         <td><%= link_to 'Edit', edit_tool_repair_path(:tool_id => repair.tool_id, :id => repair.id), :class => 'btn btn-small' %></td>
       </tr>
   <% end %>

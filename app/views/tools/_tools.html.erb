@@ -13,8 +13,8 @@
 
   <div class="tab-content">
 
-    <% @categories.each do |category| %>
-        <% tabnum = @categories.index("#{category}") %>
+    <% @categories.each do |cat| %>
+        <% tabnum = @categories.index("#{cat}") %>
         <div class="tab-pane  <%= tabnum == 0 ? 'active' : '' %>"   id="<%= tabnum %>">
             <table id="table<%= tabnum %>" class="table" border='0'>
               <thead>
@@ -31,12 +31,12 @@
 
               <tbody>
               <% @tools.each do |tool| %>
-                <% if (tool.name == category) || (category == 'all') %>
+                <% if (tool.category.name == cat) || (cat == 'all') %>
                   <tr >
                     <td><%= link_to tool.serial, tool, :class => "btn btn-small #{btn_color(tool)}" %></td>
-                    <td><%= tool.name.singularize %></td>
+                    <td><%= tool.category.name.singularize %></td>
                     <td><%= tool.model %></td>
-                    <td><%= tool.location %></td>
+                    <td><%= tool.location.name %></td>
                     <td><%= tool.in_service %></td>
                     <td><%= tool.retired %></td>
                     <td><%= tool.condition %></td>
