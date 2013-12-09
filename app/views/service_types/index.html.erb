@@ -4,6 +4,7 @@
   <thead>
   <th class="sortable">Name</th>
   <th class="sortable">Hours</th>
+  <th class="sortable">Default Parts</th>
   <th><i class="icon-search"></i> </th>
   <th><i class="icon-edit"></i></th>
   <th><i class="icon-trash"></i></th>
@@ -14,6 +15,7 @@
       <tr>
         <td><%= service.name %></td>
         <td><%= service.hours %></td>
+        <td><%= service.default_parts.join(', ') %></td>
         <td><%= link_to 'Show', service %></td>
         <td><%= link_to 'Edit', edit_service_type_path(service) %></td>
         <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>

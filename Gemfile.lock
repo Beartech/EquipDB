@@ -235,7 +235,7 @@ DEPENDENCIES
   omniauth-github!
   pg
   pry-rails
-  rails (= 4.0.0)
+  rails (>= 4.0.0)
   rails3_serve_static_assets!
   rails_12factor
   rails_log_stdout!

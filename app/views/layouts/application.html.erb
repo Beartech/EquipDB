@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>EquipDB</title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= yield(:head) %>
@@ -18,9 +18,9 @@
         <ul class="nav">
 
           <% if current_user %>
-              <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
-              <li><%= link_to "Logout", :logout %></li>
-              <li><%= link_to "Logged in as: " + current_user.username, edit_user_path(current_user.id) %></li>
+              <li><%= link_to 'Edit Profile', edit_user_path(current_user.id) %></li>
+              <li><%= link_to 'Logout', :logout %></li>
+              <li><%= link_to 'Logged in as: ' + current_user.username, edit_user_path(current_user.id) %></li>
         <% end %>
 
         </ul>
@@ -46,12 +46,12 @@
             <div class="stick">
             <div class="tabbable tabs-left" >
                 <ul class="nav nav-tabs">
-                  <li><%= link_to "Dashboard", root_path, :data_toggle => 'tab' %><li>
-                  <li><%= link_to "Equipment", tools_path, :data_toggle => 'tab' %></li>
-                  <li><%= link_to "Repairs", repairs_path, :data_toggle => 'tab' %></li>
-                  <li><%= link_to "Service", services_path, :data_toggle => 'tab' %></li>
-                  <li><%= link_to "Parts", parts_path, :data_toggle => 'tab' %></li>
-                  <li><%= link_to "Reports" , :data_toggle => 'tab'%></li>
+                  <li><%= link_to 'Dashboard', root_path, :data_toggle => 'tab' %><li>
+                  <li><%= link_to 'Equipment', tools_path, :data_toggle => 'tab' %></li>
+                  <li><%= link_to 'Repairs', repairs_path, :data_toggle => 'tab' %></li>
+                  <li><%= link_to 'Service', services_path, :data_toggle => 'tab' %></li>
+                  <li><%= link_to 'Parts', parts_path, :data_toggle => 'tab' %></li>
+                  <li><%= link_to 'Reports' , :data_toggle => 'tab'%></li>
                   <li><%= link_to 'Menu Settings', drop_down_menus_path, :data_toggle => 'tab' %></li>
                 </ul>
             </div>

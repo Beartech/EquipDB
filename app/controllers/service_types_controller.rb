@@ -1,4 +1,5 @@
 class ServiceTypesController < ApplicationController
+  before_action :role_required
   before_action :set_service_type, only: [:show, :edit, :update]
 
   def edit
@@ -45,7 +46,7 @@ class ServiceTypesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def service_type_params
-    params.require(:service_type).permit(:name, :hours)
+    params.require(:service_type).permit(:name, :hours, :parts)
   end
 
 end
