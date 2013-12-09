@@ -4,65 +4,54 @@ class DropdownController < ApplicationController
   before_action :set_add_categories
 
   def index
-    categories = Dropdown.find_by('name like ?', 'categories').list
-    stations = Dropdown.find_by('name like ?', 'stations').list
-    apparatus = Dropdown.find_by('name like ?', 'apparatus').list
-    @dropdown = {categories: categories, stations: stations, apparatus: apparatus}
+    @dropdown = {categories: @categories, stations: @stations, vehicles: @vehicles}
   end
 
   def update_categories
     if dropdown_params[:delete_me] == '1'
-      @categories.list.delete(dropdown_params[:add_category].titleize)
+      @cat = Category.find_by_name(dropdown_params[:add_category].titleize)
+      @cat.destroy
     else
-      @categories.list.push(dropdown_params[:add_category].titleize) unless dropdown_params[:add_category] == ''
+      @cat = Category.new(name: dropdown_params[:add_category].titleize) unless dropdown_params[:add_category] == ''
     end
-    @categories.list.sort!
-    respond_to do |format|
-      if @categories.save
-        format.html { redirect_to drop_down_menus_path; gflash :success => 'menu was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { redirect_to drop_down_menus_path }
-        format.json { render json: @categories.errors, status: :unprocessable_entity }
-      end
+
+    if @cat
+      @cat.save
+      redirect_to drop_down_menus_path; gflash :success => 'Menu was successfully updated.'
+    else
+      redirect_to drop_down_menus_path; gflash :failure => 'No menu item added'
     end
 
   end
 
   def update_stations
     if dropdown_params[:delete_me] == '1'
-      @stations.list.delete(dropdown_params[:add_station].titleize)
+      @sta = Station.find_by_name(dropdown_params[:add_station].titleize)
+      @sta.destroy
     else
-      @stations.list.push(dropdown_params[:add_station].titleize) unless dropdown_params[:add_station] == ''
+      @sta = Station.new(name: dropdown_params[:add_station].titleize) unless dropdown_params[:add_station] == ''
     end
-    @stations.list.sort!
-    respond_to do |format|
-      if @stations.save
-        format.html { redirect_to drop_down_menus_path; gflash :success => 'menu was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { redirect_to drop_down_menus_path }
-        format.json { render json: @stations.errors, status: :unprocessable_entity }
-      end
+
+    if @sta.save
+      redirect_to drop_down_menus_path; gflash :success => 'Menu was successfully updated.'
+    else
+      redirect_to drop_down_menus_path; gflash :failure => 'No menu item added'
     end
 
   end
 
   def update_apparatus
     if dropdown_params[:delete_me] == '1'
-      @apparatus.list.delete(dropdown_params[:add_apparatus].titleize)
+      @veh = Vehicle.find_by_name(dropdown_params[:add_vehicle].titleize)
+      @veh.destroy
     else
-      @apparatus.list.push(dropdown_params[:add_apparatus].titleize) unless dropdown_params[:add_apparatus] == ''
+      @veh = Vehicle.new(name: dropdown_params[:add_vehicle].titleize) unless dropdown_params[:add_vehicle] == ''
     end
-    @apparatus.list.sort!
-    respond_to do |format|
-      if @apparatus.save
-        format.html { redirect_to drop_down_menus_path; gflash :success => 'menu was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { redirect_to drop_down_menus_path }
-        format.json { render json: @apparatus.errors, status: :unprocessable_entity }
-      end
+
+    if @veh.save
+      redirect_to drop_down_menus_path; gflash :success => 'Menu was successfully updated.'
+    else
+      redirect_to drop_down_menus_path; gflash :failure => 'No menu item added'
     end
 
   end
@@ -74,7 +63,7 @@ class DropdownController < ApplicationController
   private
 
   def dropdown_params
-    params.permit(:categories, :stations, :apparatus, :add_category, :add_station, :add_apparatus, :delete_me)
+    params.permit(:categories, :stations, :vehicles, :add_category, :add_station, :add_vehicle, :delete_me)
   end
 
   def set_add_categories
