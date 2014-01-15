@@ -1,10 +1,10 @@
 class ToolsController < ApplicationController
   before_action :set_tool, only: [:show, :edit, :update, :destroy, :toggle_in_service, ]
   before_action :role_required
-  helper_method :sort_column, :sort_direction
+
   before_action :set_categories, :set_tab
   before_action :set_form_drop_down, only: [:new, :edit, :update]
-
+  after_action :titleize_params, only: [:new, :edit, :update]
 
   # GET /tools
   # GET /tools.json
@@ -95,13 +95,21 @@ class ToolsController < ApplicationController
     end
 
     def set_form_drop_down
-      @form_categories = {}
-      Category.all.each {|cat| @form_categories[cat.name] = cat.id}
-      @form_locations = {}
-      Location.all.each {|loc| @form_locations[loc.name] = loc.id}
+      @form_menus = {}
+      @form_menus[:categories] = {}
+      Category.all.each {|cat| @form_menus[:categories][cat.name] = cat.id}
+      @form_menus[:locations] = {}
+      Location.all.each {|loc| @form_menus[:locations][loc.name] = loc.id}
+      @form_menus[:model_list] =  Tool.pluck(:model).uniq.to_json
     end
 
     def set_tab
       params[:tab] ? params[:tab] : '#0'
     end
+
+    def titleize_params
+
+    end
+
+
 end

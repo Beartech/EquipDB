@@ -1,7 +1,7 @@
-    <%= form_for(@tool, :html => { :class => "form-horizontal" } )  do |f| %>
+    <%= form_for(@tool, :html => { :class => 'form-horizontal' 'autocomplete=off' } )  do |f| %>
       <% if @tool.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@tool.errors.count, "error") %> prohibited this tool from being saved:</h2>
+          <h2><%= pluralize(@tool.errors.count, 'error') %> prohibited this tool from being saved:</h2>
 
           <ul>
           <% @tool.errors.full_messages.each do |msg| %>
@@ -18,17 +18,18 @@
         <br>
         <div class="form-inline">
           <%= f.label 'Type' %>
-          <%= f.select :category_id,  @form_categories %>
+          <%= f.select :category_id,  @form_menus[:categories] %>
         </div>
         <br>
         <div class="form-inline">
           <%= f.label :model %>
-          <%= f.text_field :model %>
+          <%= f.text_field :model, 'data-provide' => 'typeahead', 'data-source' => @form_menus[:model_list] %>
+
         </div>
         <br>
         <div class="form-inline">
           <%= f.label :location %>
-          <%= f.select :location_id, @form_locations %>
+          <%= f.select :location_id, @form_menus[:locations] %>
         </div>
         <br>
         <div class="form-inline" >
@@ -53,16 +54,16 @@
         <br>
         <div class="field">
           <%= f.check_box :in_service %>
-          <%= f.label :in_service, "Currently In Service", :class => "checkbox inline" %>
+          <%= f.label :in_service, 'Currently In Service', :class => 'checkbox inline' %>
         </div>
         <br>
         <div class="field">
           <%= f.check_box :loaner %>
-          <%= f.label :loaner, "This is a loaner tool", :class => "checkbox inline" %>
+          <%= f.label :loaner, 'This is a loaner tool', :class => 'checkbox inline' %>
         </div>
         <br>
         <div class="form-inline" >
-          <%= f.label :retired, "Date Retired" %>
+          <%= f.label :retired, 'Date Retired' %>
           <%= f.text_field :retired, 'data-behaviour' => 'datepicker' %>
         </div>
         <br>
