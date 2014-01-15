@@ -15,8 +15,7 @@ class DropdownController < ApplicationController
       @cat = Category.new(name: dropdown_params[:add_category].titleize) unless dropdown_params[:add_category] == ''
     end
 
-    if @cat
-      @cat.save
+    if @cat.save
       redirect_to drop_down_menus_path; gflash :success => 'Menu was successfully updated.'
     else
       redirect_to drop_down_menus_path; gflash :failure => 'No menu item added'

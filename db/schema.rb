@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131203030026) do
+ActiveRecord::Schema.define(version: 20140115035914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20131203030026) do
     t.datetime "updated_at"
     t.integer  "inventory"
     t.integer  "minimum"
+    t.integer  "maximum"
   end
 
   create_table "parts_service_types", id: false, force: true do |t|
@@ -94,6 +95,7 @@ ActiveRecord::Schema.define(version: 20131203030026) do
     t.integer  "tool_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "service_type_id"
   end
 
   add_index "services", ["tool_id"], name: "index_services_on_tool_id", using: :btree

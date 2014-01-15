@@ -9,7 +9,8 @@
       <th class="sortable">Name</th>
       <th class="sortable">Sku</th>
       <th class="sortable"># On Hand</th>
-      <th class="sortable">Reorder</th>
+      <th class="sortable">Reorder At</th>
+      <th class="sortable">Max Level</th>
       <th class="sortable">Inventory Level </th>
       <th><i class="icon-search"></i> </th>
       <th><i class="icon-edit"></i></th>
@@ -23,6 +24,7 @@
         <td><%= part.sku %></td>
         <td><span class="badge <%= inventory_badge(part) %>"><%= part.inventory %></span></td>
         <td><%= part.minimum %></td>
+        <td><%= part.maximum %></td>
         <td><%= inventory_indicator(part) %></td>
         <td><%= link_to 'Show', part %></td>
         <td><%= link_to 'Edit', edit_part_path(part) %></td>

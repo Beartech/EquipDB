@@ -1,6 +1,6 @@
 class ServiceTypesController < ApplicationController
   before_action :role_required
-  before_action :set_service_type, only: [:show, :edit, :update]
+  before_action :set_service_type, only: [:show, :edit, :update, :destroy]
 
   def edit
   end
@@ -28,7 +28,7 @@ class ServiceTypesController < ApplicationController
   def update
     respond_to do |format|
       if @service_type.update(part_params)
-        format.html { redirect_to @service_type; gflash :success => 'Part was successfully updated.' }
+        format.html { redirect_to @service_type; gflash :success => 'Service Type was successfully updated.' }
       else
         format.html { render action: 'edit' }
       end
@@ -36,6 +36,17 @@ class ServiceTypesController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+
+    respond_to do |format|
+      if @service_type.destroy
+      format.html { redirect_to service_types_url; gflash :success => 'Service Type was destroyed' }
+      else
+        format.html {redirect_to service_types_url}
+      end
+    end
   end
 
   private
