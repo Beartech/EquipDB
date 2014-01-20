@@ -7,6 +7,9 @@
       <th>Due date</th>
       <th>Completed</th>
       <th>Tool</th>
+      <th><i class="icon-search"></i></th>
+      <th><i class="icon-edit"></i></th>
+      <th><i class="icon-trash"></i></th>
     </tr>
   </thead>
 
@@ -16,7 +19,10 @@
         <td><%= service.name %></td>
         <td><%= service.due_date %></td>
         <td><%= service.completed %></td>
-        <td><%= service.tool.category.name + '/' + service.tool.serial %></td>
+        <td><%= service.tool.category.name.singularize + '/' + service.tool.serial %></td>
+        <td><%= link_to 'Show', tool_service_path(service.tool.id, service.id) %></td>
+        <td><%= link_to 'Edit', edit_tool_service_path(service.tool.id, service.id) %></td>
+        <td><%= link_to 'Destroy', tool_service_path(service.tool.id, service.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
