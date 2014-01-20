@@ -14,3 +14,9 @@ Repairs and services pull parts from inventory
 Parts get scanned in on arrival
 
 
+
+REFACTOR:
+
+    Create Non-AR models for Dashboard, ToolTable...
+
+
