@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     @categories = Category.pluck(:name)
     @categories.unshift('all')
     @stations = Station.pluck(:name)
-    @vehicles = Vehicle.pluck(:name)
+    @vehicles = Vehicle.pluck(:name).sort
     @locations = Location.pluck(:name)
     @location_list = @stations + @vehicles
   end
