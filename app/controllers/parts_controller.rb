@@ -15,7 +15,7 @@ class PartsController < ApplicationController
 
   # GET /parts/new
   def new
-    @part = Part.new
+    @part = Part.new(inventory: 0, maximum: 0, minimum: 0)
   end
 
   # GET /parts/1/edit
