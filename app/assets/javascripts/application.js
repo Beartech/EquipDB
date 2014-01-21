@@ -31,7 +31,7 @@ $(document).on("focus", "[data-behaviour~='datepicker']", function(e){
 
 $(document).ready(function() {
     $('.alert').delay(500).fadeIn('normal', function() {
-        $(this).delay(1000).fadeOut();
+        $(this).delay(500).fadeOut();
     });
 
     $(function() {
@@ -39,6 +39,8 @@ $(document).ready(function() {
     });
 
     $('#filter1').focus();
+
+    $('#part_sku').focus();
 
     $('#selectAll').click(function() {
         if (this.checked) {

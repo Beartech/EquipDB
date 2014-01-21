@@ -5,7 +5,7 @@
     <% @categories.each do |category| %>
       <% tabnum = @categories.index("#{category}") %>
         <li <%= tabnum == 0 ? 'class=active' : '' %> data-tabNumber="<%= tabnum %>">
-          <a href="#<%= tabnum %>" data-toggle="tab"><%= "#{category}" %></a>
+          <a href="#<%= tabnum %>" data-toggle="tab"><%= "#{category} #{tool_count(tabnum)}" %></a>
         </li>
 
     <% end %>
@@ -19,7 +19,7 @@
             <table id="table<%= tabnum %>" class="table" border='0'>
               <thead>
               <tr>
-              <th class="sortable">Serial</th>
+              <th class="sortable">Serial<%= %></th>
               <th class="sortable">Type</th>
               <th class="sortable">Model</th>
               <th class="sortable">Location</th>
@@ -31,6 +31,7 @@
 
               <tbody>
               <% @tools.each do |tool| %>
+
                 <% if (tool.category.name == cat) || (cat == 'all') %>
                   <tr >
                     <td><%= link_to tool.serial, tool, :class => "btn btn-small #{btn_color(tool)}" %></td>
