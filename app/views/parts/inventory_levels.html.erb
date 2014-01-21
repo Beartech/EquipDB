@@ -1,0 +1,23 @@
+
+
+<% inventory = run_inventory %>
+
+<table class="table" border='1'  >
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Sku</th>
+          <th>Need to Order</th>
+      </tr>
+  </thead>
+
+  <tbody>
+  <% inventory.each do |part| %>
+      <tr>
+        <td><%= part.name %></td>
+        <td><%= part.sku %></td>
+        <td><%= part.maximum - part.inventory %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

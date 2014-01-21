@@ -4,7 +4,7 @@ EquipDB::Application.routes.draw do
   get "oauths/oauth"
   get "oauths/callback"
 
-  #get 'parts'  => 'parts#index'
+  get 'parts/inventory_levels'  => 'parts#inventory_levels'
   get 'repairs' => 'repairs#index'
   get 'services' => 'services#index'
 
