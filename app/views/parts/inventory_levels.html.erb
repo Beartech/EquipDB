@@ -1,7 +1,5 @@
 
 
-<% inventory = run_inventory %>
-
 <table class="table" border='1'  >
   <thead>
       <tr>
@@ -12,7 +10,7 @@
   </thead>
 
   <tbody>
-  <% inventory.each do |part| %>
+  <% @parts.each do |part| %>
       <tr>
         <td><%= part.name %></td>
         <td><%= part.sku %></td>

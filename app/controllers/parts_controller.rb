@@ -63,6 +63,7 @@ class PartsController < ApplicationController
   end
 
   def inventory_levels
+    @parts = Part.all.order(:name)
     render 'inventory_levels', layout: "print_table"
   end
 
