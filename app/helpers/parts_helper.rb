@@ -21,14 +21,4 @@ module PartsHelper
     end
   end
 
-  def run_inventory
-    parts = Part.all
-    inventory = []
-    parts.each do |part|
-      inventory << part
-    end
-    inventory
-  end
-
-
 end
