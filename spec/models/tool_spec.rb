@@ -48,22 +48,22 @@ describe Tool do
   context 'scopes' do
     before :each do
       @location = Location.create(id: 1, name: 'Loaners', vehicle: false, type: 'Station')
-      @chainsaw = Tool.create(name: 'chainsaw', serial: '12345',
+      @chainsaw = Tool.create(id: 1, name: 'chainsaw', serial: '12345',
                               model: 'Stihl 044', loaner: true,
                               location: Location.new(id: 2, name: 'Sta 71'),
                               category: Category.new(name: 'Chainsaws'))
-      @generator = Tool.create(name: 'generator', serial: '54321',
+      @generator = Tool.create(id: 2, name: 'generator', serial: '54321',
                               model: 'Onan', loaner: true,
                               location: Location.new(id: 3, name: '712'),
                               category: Category.new(name: 'Generators'))
-      @blower = Tool.create(name: 'blower', serial: '99999',
+      @blower = Tool.create(id: 3, name: 'blower', serial: '99999',
                               model: 'Supervac', loaner: false,
                               location: Location.find(3),
                               category: Category.new(name: 'Blowers'))
-      @loaner1 = Tool.create(name: 'loanersaw1', serial: '88888',
+      @loaner1 = Tool.create(id: 4, name: 'loanersaw1', serial: '88888',
                               model: 'Sthil 66', loaner: true,
                               location: @location, category: Category.find_by(name: 'Chainsaws'))
-      @loaner2 = Tool.create(name: 'loanersaw2', serial: '77777',
+      @loaner2 = Tool.create(id: 5, name: 'loanersaw2', serial: '77777',
                              model: 'Sthil 66', loaner: true,
                              location: @location, category: Category.find_by(name: 'Chainsaws'))
     end
@@ -77,10 +77,13 @@ describe Tool do
       expect(tools).to eq [@loaner1, @loaner2]
     end
 
-  end
-
-  context 'methods' do
-    it 'can swap tools between two locations'
+    it 'can swap tools between two locations' do
+      app_params = { 'apparatus' => { 'relocate' => ['2'], 'location' => 'Loaners'},
+                     'commit' => 'Update Tools', 'app' => '712'}
+      Tool.swap_tools(app_params)
+      expect(@generator.location.name).to eq 'Loaners'
+      #expect(@loaner1.location.name).to eq 712
+    end
     it 'can relocate tools to another location'
 
   end
