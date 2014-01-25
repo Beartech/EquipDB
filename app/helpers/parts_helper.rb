@@ -25,7 +25,7 @@ module PartsHelper
     parts = Part.all
     inventory = []
     parts.each do |part|
-      inventory << part if part.inventory <= part.minimum
+      inventory << part
     end
     inventory
   end
