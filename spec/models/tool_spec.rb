@@ -23,9 +23,8 @@ describe Tool do
       expect(build(:tool, model: nil)).to have(1).errors_on(:model)
     end
     it 'is invalid with a duplicate serial' do
-      create(:tool, serial: 12345)
-      tool = build(:tool, serial: 12345)
-      expect(tool).to have(1).errors_on(:serial)
+      create(:tool, serial: '12345')
+      expect(build(:tool, serial: '12345')).to have(1).errors_on(:serial)
     end
 
   end
