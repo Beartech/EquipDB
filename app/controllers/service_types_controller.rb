@@ -27,7 +27,7 @@ class ServiceTypesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @service_type.update(part_params)
+      if @service_type.update(service_type_params)
         format.html { redirect_to @service_type; gflash :success => 'Service Type was successfully updated.' }
       else
         format.html { render action: 'edit' }
