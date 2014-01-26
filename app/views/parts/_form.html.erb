@@ -1,4 +1,4 @@
-<%= form_for(@part) do |f| %>
+<%= form_for @part do |f| %>
   <% if @part.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@part.errors.count, "error") %> prohibited this part from being saved:</h2>
@@ -11,30 +11,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
+  <div class="field form-inline">
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :sku %><br>
+    <br>
+  <div class="field form-inline">
+    <%= f.label :sku %>
     <%= f.text_field :sku %>
   </div>
-  <div class="field">
-    <%= f.label :inventory %><br>
+    <br>
+  <div class="field form-inline">
+    <%= f.label :inventory %>
     <%= f.text_field :inventory %>
   </div>
-  <div class="field">
-    <%= f.label :minimum %><br>
+    <br>
+  <div class="field form-inline">
+    <%= f.label :minimum %>
     <%= f.text_field :minimum %>
   </div>
-  <div class="field">
-    <%= f.label :maximum %><br>
+    <br>
+  <div class="field form-inline">
+    <%= f.label :maximum %>
     <%= f.text_field :maximum %>
   </div>
-  <div class="field">
-    <%= f.label :note %><br>
+    <br>
+  <div class="field form-inline">
+    <%= f.label :note %>
     <%= f.text_area :note %>
   </div>
+    <br>
   <div class="actions">
     <%= f.submit %>
   </div>
