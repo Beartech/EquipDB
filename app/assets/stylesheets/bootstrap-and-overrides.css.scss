@@ -123,3 +123,11 @@ hr.style-eight:after {
   @extend .icon-refresh;
   margin-left: 15px;
 }
+
+body{
+  background: url('test_bgnd.png') repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
