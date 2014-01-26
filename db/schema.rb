@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115035914) do
+ActiveRecord::Schema.define(version: 20140126202149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140115035914) do
     t.integer  "inventory"
     t.integer  "minimum"
     t.integer  "maximum"
+    t.text     "note"
   end
 
   create_table "parts_service_types", id: false, force: true do |t|
