@@ -2,44 +2,29 @@ require 'spec_helper'
 
 describe Tool do
 
+  it 'has a valid factory' do
+    expect(build(:tool)).to be_valid
+  end
   context  'validations' do
 
     it 'is valid with a name, serial, model, location, category' do
-      tool = Tool.new(
-          name: 'chainsaws',
-          serial: '9999999',
-          model: 'Stihl 660',
-          location: Location.new(name: 'Sta 72'),
-          category: Category.new(name: 'Chainsaw')
-      )
-      expect(tool).to be_valid
+
+      expect(build(:tool, location: Location.new(name: 'Sta 72'),
+                   category: Category.new(name: 'Chainsaw'))).to be_valid
+
     end
     it 'is invalid without a name' do
-      expect(Tool.new(name: nil)).to have(1).errors_on(:name)
+      expect(build(:tool, name: nil)).to have(1).errors_on(:name)
     end
     it 'is invalid without a serial' do
-      expect(Tool.new(serial: nil)).to have(1).errors_on(:serial)
+      expect(build(:tool, serial: nil)).to have(1).errors_on(:serial)
     end
     it 'is invalid without a model' do
-      expect(Tool.new(model: nil)).to have(1).errors_on(:model)
-    end
-    it 'is invalid without a location' do
-      expect(Tool.new(location: nil)).to have(1).errors_on(:location)
-    end
-    it 'is invalid without a category' do
-      expect(Tool.new(category: nil)).to have(1).errors_on(:category)
+      expect(build(:tool, model: nil)).to have(1).errors_on(:model)
     end
     it 'is invalid with a duplicate serial' do
-      Tool.create(name: 'Chainsaws', serial: '12345', model: 'Stihl 044',
-                  location: Location.new(name: 'Sta 72'),
-                  category: Category.new(name: 'Chainsaw'))
-      tool = Tool.new(
-          name: 'chainsaws',
-          serial: '12345',
-          model: 'Stihl 660',
-          location: Location.new(name: 'Sta 72'),
-          category: Category.new(name: 'Chainsaw')
-      )
+      create(:tool, serial: 12345)
+      tool = build(:tool, serial: 12345)
       expect(tool).to have(1).errors_on(:serial)
     end
 
@@ -48,17 +33,18 @@ describe Tool do
   context 'scopes' do
     before :each do
       @location = Location.create(id: 1, name: 'Loaners', vehicle: false, type: 'Station')
+      @app712 = Location.create(id: 2, name: '712', vehicle: true, type: 'Vehicle')
       @chainsaw = Tool.create(id: 1, name: 'chainsaw', serial: '12345',
                               model: 'Stihl 044', loaner: true,
-                              location: Location.new(id: 2, name: 'Sta 71'),
+                              location: Location.new(id: 3, name: 'Sta 71'),
                               category: Category.new(name: 'Chainsaws'))
       @generator = Tool.create(id: 2, name: 'generator', serial: '54321',
                               model: 'Onan', loaner: true,
-                              location: Location.new(id: 3, name: '712'),
+                              location: Location.find(2),
                               category: Category.new(name: 'Generators'))
       @blower = Tool.create(id: 3, name: 'blower', serial: '99999',
                               model: 'Supervac', loaner: false,
-                              location: Location.find(3),
+                              location: Location.find(2),
                               category: Category.new(name: 'Blowers'))
       @loaner1 = Tool.create(id: 4, name: 'loanersaw1', serial: '88888',
                               model: 'Sthil 66', loaner: true,
@@ -78,11 +64,10 @@ describe Tool do
     end
 
     it 'can swap tools between two locations' do
-      app_params = { 'apparatus' => { 'relocate' => ['2'], 'location' => 'Loaners'},
-                     'commit' => 'Update Tools', 'app' => '712'}
+      app_params = {'apparatus'=>{'relocate'=>['2'], 'location'=>'Loaners', 'swap'=>['4']},  'app'=>'712'}
       Tool.swap_tools(app_params)
       expect(@generator.location.name).to eq 'Loaners'
-      #expect(@loaner1.location.name).to eq 712
+      expect(@loaner1.location.name).to eq '712'
     end
     it 'can relocate tools to another location'
 

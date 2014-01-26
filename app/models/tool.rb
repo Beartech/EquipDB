@@ -6,7 +6,7 @@ class Tool < ActiveRecord::Base
   accepts_nested_attributes_for :repairs
   accepts_nested_attributes_for :services
 
-  validates :name, :serial, :model, :location, :category, :presence => true
+  validates :name, :serial, :model, :presence => true
   validates_uniqueness_of :serial
 
   def self.location_group(app)
