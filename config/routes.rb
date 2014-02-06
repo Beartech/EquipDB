@@ -45,4 +45,6 @@ EquipDB::Application.routes.draw do
 
   get 'location/:app' => 'apparatus#index', :as => :apparatus_index
   post 'location/:app' => 'apparatus#update', :as => :tool_location_update
+
+  get 'new_inventory' => 'inventories#new'
 end
