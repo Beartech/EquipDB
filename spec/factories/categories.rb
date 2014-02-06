@@ -1,5 +1,7 @@
+require 'faker'
+
 FactoryGirl.define do
   factory :category do
-    name 'Chainsaws'
+    name {Faker::Name.last_name}
   end
 end
