@@ -6,7 +6,7 @@
 
     <p>List of parts, one per line:</p>
 
-    <p><textarea rows=40 id="1">￼</textarea></p>
+    <p><textarea rows=40 id="parts_list">￼</textarea></p>
 
   </div>
   <div class="span4">
@@ -18,8 +18,8 @@
 </div>
 
 <script>
-    $('#1').keydown(function(e) {
-        if(e.keyCode === 40) { // tab was pressed
+    $('#parts_list').keydown(function(e) {
+        if(e.keyCode === 40) { // arrow-down was pressed
             // get caret position/selection
             var start = this.selectionStart;
             var end = this.selectionEnd;
@@ -40,3 +40,4 @@
         }
     });
 </script>
+
