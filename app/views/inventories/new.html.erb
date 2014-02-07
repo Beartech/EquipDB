@@ -5,13 +5,16 @@
   <div class="span4 offset1">
 
     <p>List of parts, one per line:</p>
+   <%= form_for(:inventory) do |f|  %>
 
-    <p><textarea rows=40 id="parts_list">￼</textarea></p>
+     <%= f.text_area :parts_list, :rows => '40', :id => 'parts_list' %>
+
+
 
   </div>
   <div class="span4">
-
-
+    <%= f.submit %>
+    <% end %>
 
   </div>
 
