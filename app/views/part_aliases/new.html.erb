@@ -1,0 +1,29 @@
+<h1>Add Alias for <%= @part_alias.part.name %> / <%= @part_alias.part.sku %></h1>
+
+<p>current aliases:</p>
+<% @part_alias.part.part_aliases.each do |part_alias| %>
+    <%= part_alias.sku %> <br>
+    <% end %>
+
+
+<%= form_for(@part_alias, url: new_part_alias_path) do |f| %>
+
+    <% if @part_alias.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@part_alias.errors.count, 'error') %> prohibited this tool from being saved:</h2>
+
+          <ul>
+            <% @part_alias.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+
+    <div class="form-inline">
+    <%= f.hidden_field :part_id %>
+    <strong><%= f.label :sku %>:</strong>
+    <%= f.text_field :sku %>
+    </div>
+    <%= f.submit %>
+<% end %>

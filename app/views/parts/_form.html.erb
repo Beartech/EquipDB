@@ -11,35 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-inline">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="form-inline">
     <%= f.label :sku %><br>
     <%= f.text_field :sku %>
   </div>
-  <div class="field">
+  <div class="form-inline">
     <%= f.label :inventory %><br>
     <%= f.text_field :inventory %>
   </div>
-  <div class="field">
+  <div class="form-inline">
     <%= f.label :minimum %><br>
     <%= f.text_field :minimum %>
   </div>
-  <div class="field">
+  <div class="form-inline">
     <%= f.label :maximum %><br>
     <%= f.text_field :maximum %>
   </div>
   <div> SKU Aliases for this part:
     <% @part.part_aliases.each do |part_alias| %>
-          <p><%=  part_alias.sku %></p>
+          <br><%=  part_alias.sku %>
    <% end %>
   </div>
+    <button class="btn" >
+    <%= link_to 'New SKU Alias', {:controller => 'part_aliases', :action => 'new', :part_alias => {:part_id => @part.id}}, :popup => ['SKU Alias', 'height=300,width=600'] %>
+    </button>
 
-    <%= link_to 'New SKU Alias', {:controller => 'part_aliases', :action => 'new', :part_id => @part.id}, :popup => ['SKU Alias', 'height=300,width=600'] %>
-
+    <p>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn btn-primary'%>
   </div>
 <% end %>
