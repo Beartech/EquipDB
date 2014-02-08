@@ -1,20 +1,33 @@
 class Inventory
 
+  attr_reader :inv_hash, :unknown_sku
+
   def initialize(arr)
     @array = arr
-  end
-
-  def inventory_hash  #count occurrences of each part number
     @inv_hash = {}
     @array.uniq.each do |item|
       @inv_hash[item] = @array.count(item)
     end
-    @inv_hash
+    @unknown_sku = {}
   end
 
-  def replace_aliases   #check for aliases in DB and change to main part number
-
+  def commit_inventory_transaction
+    Part.transaction do
+      @inv_hash.each do |k,v|
+        if p = Part.find_by(sku: k)
+          p.update(inventory: p.inventory + v)
+        elsif pa = PartAlias.find_by(sku: k)
+          if p = Part.find_by(pa.id)
+            p.update(inventory: p.inventory + v)
+          end
+        else
+          @unknown_sku[k] = v
+        end
+      end
+    end
   end
+private
+
 
   # Move rejected numbers to array. Start transaction -
   # Add record to transaction table (date, type, user_id). Add record to parts_transactions table
