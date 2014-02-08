@@ -24,6 +24,12 @@
   <%= @part.maximum %>
 </p>
 
+<div> SKU Aliases for this part:
+  <% @part.part_aliases.each do |part_alias| %>
+      <p><%=  part_alias.sku %></p>
+  <% end %>
+</div>
+
 <%= link_to 'Edit', edit_part_path(@part) %> |
 <%= link_to 'Back', parts_path %>    |
 

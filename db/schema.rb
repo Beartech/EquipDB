@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115035914) do
+ActiveRecord::Schema.define(version: 20140207220702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 20140115035914) do
     t.text     "type"
   end
 
+  create_table "part_aliases", force: true do |t|
+    t.string   "sku"
+    t.integer  "part_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "part_aliases", ["part_id"], name: "index_part_aliases_on_part_id", using: :btree
+
   create_table "parts", force: true do |t|
     t.string   "name"
     t.string   "sku"
@@ -54,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140115035914) do
     t.integer  "inventory"
     t.integer  "minimum"
     t.integer  "maximum"
+    t.text     "note"
   end
 
   create_table "parts_service_types", id: false, force: true do |t|

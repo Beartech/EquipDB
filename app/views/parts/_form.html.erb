@@ -31,6 +31,14 @@
     <%= f.label :maximum %><br>
     <%= f.text_field :maximum %>
   </div>
+  <div> SKU Aliases for this part:
+    <% @part.part_aliases.each do |part_alias| %>
+          <p><%=  part_alias.sku %></p>
+   <% end %>
+  </div>
+
+    <%= link_to 'New SKU Alias', {:controller => 'part_aliases', :action => 'new', :part_id => @part.id}, :popup => ['SKU Alias', 'height=300,width=600'] %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
