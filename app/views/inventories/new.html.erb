@@ -4,43 +4,40 @@
 
   <div class="span4 offset1">
 
-    <p>List of parts, one per line:</p>
-   <%= form_for(:inventory) do |f|  %>
+    <p>Part to add:</p>
+     <form>
+       <input type="text" id="part" >
 
-     <%= f.text_area :parts_list, :rows => '40', :id => 'parts_list' %>
+     </form>
 
 
 
-  </div>
-  <div class="span4">
-    <%= f.submit %>
-    <% end %>
 
-  </div>
 
-</div>
+        <div class="span4">
+        <ul id="part_list" >
+
+        </ul>
+        </div>
+
+
+    </div>
+ </div>
 
 <script>
-    $('#parts_list').keydown(function(e) {
-        if(e.keyCode === 40) { // arrow-down was pressed
-            // get caret position/selection
-            var start = this.selectionStart;
-            var end = this.selectionEnd;
 
-            var $this = $(this);
-            var value = $this.val();
-
-            // set textarea value to: text before caret + tab + text after caret
-            $this.val(value.substring(0, start)
-                    + "\n"
-                    + value.substring(end));
-
-            // put caret at right position again (add one for the tab)
-            this.selectionStart = this.selectionEnd = start + 1;
-
-            // prevent the focus lose
-            e.preventDefault();
+    var parts = [];
+    var partList = $("#part_list");
+    $("#part").keydown(function(e) {
+        if(e.keyCode === 40) {
+            var sku = $('#part').val();
+            parts.push(sku);
+            $('#part_list').append("<li>" + sku + "</li>");
+            $("#part").val('');
         }
-    });
-</script>
 
+    });
+
+
+
+</script>

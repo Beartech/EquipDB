@@ -19,11 +19,12 @@
           </ul>
         </div>
         <% end %>
-
+    <br>
     <div class="form-inline">
     <%= f.hidden_field :part_id %>
     <strong><%= f.label :sku %>:</strong>
     <%= f.text_field :sku %>
     </div>
-    <%= f.submit %>
+    <br>
+    <%= f.submit :class => 'btn' %>
 <% end %>

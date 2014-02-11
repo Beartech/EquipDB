@@ -10,6 +10,9 @@ class InventoriesController < ApplicationController
     @inventory = Inventory.new(parts_array)
   end
 
+  def adjust_inventory
+
+  end
 
   private
 

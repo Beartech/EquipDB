@@ -39,7 +39,7 @@ $(document).ready(function() {
     });
 
     $('#filter1').focus();
-    $('#parts_list').focus();
+    $('#part').focus();
 
     $('#part_sku').focus();
 

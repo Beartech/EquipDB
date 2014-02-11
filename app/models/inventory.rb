@@ -11,14 +11,14 @@ class Inventory
     @unknown_sku = {}
   end
 
-  def commit_inventory_transaction
+  def commit_inventory_transaction(operator)
     Part.transaction do
       @inv_hash.each do |k,v|
         if p = Part.find_by(sku: k)
-          p.update(inventory: p.inventory + v)
+          p.update(inventory: p.inventory.send(operator, v) )
         elsif pa = PartAlias.find_by(sku: k)
           if p = Part.find_by(pa.id)
-            p.update(inventory: p.inventory + v)
+            p.update(inventory: p.inventory.send(operator, v) )
           end
         else
           @unknown_sku[k] = v
@@ -33,8 +33,6 @@ private
   # Add record to transaction table (date, type, user_id). Add record to parts_transactions table
   # for each part(transaction_id, part_id, quantity), update parts quantity in Parts table.
   # End transaction
-  def build_inventory
 
-  end
 
 end
