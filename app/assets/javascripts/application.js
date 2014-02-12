@@ -54,6 +54,9 @@ $(document).ready(function() {
             });
         }
     });
+    $('#part_list').on('click', 'li a', function() {
+        $(this).closest('li').remove();
+        });
 
 });
 

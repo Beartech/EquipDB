@@ -19,7 +19,7 @@
                     <% @dashboard[tool_location.id].each_slice(5) do |five_tools| %>
                        <div class="row">
                        <% five_tools.each do |tool| %>
-                            <% status_link = tool.in_service ? "Put Out of Service" : "Put In Service" %>
+                            <% status_link = tool.in_service ? 'Put Out of Service' : 'Put In Service' %>
 
                             <% button_link = "#{tool.location.name}-#{tool.category.name.singularize}"+'<br>'+" #{tool.serial}" %>
                             <div class="btn-group" id="btn<%= tool.id %>" >
@@ -30,7 +30,7 @@
 
                              <ul class="dropdown-menu">
                                <li><%= link_to status_link, toggle_in_service_path(:id => tool.id), :method => :post, :remote => true %></li>
-                               <li><%= link_to "view Details", tool_path(tool.id) %></li>
+                               <li><%= link_to 'view Details', tool_path(tool.id) %></li>
                              </ul>
                            </div>
                            <% btn_count += 1 %>

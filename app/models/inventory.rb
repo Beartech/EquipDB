@@ -1,6 +1,6 @@
 class Inventory
 
-  attr_reader :inv_hash, :unknown_sku
+  attr_reader :inv_hash, :unknown_sku, :array
 
   def initialize(arr)
     @array = arr

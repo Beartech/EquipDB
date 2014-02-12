@@ -1,0 +1,9 @@
+
+<% if @inventory_transaction.unknown_sku.length > 0 %>
+      $('#unknownSku').append('<li><%= @inventory_transaction.array[0] %><%= escape_javascript(render :partial => 'update_unknown_list') %></li>');
+<% elsif @operator == '+' %>
+      $('#part_list').append('<li><%= @inventory_transaction.array[0] %><%= escape_javascript(render :partial => 'update_list') %></li>');
+
+<% end %>
+
+$("#part").val("");

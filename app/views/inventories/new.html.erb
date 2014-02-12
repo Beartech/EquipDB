@@ -2,42 +2,28 @@
 
 <div class="row">
 
-  <div class="span4 offset1">
+  <div class="span6 offset1">
 
     <p>Part to add:</p>
      <form>
        <input type="text" id="part" >
-
      </form>
 
+   <i> To enter parts manually use the [ARROW DOWN] key, the [ENTER] key is disabled on this page</i>
 
-
-
-
-        <div class="span4">
+    <br>
+    <br>
         <ul id="part_list" >
-
+            <li><strong>Parts Added To Inventory</strong></li>
         </ul>
-        </div>
-
 
     </div>
+
+  <div class="span5">
+    <ul id="unknownSku">
+       <li><strong>Unrecognized SKUs</strong></li>
+    </ul>
+
+  </div>
+
  </div>
-
-<script>
-
-    var parts = [];
-    var partList = $("#part_list");
-    $("#part").keydown(function(e) {
-        if(e.keyCode === 40) {
-            var sku = $('#part').val();
-            parts.push(sku);
-            $('#part_list').append("<li>" + sku + "</li>");
-            $("#part").val('');
-        }
-
-    });
-
-
-
-</script>
