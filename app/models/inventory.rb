@@ -17,7 +17,7 @@ class Inventory
         if p = Part.find_by(sku: k)
           p.update(inventory: p.inventory.send(operator, v) )
         elsif pa = PartAlias.find_by(sku: k)
-          if p = Part.find_by(pa.id)
+          if p = Part.find(pa.part_id)
             p.update(inventory: p.inventory.send(operator, v) )
           end
         else
