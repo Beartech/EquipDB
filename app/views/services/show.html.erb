@@ -19,5 +19,10 @@
   <%= @service.tool.category.name.singularize + '/' + @service.tool.serial %>
 </p>
 
+<p>
+  <strong>Notes:</strong>
+  <%= @service.note %>
+</p>
+
 <%= link_to 'Edit', edit_tool_service_path %> |
 <%= link_to 'Back', services_path %>    |
