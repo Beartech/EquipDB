@@ -1,11 +1,11 @@
 <%= form_for(@part) do |f| %>
   <% if @part.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@part.errors.count, "error") %> prohibited this part from being saved:</h2>
+      <h4 class="text-error"><%= pluralize(@part.errors.count, "error") %> prohibited this part from being saved:</h4>
 
       <ul>
       <% @part.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+            <h3 class="text-error"><li><%= msg %></li></h3>
       <% end %>
       </ul>
     </div>
