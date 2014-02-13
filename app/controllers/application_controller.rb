@@ -24,11 +24,11 @@ class ApplicationController < ActionController::Base
   end
 
   def set_categories
-    @categories = Category.pluck(:name)
+    @categories = Category.pluck(:name).sort
     @categories.unshift('all')
-    @stations = Station.pluck(:name)
+    @stations = Station.pluck(:name).sort
     @vehicles = Vehicle.pluck(:name).sort
-    @locations = Location.pluck(:name)
+    @locations = Location.pluck(:name).sort
     @location_list = @stations + @vehicles
   end
 
