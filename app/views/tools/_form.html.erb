@@ -1,11 +1,11 @@
     <%= form_for(@tool, :html => { :class => 'form-horizontal' 'autocomplete=off' } )  do |f| %>
       <% if @tool.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@tool.errors.count, 'error') %> prohibited this tool from being saved:</h2>
+          <h4 class="text-error"><%= pluralize(@tool.errors.count, 'error') %> prohibited this tool from being saved:</h4>
 
           <ul>
           <% @tool.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
+          <h4 class="text-error"><li><%= msg %></li></h4>
           <% end %>
           </ul>
         </div>
@@ -18,7 +18,7 @@
         <br>
         <div class="form-inline">
           <%= f.label 'Type' %>
-          <%= f.select :category_id,  @form_menus[:categories] %>
+          <%= f.select :category_id,  @form_menus[:categories].sort %>
         </div>
         <br>
         <div class="form-inline">
@@ -29,7 +29,7 @@
         <br>
         <div class="form-inline">
           <%= f.label :location %>
-          <%= f.select :location_id, @form_menus[:locations] %>
+          <%= f.select :location_id, @form_menus[:locations].sort %>
         </div>
         <br>
         <div class="form-inline" >

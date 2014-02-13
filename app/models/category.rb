@@ -1,4 +1,7 @@
 class Category < ActiveRecord::Base
+  before_destroy :check_empty
+
+
   has_many :tools
   validates :name, :presence => true
   validates :name, :uniqueness => true
@@ -9,6 +12,14 @@ class Category < ActiveRecord::Base
       @cat.destroy
     else
       @cat = Category.new(name: dropdown_params[:add_category].titleize) unless dropdown_params[:add_category] == ''
+    end
+  end
+
+  private
+
+  def check_empty
+    if self.tools.any?
+      false
     end
   end
 end

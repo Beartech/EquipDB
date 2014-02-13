@@ -38,6 +38,7 @@ class ToolsController < ApplicationController
         format.html { redirect_to @tool; gflash :success => 'Tool was successfully created.' }
         format.json { render action: 'show', status: :created, location: @tool }
       else
+        set_form_drop_down
         format.html { render action: 'new' }
         format.json { render json: @tool.errors, status: :unprocessable_entity }
       end
