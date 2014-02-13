@@ -1,4 +1,4 @@
-<h1>ServiceTypes</h1>
+<h2>ServiceTypes</h2>
 
 <table id="service_types_table" class="table pretty" border='0'>
   <thead>
@@ -15,7 +15,7 @@
       <tr>
         <td><%= service.name %></td>
         <td><%= service.hours %></td>
-        <td><%= service.default_parts.join(', ') %></td>
+        <td><%= service.parts.pluck(:name).join(', ') %></td>
         <td><%= link_to 'Show', service %></td>
         <td><%= link_to 'Edit', edit_service_type_path(service) %></td>
         <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>

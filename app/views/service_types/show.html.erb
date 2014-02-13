@@ -1,4 +1,4 @@
-<h1>ServiceType:</h1>
+<h3>ServiceType:</h3>
 
 <p>
   <strong>Name:</strong>
@@ -12,7 +12,7 @@
 
 <p>
   <strong>Default Parts:</strong>
-    <%= @service_type.default_parts.join(',') %>
+    <%= @service_type.parts.pluck(:name).join(',') %>
 </p>
 
 <%= link_to 'Edit', edit_service_type_path(@service_type) %> |
