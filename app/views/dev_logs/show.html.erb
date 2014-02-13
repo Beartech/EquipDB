@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @dev_log.note %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @dev_log.user.username %>
+</p>
+
+<%= link_to 'Edit', edit_dev_log_path(@dev_log) %> |
+<%= link_to 'Back', dev_logs_path %>

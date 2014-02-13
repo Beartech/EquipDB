@@ -1,0 +1,22 @@
+<%= form_for(@dev_log) do |f| %>
+    <% if @dev_log.errors.any? %>
+        <div id='error_explanation'>
+          <h4 class='text-error'><%= pluralize(@dev_log.errors.count, 'error') %> prohibited this log entry from being saved:</h4>
+
+          <ul>
+            <% @dev_log.errors.full_messages.each do |msg| %>
+                <h3 class='text-error'><li><%= msg %></li></h3>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+  <div class="inputs">
+    <%= f.label :note %>
+    <%= f.text_area :note, :class => 'field span8' %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

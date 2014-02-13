@@ -1,0 +1,2 @@
+module DevLogsHelper
+end
