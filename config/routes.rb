@@ -1,6 +1,8 @@
 EquipDB::Application.routes.draw do
 
 
+  resources :dev_logs
+
   get "oauths/oauth"
   get "oauths/callback"
 

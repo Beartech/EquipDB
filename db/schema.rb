@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213161804) do
+ActiveRecord::Schema.define(version: 20140213184126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20140213161804) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "dev_logs", force: true do |t|
+    t.text     "note"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dev_logs", ["user_id"], name: "index_dev_logs_on_user_id", using: :btree
 
   create_table "dropdowns", force: true do |t|
     t.text     "name"
