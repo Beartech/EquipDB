@@ -27,7 +27,8 @@ class ServiceTypesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @service_type.update(part_params)
+      service_type_params[:part_ids] ||= []
+      if @service_type.update(service_type_params)
         format.html { redirect_to @service_type; gflash :success => 'Service Type was successfully updated.' }
       else
         format.html { render action: 'edit' }
@@ -57,7 +58,7 @@ class ServiceTypesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def service_type_params
-    params.require(:service_type).permit(:name, :hours, parts: [])
+    params.require(:service_type).permit(:name, :hours, part_ids: [])
   end
 
 end

@@ -11,24 +11,57 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.hidden_field :tool_id , :value=>params[:tool_id] %>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :due_date %><br>
-    <%= f.text_field :due_date, 'data-behaviour' => 'datepicker' %>
-  </div>
-  <div class="field">
-    <%= f.label :completed %><br>
-    <%= f.text_field :completed, 'data-behaviour' => 'datepicker' %>
-  </div>
-    <div class="field">
-      <%= f.label :note %><br>
-      <%= f.text_area :note %>
+   <div class="row">
+
+    <div class="span4 offset1">
+
+      <div class="form-inline">
+        <%= f.hidden_field :tool_id , :value=>params[:tool_id] %>
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </div>
+    <br>
+      <br>
+      <div class="form-inline">
+        <%= f.label :due_date %><br>
+        <%= f.text_field :due_date, 'data-behaviour' => 'datepicker' %>
+      </div>
+    <br>
+      <br>
+      <div class="form-inline">
+        <%= f.label :completed %><br>
+        <%= f.text_field :completed, 'data-behaviour' => 'datepicker' %>
+      </div>
+     <br>
+       <div class="field">
+         <%= f.label 'Service Type:' %>
+          <%= f.select :service_type_id, ServiceType.all.collect{|s| [s.name, s.id] }, {include_blank: false} %>
+       </div>
+       <br>
+
     </div>
-    <div class="actions">
-    <%= f.submit  %>
-  </div>
+
+     <div class="span4">
+       <div class="form-inline">
+
+         Parts Used <br>
+         <%= text_area_tag :parts_used %>
+             :service_type_id.onchange ->
+                get default parts based on type
+                update text area using parts list
+       </div>
+       <br>
+       <br>
+        <div class="form-inline">
+          <%= f.label :note %><br>
+          <%= f.text_area :note %>
+        </div>
+       <br>
+       <br>
+        <div class="actions">
+        <%= f.submit  %>
+        </div>
+
+     </div>
+    </div>
 <% end %>
