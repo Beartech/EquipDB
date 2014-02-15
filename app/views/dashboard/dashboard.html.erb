@@ -21,7 +21,7 @@
                        <% five_tools.each do |tool| %>
                             <% status_link = tool.in_service ? 'Put Out of Service' : 'Put In Service' %>
 
-                            <% button_link = "#{tool.location.name}-#{tool.category.name.singularize}"+'<br>'+" #{tool.serial}" %>
+                            <% button_link = "#{tool.model}"+'<br>'+"#{tool.category.name.singularize}" %>
                             <div class="btn-group" id="btn<%= tool.id %>" >
 
                              <a class="btn custombutton dropdown-toggle <%= btn_color(tool) %>" data-toggle="dropdown" href="#"  >
@@ -31,6 +31,9 @@
                              <ul class="dropdown-menu">
                                <li><%= link_to status_link, toggle_in_service_path(:id => tool.id), :method => :post, :remote => true %></li>
                                <li><%= link_to 'view Details', tool_path(tool.id) %></li>
+                               <li>Serial: <%= tool.serial %></li>
+                               <li>Condition: <%= tool.condition %></li>
+
                              </ul>
                            </div>
                            <% btn_count += 1 %>
