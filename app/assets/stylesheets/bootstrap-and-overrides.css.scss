@@ -125,3 +125,10 @@ hr.style-eight:after {
   margin-left: 15px;
 }
 
+.btn-dropdown-menu {
+  @extend .dropdown-menu;
+  padding-top: 3px !important;
+  padding-bottom: 5px !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
