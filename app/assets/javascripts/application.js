@@ -54,9 +54,13 @@ $(document).ready(function() {
             });
         }
     });
-    $('#part_list').on('click', 'li a', function() {
+    $('#part_list').on('ajax:success', 'li a', function() {
         $(this).closest('li').remove();
         });
+    $('#removed_part_list').on('ajax:success', 'li a', function(){
+        $(this).closest('li').remove();
+
+    })
 
 });
 

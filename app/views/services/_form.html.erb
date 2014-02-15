@@ -35,7 +35,7 @@
      <br>
        <div class="field">
          <%= f.label 'Service Type:' %>
-          <%= f.select :service_type_id, ServiceType.all.collect{|s| [s.name, s.id] }, {include_blank: false} %>
+          <%= f.select :service_type_id, ServiceType.all.collect{|s| [s.name, s.id] }, {include_blank: true} %>
        </div>
        <br>
 

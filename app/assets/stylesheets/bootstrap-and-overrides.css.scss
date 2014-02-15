@@ -132,3 +132,8 @@ hr.style-eight:after {
   padding-left: 5px !important;
   padding-right: 5px !important;
 }
+
+.itemAdd {
+  @extend .itemDelete;
+  color: green;
+}

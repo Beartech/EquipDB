@@ -1,0 +1,31 @@
+<h1>Scan Out Consumables</h1>
+
+<div class="row">
+
+  <div class="span5 offset1">
+
+    <p>Part To Remove From Inventory:</p>
+    <form>
+      <%= text_field_tag 'remove_part' %>
+    </form>
+
+    <i> To enter parts manually use the [ARROW DOWN] key, the [ENTER] key is disabled on this page</i>
+
+    <br>
+    <br>
+    <div class="well well-small ">
+      <ul id="removed_part_list" >
+        <li><strong>Parts Removed From Inventory:</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="span5">
+    <div class="well well-small ">
+      <ul id="unknownSku">
+        <li><strong>Unrecognized SKUs</strong></li>
+      </ul>
+    </div>
+  </div>
+
+</div>

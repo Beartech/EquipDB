@@ -54,4 +54,7 @@ EquipDB::Application.routes.draw do
 
   get 'new_part_alias' => 'part_aliases#new'
   post 'new_part_alias' => 'part_aliases#create'
+
+  get 'consume_inventory' => 'inventories#consume'
+  post 'consume_inventory' => 'inventories#adjust_inventory'
 end
