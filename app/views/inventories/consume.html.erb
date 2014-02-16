@@ -8,7 +8,9 @@
     <form>
       <%= text_field_tag 'remove_part' %>
     </form>
-
+    <!-- This form uses inventories.js.coffee to take items from the input field
+     and send them via AJAX call to the inventories#adjust_inventory action
+    -->
     <i> To enter parts manually use the [ARROW DOWN] key, the [ENTER] key is disabled on this page</i>
 
     <br>
@@ -19,7 +21,11 @@
       </ul>
     </div>
   </div>
-
+  <!-- <li> items are added via javascript in adjust_inventory.js
+       the text_field is cleared at the end of adjust_inventory.js.
+       When items are removed from the link via the hyperlink, the <li> is
+       deleted by a call in application.js
+  -->
   <div class="span5">
     <div class="well well-small ">
       <ul id="unknownSku">
