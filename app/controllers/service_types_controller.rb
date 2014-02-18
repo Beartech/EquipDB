@@ -50,6 +50,11 @@ class ServiceTypesController < ApplicationController
     end
   end
 
+  def get_default_parts
+    @parts_list = ServiceType.find(service_type_params[:id]).parts
+
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_service_type
@@ -58,7 +63,7 @@ class ServiceTypesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def service_type_params
-    params.require(:service_type).permit(:name, :hours, part_ids: [])
+    params.require(:service_type).permit(:id, :name, :hours, part_ids: [])
   end
 
 end

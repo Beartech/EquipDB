@@ -35,7 +35,7 @@
      <br>
        <div class="field">
          <%= f.label 'Service Type:' %>
-          <%= f.select :service_type_id, ServiceType.all.collect{|s| [s.name, s.id] }, {include_blank: true} %>
+          <%= f.select :service_type_id, ServiceType.all.collect{|s| [s.name, s.id] }, {include_blank: false} %>
        </div>
        <br>
 
@@ -45,10 +45,15 @@
        <div class="form-inline">
 
          Parts Used <br>
-         <%= text_area_tag :parts_used %>
-             :service_type_id.onchange ->
-                get default parts based on type
-                update text area using parts list
+         <%= text_field_tag :parts_used %>
+
+       </div>
+       <br>
+       <div class='control-list' >
+         Default Parts:
+         <ul id="def_parts_list">
+
+         </ul>
        </div>
        <br>
        <br>

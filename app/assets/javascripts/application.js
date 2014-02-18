@@ -46,11 +46,11 @@ $(document).ready(function() {
     $('#selectAll').click(function() {
         if (this.checked) {
             $('.app_tools').each(function() {
-                this.checked = true;
+                (this).checked = true;
             });
         } else {
             $('.app_tools').each(function() {
-                this.checked = false;
+                (this).checked = false;
             });
         }
     });
@@ -59,6 +59,21 @@ $(document).ready(function() {
         });
     $('#removed_part_list').on('ajax:success', 'li a', function(){
         $(this).closest('li').remove();
+
+    });
+
+    $('#service_service_type_id').change(function() {
+        var id = this.value;
+        $.ajax
+        ({
+            url:'/get_default_parts',
+            type:"POST",
+            data: {
+              service_type: {
+                id:  id
+              }
+            }
+        });
 
     })
 

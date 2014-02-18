@@ -1,0 +1,5 @@
+$('#def_parts_list').empty();
+<% @parts_list.each do |part|%>
+$('#def_parts_list').append('<li><a href=#><%= "#{part.sku} - #{part.name}" %><a></li>');
+<% end %>
+
