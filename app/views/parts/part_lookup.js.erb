@@ -1,0 +1,5 @@
+<% if @part != nil %>
+  $('#serv_parts_list').append('<li><%= "#{@part.sku} - #{@part.name}" %><a class="service_parts"> <- Remove</a></li>');
+<% else %>
+  alert('Part Not Found');
+<% end %>

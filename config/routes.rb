@@ -59,4 +59,5 @@ EquipDB::Application.routes.draw do
   post 'consume_inventory' => 'inventories#adjust_inventory'
 
   post 'get_default_parts' => 'service_types#get_default_parts'
+  post 'part_lookup' => 'parts#part_lookup'
 end

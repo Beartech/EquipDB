@@ -1,4 +1,4 @@
-<%= form_for ([@tool, @service]) do |f| %>
+<%= form_for ([@tool, @service]),:html => { :onSubmit => 'getParts' } do |f| %>
   <% if @service.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
@@ -41,22 +41,25 @@
 
     </div>
 
-     <div class="span4">
+     <div class="span7">
        <div class="form-inline">
-
+         <div class="part_list_element">
          Parts Used <br>
          <%= text_field_tag :parts_used %>
-
+         </div>
        </div>
        <br>
-       <div class='control-list' >
-         Default Parts:
-         <ul id="def_parts_list">
 
-         </ul>
+
+
+       <div class="field">
+         <%= f.label 'Default Parts:' %>
+         <%= f.select :service_type_id, ServiceType.all.collect{|s| [s.name, s.id] }, {include_blank: false} %>
        </div>
+
        <br>
        <br>
+
         <div class="form-inline">
           <%= f.label :note %><br>
           <%= f.text_area :note %>
@@ -69,4 +72,6 @@
 
      </div>
     </div>
+
 <% end %>
+

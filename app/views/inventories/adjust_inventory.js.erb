@@ -13,20 +13,3 @@
 $("#part").val("");
 $("#remove_part").val("");
 
-<!--
- This AJAX response is called by the inventories#adjust_inventory action
- If the item being processed isn't recognized it will exist in the unknown_sku hash.
- An item in this hash is added to the #unknownSku <ul>
-
- If the item is being added from the 'new' page it gets added to the <ul> on that page,
- if the item is being subtracted on the 'consume' page, it get added to that  page's <ul>.
-
- The opposite is true if the '-' operator is called by the "Delete, put back in inventory" link
- on the 'new' page. The AJAX call is passing the '-' operator, so the update to inventory happens in
- the controller, but here the '-' case in the if statement is targeting something that does not exist
- on the 'new' page, so nothing happens on the page. The "Delete..." link is deleted by a function in
- application.js on ajax:success. The reverse is true if the 'consume' page's "Replace..." link
- is clicked.
-
- These cases all render the corresponding html.err partial for their page.
- -->

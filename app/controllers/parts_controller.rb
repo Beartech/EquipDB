@@ -68,6 +68,19 @@ class PartsController < ApplicationController
     render 'inventory_levels', layout: "print_table"
   end
 
+  def part_lookup
+
+     if @part = Part.find_by(sku: part_params[:sku])
+       @part
+     elsif @part_alias = PartAlias.find_by(sku: part_params[:sku])
+       @part = @part_alias.part
+     else
+       @part = nil
+     end
+
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_part
