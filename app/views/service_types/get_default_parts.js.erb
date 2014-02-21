@@ -1,6 +1,4 @@
-$('#serv_parts_list').empty();
 
-<% @parts_list.each do |part|%>
-$('#serv_parts_list').append('<li id=<%= part.sku %>><%= "#{part.sku} - #{part.name}"  %><a class="service_parts" ><-Remove</a></li>');
-<% end %>
+
+("#parts_expended").append(<%= escape_javascript(render :partial => 'get_default_parts' ) %>);
 
