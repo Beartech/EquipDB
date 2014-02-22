@@ -62,10 +62,14 @@ class ToolsController < ApplicationController
   # DELETE /tools/1
   # DELETE /tools/1.json
   def destroy
-    @tool.destroy
     respond_to do |format|
-      format.html { redirect_to tools_url }
-      format.json { head :no_content }
+      if @tool.destroy
+        format.html { redirect_to tools_url }
+        format.json { head :no_content }
+      else
+        format.html {redirect_to @tool; gflash :failure => 'You can not destroy this tool'}
+      end
+
     end
   end
 

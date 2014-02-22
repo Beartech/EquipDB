@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def access_denied
-    redirect_back_or_to(:root, :alert => 'Access denied, incorrect role')
+    redirect_back_or_to(:root); gflash :warning =>'Access denied, you do not have authority to do that'
   end
 
   alias_method :login_required,     :require_login
