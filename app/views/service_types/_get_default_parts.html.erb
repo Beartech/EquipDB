@@ -1,3 +1,2 @@
-<%= fields_for(:expended_part_ids) do |e| %>
-    <% e.collection_check_boxes :id, @parts_list, :id, :name %>
-<% end %>
+
+<%= collection_check_boxes :service, :part_ids, @parts_list, :id, :name, {}, {checked: true}  %>

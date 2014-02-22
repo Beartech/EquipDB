@@ -1,6 +1,88 @@
 <h1>Editing service</h1>
 
-<%= render 'form' %>
+<%= form_for ([@tool, @service]) do |f| %>
+    <% if @service.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
+
+          <ul>
+            <% @service.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="row">
+
+      <div class="span4 offset1">
+
+        <div class="form-inline">
+          <%= f.hidden_field :tool_id , :value=>params[:tool_id] %>
+          <%= f.label :name %><br>
+          <%= f.text_field :name %>
+        </div>
+        <br>
+        <br>
+        <div class="form-inline">
+          <%= f.label :due_date %><br>
+          <%= f.text_field :due_date, 'data-behaviour' => 'datepicker' %>
+        </div>
+        <br>
+        <br>
+        <div class="form-inline">
+          <%= f.label :completed %><br>
+          <%= f.text_field :completed, 'data-behaviour' => 'datepicker' %>
+        </div>
+        <br>
+        <div class="field">
+          <%= f.label 'Service Type:' %>
+          <%= f.select :service_type_id, ServiceType.all.collect{|s| [s.name, s.id] }, {include_blank: false} %>
+        </div>
+        <br>
+
+      </div>
+
+      <div class="span7">
+        <div class="form-inline">
+          <div class="part_list_element">
+            Parts Used <br>
+            <%= text_field_tag :parts_used %>
+          </div>
+        </div>
+        <br>
+
+        Parts Used:
+        <div id="parts_used_list" class="checkbox inline">
+
+              <%= f.collection_check_boxes :part_ids, @service.parts, :id, :name %>
+
+
+        </div>
+        <br>
+        Other Parts:
+        <div id="parts_expended">
+
+        </div>
+        <br>
+        <br>
+
+        <div class="form-inline">
+          <%= f.label :note %><br>
+          <%= f.text_area :note %>
+        </div>
+        <br>
+        <br>
+        <div class="actions">
+          <%= f.submit  %>
+        </div>
+
+      </div>
+    </div>
+
+<% end %>
+
+
 
 <br>
 <br>

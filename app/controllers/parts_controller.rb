@@ -69,13 +69,13 @@ class PartsController < ApplicationController
   end
 
   def part_lookup
-
+        #this returns an array to be compatible with the rendering JS
      if @part = Part.find_by(sku: part_params[:sku])
-       @part
+       @parts_list = [@part]
      elsif @part_alias = PartAlias.find_by(sku: part_params[:sku])
-       @part = @part_alias.part
+       @parts_list = [@part_alias.part]
      else
-       @part = nil
+       @part_list = nil
      end
 
 

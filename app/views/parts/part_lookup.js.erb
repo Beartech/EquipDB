@@ -1,5 +1,5 @@
-<% if @part != nil %>
-  $('#serv_parts_list').append('<li><%= "#{@part.sku} - #{@part.name}" %><a class="service_parts"> <- Remove</a></li>');
+<% if @parts_list != nil %>
+  $('#parts_expended').append('<%= escape_javascript(render :partial => 'service_types/get_default_parts' ) %>');
 <% else %>
   alert('Part Not Found');
 <% end %>

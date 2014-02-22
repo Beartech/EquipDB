@@ -52,7 +52,6 @@ class ServiceTypesController < ApplicationController
 
   def get_default_parts
     @parts_list = ServiceType.find(service_type_params[:id]).parts
-
   end
 
   private
