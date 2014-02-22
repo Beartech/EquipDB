@@ -1,2 +1,4 @@
 
-<%= collection_check_boxes :service, :part_ids, @parts_list, :id, :name, {}, {checked: true}  %>
+<%= collection_check_boxes(:service, :part_ids, @parts_list, :id, :sku_name, {}, {checked: true}) do |b| %>
+   <%= b.label { b.check_box + b.object.name + " " + b.object.sku} %>
+   <% end %>

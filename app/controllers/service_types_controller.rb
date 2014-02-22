@@ -37,6 +37,7 @@ class ServiceTypesController < ApplicationController
   end
 
   def show
+    @service_type
   end
 
   def destroy

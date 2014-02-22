@@ -7,4 +7,10 @@ class Part < ActiveRecord::Base
   validates :sku, uniqueness: true
 
 
+
+  def sku_name
+    "#{self.name} / #{self.sku}"
+  end
+
+
 end
