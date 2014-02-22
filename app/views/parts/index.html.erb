@@ -1,8 +1,8 @@
 <h1>Listing parts</h1>
 
-<h2><%= link_to 'Create New Part', new_part_path, :class => 'btn btn-success'  %>
+<h2><%= link_to 'Create New Part', new_part_path, :class => 'btn btn-primary'  %>
     <%= link_to 'Show Current Inventory Levels', parts_inventory_levels_path, :target => '_blank', :class => 'btn btn-warning' %>
-    <%= link_to 'Scan In New Inventory', new_inventory_path, :class => 'btn btn-primary' %>
+    <%= link_to 'Scan In New Inventory', new_inventory_path, :class => 'btn btn-success' %>
     <%= link_to 'Scan Out Consumables', consume_inventory_path, :class => 'btn btn-danger' %></h2>
 
 <table id="parts_table" class="table pretty" border='0'>

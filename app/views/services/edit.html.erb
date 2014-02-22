@@ -51,8 +51,8 @@
           </div>
         </div>
         <br>
-
-        Parts Used:
+        <strong class="alert-danger">Any parts that get unchecked here will be returned to inventory</strong><br>
+        <b>Parts Used:</b> <br>
         <div id="parts_used_list" class="checkbox inline">
 
               <%= f.collection_check_boxes :part_ids, @service.parts, :id, :name %>
@@ -60,8 +60,8 @@
 
         </div>
         <br>
-        Other Parts:
-        <div id="parts_expended">
+        <b>Other Parts:</b> <br>
+        <div id="parts_expended" class="checkbox inline">
 
         </div>
         <br>

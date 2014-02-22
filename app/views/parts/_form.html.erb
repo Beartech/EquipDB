@@ -1,4 +1,4 @@
-<%= form_for(@part) do |f| %>
+<%= form_for(@part, :html => { :class => 'form-horizontal' } ) do |f| %>
   <% if @part.errors.any? %>
     <div id="error_explanation">
       <h4 class="text-error"><%= pluralize(@part.errors.count, "error") %> prohibited this part from being saved:</h4>
@@ -15,32 +15,39 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+    <br>
   <div class="form-inline">
     <%= f.label :sku %><br>
     <%= f.text_field :sku %>
   </div>
+    <br>
   <div class="form-inline">
     <%= f.label :inventory %><br>
     <%= f.text_field :inventory %>
   </div>
+    <br>
   <div class="form-inline">
     <%= f.label :minimum %><br>
     <%= f.text_field :minimum %>
   </div>
+    <br>
   <div class="form-inline">
     <%= f.label :maximum %><br>
     <%= f.text_field :maximum %>
   </div>
+    <br>
   <div> SKU Aliases for this part:
     <% @part.part_aliases.each do |part_alias| %>
           <br><%=  part_alias.sku %>
    <% end %>
+    <br>
   </div>
     <button class="btn" >
     <%= link_to 'New SKU Alias', {:controller => 'part_aliases', :action => 'new', :part_alias => {:part_id => @part.id}}, :popup => ['SKU Alias', 'height=300,width=600'] %>
     </button>
 
     <p>
+    <br>
   <div class="actions">
     <%= f.submit :class => 'btn btn-primary'%>
   </div>
