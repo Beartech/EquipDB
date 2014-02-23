@@ -79,13 +79,24 @@ hr.style-eight:after {
   @extend .btn-submit;
 }
 .btn-app {
-  @extend .btn-inverse;
+  @extend .btn-default;
   width: 85px !important;
   height: 40px !important;
   padding-top: 3px !important;
   padding-bottom: 5px !important;
   padding-left: 5px !important;
   padding-right: 5px !important;
+  background-color: #ff5318;
+  color: #ffffff;
+  background-image: none;
+}
+
+.btn-annual {
+  @extend .btn-app;
+  background-color: #BBBBBB;
+  color: #000000;
+  background-image: none;
+
 }
 
 .label-warn {

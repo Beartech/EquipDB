@@ -96,7 +96,7 @@ class ToolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tool_params
-      params.require(:tool).permit(:name, :serial, :model, :location, :location_id, :category_id, :purchased, :cost, :value, :put_in_service, :loaner, :in_service, :retired, :condition, :note, :tab)
+      params.require(:tool).permit(:name, :serial, :model, :location, :location_id, :category_id, :purchased, :cost, :value, :put_in_service, :loaner, :in_service, :retired, :condition, :annual_service, :note, :tab)
     end
 
     def set_form_drop_down
