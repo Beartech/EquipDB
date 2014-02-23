@@ -26,41 +26,47 @@ class ServicesController < ApplicationController
   # POST /services
   # POST /services.json
   def create
+    Service.transaction do
     @service = Service.new(service_params)
-
-    respond_to do |format|
-      if @service.save
-        format.html { redirect_to tool_path(service_params[:tool_id]); gflash :success => 'Service was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @service }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
-      end
+    @service.parts.each {|part| part.update(inventory: part.inventory - 1) unless part == ''}
+    end
+    if @service.save
+      redirect_to tool_path(service_params[:tool_id]); gflash :success => 'Service was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
   # PATCH/PUT /services/1
   # PATCH/PUT /services/1.json
   def update
-    respond_to do |format|
-      if @service.update(service_params)
-        format.html { redirect_to tool_path(service_params[:tool_id]); gflash :success => 'Service was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
+
+    Service.transaction do
+      current_parts = @service.parts
+      new_parts_list = []
+      service_params[:part_ids].each {|id| new_parts_list << Part.find(id) unless id == ''}
+      put_back_parts = current_parts - new_parts_list
+      put_back_parts.each {|part| part.update(inventory: part.inventory + 1) unless part == ''}
       end
-    end
+
+      if @service.update(service_params)
+        redirect_to tool_path(service_params[:tool_id]); gflash :success => 'Service was successfully updated.'
+      else
+        render action: 'edit'
+      end
+
   end
 
   # DELETE /services/1
   # DELETE /services/1.json
   def destroy
-    @service.destroy
-    respond_to do |format|
-      format.html { redirect_to services_url }
-      format.json { head :no_content }
+    Service.transaction do
+      @service.parts.each {|part| part.update(inventory: part.inventory + 1)}
+      @service.destroy
     end
+
+    redirect_to services_url
+
   end
 
   private
