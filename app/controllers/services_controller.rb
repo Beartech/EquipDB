@@ -26,10 +26,8 @@ class ServicesController < ApplicationController
   # POST /services
   # POST /services.json
   def create
-    Service.transaction do
     @service = Service.new(service_params)
-    @service.parts.each {|part| part.update(inventory: part.inventory - 1) unless part == ''}
-    end
+
     if @service.save
       redirect_to tool_path(service_params[:tool_id]); gflash :success => 'Service was successfully created.'
     else
@@ -40,30 +38,36 @@ class ServicesController < ApplicationController
   # PATCH/PUT /services/1
   # PATCH/PUT /services/1.json
   def update
+     #replace the parts first
 
     Service.transaction do
-      current_parts = @service.parts
-      new_parts_list = []
-      service_params[:part_ids].each {|id| new_parts_list << Part.find(id) unless id == ''}
-      put_back_parts = current_parts - new_parts_list
-      put_back_parts.each {|part| part.update(inventory: part.inventory + 1) unless part == ''}
+      @service.expended_part_ids.uniq.each do |part_id|
+        p = ExpendedPart.find(part_id)
+        p.part.update(inventory: p.part.inventory + @service.expended_part_ids.count(part_id) )
+        p.destroy
       end
 
-      if @service.update(service_params)
-        redirect_to tool_path(service_params[:tool_id]); gflash :success => 'Service was successfully updated.'
-      else
-        render action: 'edit'
+      updated_parts = service_params[:part_ids]
+      updated_parts.delete('')
+      updated_parts.uniq.each do |part_id|
+        p = Part.find(part_id)
+        p.update(inventory: p.inventory - updated_parts.count(part_id))
       end
+    end
+
+    if @service.update(service_params)
+      redirect_to tool_path(service_params[:tool_id]); gflash :success => 'Service was successfully updated.'
+    else
+      render action: 'edit'
+    end
 
   end
 
   # DELETE /services/1
   # DELETE /services/1.json
   def destroy
-    Service.transaction do
-      @service.parts.each {|part| part.update(inventory: part.inventory + 1)}
-      @service.destroy
-    end
+
+    @service.destroy
 
     redirect_to services_url
 
