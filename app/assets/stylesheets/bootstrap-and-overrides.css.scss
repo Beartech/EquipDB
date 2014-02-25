@@ -8,11 +8,12 @@ body { padding-top: 60px; }
 
 .custombutton {
   width: 170px !important;
-  height: 35px !important;
+  height: 40px !important;
   padding-top: 5px !important;
   padding-bottom: 5px !important;
   padding-left: 5px !important;
   padding-right: 5px !important;
+  text-align: 'left' ;
 }
 
 .custom-drop {
@@ -78,13 +79,24 @@ hr.style-eight:after {
   @extend .btn-submit;
 }
 .btn-app {
-  @extend .btn-inverse;
+  @extend .btn-default;
   width: 85px !important;
-  height: 20px !important;
+  height: 40px !important;
   padding-top: 3px !important;
   padding-bottom: 5px !important;
   padding-left: 5px !important;
   padding-right: 5px !important;
+  background-color: #ff5318;
+  color: #ffffff;
+  background-image: none;
+}
+
+.btn-annual {
+  @extend .btn-app;
+  background-color: #BBBBBB;
+  color: #000000;
+  background-image: none;
+
 }
 
 .label-warn {
@@ -124,3 +136,14 @@ hr.style-eight:after {
   margin-left: 15px;
 }
 
+.btn-dropdown-menu {
+  @extend .dropdown-menu;
+  padding-top: 3px !important;
+  padding-bottom: 5px !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+.itemAdd {
+  color: green;
+}

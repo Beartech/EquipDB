@@ -27,7 +27,8 @@ class ServiceTypesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @service_type.update(part_params)
+      service_type_params[:part_ids] ||= []
+      if @service_type.update(service_type_params)
         format.html { redirect_to @service_type; gflash :success => 'Service Type was successfully updated.' }
       else
         format.html { render action: 'edit' }
@@ -36,6 +37,7 @@ class ServiceTypesController < ApplicationController
   end
 
   def show
+    @service_type
   end
 
   def destroy
@@ -49,6 +51,10 @@ class ServiceTypesController < ApplicationController
     end
   end
 
+  def get_default_parts
+    @parts_list = ServiceType.find(service_type_params[:id]).parts
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_service_type
@@ -57,7 +63,7 @@ class ServiceTypesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def service_type_params
-    params.require(:service_type).permit(:name, :hours, parts: [])
+    params.require(:service_type).permit(:id, :name, :hours, part_ids: [])
   end
 
 end

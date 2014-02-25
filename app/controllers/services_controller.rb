@@ -28,39 +28,49 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new(service_params)
 
-    respond_to do |format|
-      if @service.save
-        format.html { redirect_to tool_path(service_params[:tool_id]); gflash :success => 'Service was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @service }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
-      end
+    if @service.save
+      redirect_to tool_path(service_params[:tool_id]); gflash :success => 'Service was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
   # PATCH/PUT /services/1
   # PATCH/PUT /services/1.json
   def update
-    respond_to do |format|
-      if @service.update(service_params)
-        format.html { redirect_to tool_path(service_params[:tool_id]); gflash :success => 'Service was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
+     #replace the parts first
+
+    Service.transaction do
+      @service.expended_part_ids.uniq.each do |part_id|
+        p = ExpendedPart.find(part_id)
+        p.part.update(inventory: p.part.inventory + @service.expended_part_ids.count(part_id) )
+        p.destroy
+      end
+
+      updated_parts = service_params[:part_ids]
+      updated_parts.delete('')
+      updated_parts.uniq.each do |part_id|
+        p = Part.find(part_id)
+        p.update(inventory: p.inventory - updated_parts.count(part_id))
       end
     end
+
+    if @service.update(service_params)
+      redirect_to tool_path(service_params[:tool_id]); gflash :success => 'Service was successfully updated.'
+    else
+      render action: 'edit'
+    end
+
   end
 
   # DELETE /services/1
   # DELETE /services/1.json
   def destroy
+
     @service.destroy
-    respond_to do |format|
-      format.html { redirect_to services_url }
-      format.json { head :no_content }
-    end
+
+    redirect_to services_url
+
   end
 
   private
@@ -74,6 +84,6 @@ class ServicesController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:id, :name, :due_date, :completed, :tool_id, :note)
+      params.require(:service).permit(:id, :name, :due_date, :completed, :tool_id, :service_type_id, :note, :part_ids => [])
     end
 end

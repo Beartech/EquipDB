@@ -1,29 +1,27 @@
-
 <div class="span11">
- <h1 class="well-small alert-success" >Scan Parts Into Inventory</h1>
+<h1 class="well-small alert-error">Scan Out Consumables</h1>
 </div>
-  <div class="row">
+<div class="row">
 
   <div class="span5 offset1">
 
-    <p>Part to add:</p>
-     <form>
-       <%= text_field_tag 'part'%>
-     </form>
+    <p>Part To Remove From Inventory:</p>
+    <form>
+      <%= text_field_tag 'remove_part' %>
+    </form>
     <!-- This form uses inventories.js.coffee to take items from the input field
      and send them via AJAX call to the inventories#adjust_inventory action
     -->
-   <i> To enter parts manually use the [ARROW DOWN] key, the [ENTER] key is disabled on this page</i>
+    <i> To enter parts manually use the [ARROW DOWN] key, the [ENTER] key is disabled on this page</i>
 
     <br>
     <br>
     <div class="well well-small ">
-      <strong>Parts Added To Inventory:</strong>
-      <ul id="part_list" >
-
-        </ul>
+      <ul id="removed_part_list" >
+        <li><strong>Parts Removed From Inventory:</strong></li>
+      </ul>
     </div>
-    </div>
+  </div>
   <!-- <li> items are added via javascript in adjust_inventory.js
        the text_field is cleared at the end of adjust_inventory.js.
        When items are removed from the link via the hyperlink, the <li> is
@@ -31,12 +29,10 @@
   -->
   <div class="span5">
     <div class="well well-small ">
-      <strong>Unrecognized SKUs:</strong>
-    <ul id="unknownSku">
-       <li></li>
-    </ul>
+      <ul id="unknownSku">
+        <li><strong>Unrecognized SKUs</strong></li>
+      </ul>
     </div>
-
   </div>
 
- </div>
+</div>

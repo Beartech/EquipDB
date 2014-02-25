@@ -54,4 +54,10 @@ EquipDB::Application.routes.draw do
 
   get 'new_part_alias' => 'part_aliases#new'
   post 'new_part_alias' => 'part_aliases#create'
+
+  get 'consume_inventory' => 'inventories#consume'
+  post 'consume_inventory' => 'inventories#adjust_inventory'
+
+  post 'get_default_parts' => 'service_types#get_default_parts'
+  post 'part_lookup' => 'parts#part_lookup'
 end

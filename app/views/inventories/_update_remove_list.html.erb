@@ -1,0 +1,3 @@
+
+
+  <%= link_to '<- Replace (Put back in inventory)', consume_inventory_path(:inventory => {:part => @inventory_transaction.array, :operator => '+'}) , :method => :post, :remote => true, :class => 'itemAdd' %>

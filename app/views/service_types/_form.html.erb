@@ -1,4 +1,4 @@
-<%= form_for(@service_type) do |f| %>
+<%= form_for(@service_type, :html => { :class => 'form-horizontal' }) do |f| %>
     <% if @service_type.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@service_type.errors.count, 'error') %> prohibited this part from being saved:</h2>
@@ -11,17 +11,28 @@
         </div>
     <% end %>
 
-    <div class="field">
+    <div class="form-inline">
       <%= f.label :name %><br>
       <%= f.text_field :name %>
     </div>
-    <div class="field">
+
+    <div class="form-inline">
       <%= f.label :hours %><br>
       <%= f.text_field :hours %>
     </div>
+
+    <div class="checkbox inline">
+          <% Part.all.each_slice(12) do |parts| %>
+              <div class="span3">
+              <%= f.collection_check_boxes :part_ids, parts, :id, :name %>
+              </div>
+          <% end %>
+    </div>
+
     <div class="actions">
       <%= f.submit %>
     </div>
     <br>
+
     <%= link_to 'Back', service_types_url %>
 <% end %>

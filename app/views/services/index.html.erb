@@ -19,7 +19,7 @@
         <td><%= service.name %></td>
         <td><%= service.due_date %></td>
         <td><%= service.completed %></td>
-        <td><%= service.tool.category.name.singularize + '/' + service.tool.serial %></td>
+        <td><%= link_to "#{service.tool.category.name.singularize} / #{service.tool.serial}", tool_path(service.tool.id) %></td>
         <td><%= link_to 'Show', tool_service_path(service.tool.id, service.id) %></td>
         <td><%= link_to 'Edit', edit_tool_service_path(service.tool.id, service.id) %></td>
         <td><%= link_to 'Destroy', tool_service_path(service.tool.id, service.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>

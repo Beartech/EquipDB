@@ -1,5 +1,5 @@
 
-<table class="table table-striped" border='1' cellpadding='10' >
+<table class="table" border='1' cellpadding='10' >
   <tr>
     <td>
         <p>
@@ -64,10 +64,25 @@
           <strong>Condition:</strong>
           <%= @tool.condition %>
         </p>
+        <p>
+          <strong>Annual Service Completed:</strong>
+          <%= @tool.annual_service %>
+        </p>
     </td>
     <td style="vertical-align:top" style="padding-left: 30px">
-      <strong>Notes:</strong>
+      <strong>Tool Notes:</strong>
       <%= @tool.note %>
+    </td>
+  </tr>
+  <tr>
+    <td style="vertical-align:top" style="padding-left: 30px">
+      Service Notes:<br>
+     <% @tool.services.each do |service| %>
+       <%= "#{service.created_at.to_formatted_s(:short)}: #{service.note}" %><br>
+     <% end %>
+    </td>
+    <td>
+
     </td>
   </tr>
 </table>

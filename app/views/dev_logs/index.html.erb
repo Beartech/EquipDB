@@ -4,9 +4,9 @@
 <table id="dev_log_table" class="table pretty" border='0'>
   <thead>
     <tr>
+      <th class="sortable">Updated On</th>
       <th class="sortable">Note</th>
       <th class="sortable">User</th>
-      <th class="sortable">Updated On</th>
       <th><i class="icon-search"></i></th>
       <th><i class="icon-edit"></i></th>
       <th><i class="icon-trash"></i></th>
@@ -16,9 +16,9 @@
   <tbody>
     <% @dev_logs.each do |dev_log| %>
       <tr>
+        <td><%= dev_log.updated_at.to_formatted_s(:long) %></td>
         <td><%= dev_log.note %></td>
         <td><%= dev_log.user.username %></td>
-        <td><%= dev_log.updated_at.to_formatted_s(:long) %></td>
         <td><%= link_to 'Show', dev_log %></td>
         <td><%= link_to 'Edit', edit_dev_log_path(dev_log) %></td>
         <td><%= link_to 'Destroy', dev_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -33,6 +33,6 @@
 
 <script>
     $(document).ready(function() {
-        table_sorter( "#dev_log_table").sort(0).hover();
+        table_sorter( "#dev_log_table").sort(1).hover();
     })
 </script>

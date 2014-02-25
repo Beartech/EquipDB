@@ -1,0 +1,5 @@
+<% if @parts_list != nil %>
+  $('#parts_expended').append('<%= escape_javascript(render :partial => 'service_types/get_default_parts' ) %>');
+<% else %>
+  alert('Part Not Found');
+<% end %>
