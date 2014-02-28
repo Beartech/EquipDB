@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140223202442) do
+ActiveRecord::Schema.define(version: 20140225191528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,11 @@ ActiveRecord::Schema.define(version: 20140223202442) do
 
   add_index "expended_parts", ["part_id"], name: "index_expended_parts_on_part_id", using: :btree
   add_index "expended_parts", ["service_id"], name: "index_expended_parts_on_service_id", using: :btree
+
+  create_table "journals", force: true do |t|
+    t.text     "entry"
+    t.datetime "time_stamp"
+  end
 
   create_table "locations", force: true do |t|
     t.string   "name"

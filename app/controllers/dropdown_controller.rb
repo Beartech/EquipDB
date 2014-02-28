@@ -1,4 +1,5 @@
 class DropdownController < ApplicationController
+
   before_action :role_required
   before_action :set_categories
   before_action :set_add_categories
@@ -16,6 +17,7 @@ class DropdownController < ApplicationController
     end
 
     if @cat.save
+      journal("#{@cat.name} #{dropdown_params[:delete_me] == 1 ? 'deleted': 'created'} with ")
       redirect_to drop_down_menus_path; gflash :success => 'Menu was successfully updated.'
     else
       redirect_to drop_down_menus_path; gflash :failure => 'No menu item added'

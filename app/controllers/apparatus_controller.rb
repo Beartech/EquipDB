@@ -1,4 +1,5 @@
 class ApparatusController < ApplicationController
+  include ApplicationHelper
   before_action :set_app, :only => (:index)
   before_action :role_required
   before_action :set_categories
@@ -10,6 +11,7 @@ class ApparatusController < ApplicationController
 
   def update
     if Tool.swap_tools(app_params)
+      journal("#{current_user.username} Apparatus controller#update#swap_tools with #{app_params}")
       redirect_to apparatus_index_path
       gflash :success => 'Equipment Swapped.'
     else
