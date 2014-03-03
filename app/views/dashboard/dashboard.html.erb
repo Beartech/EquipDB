@@ -7,7 +7,7 @@
             <div class="row">
                  <div class="span2">
                    <div class="span1 offset3">
-                       <a class="btn btn-<%= tool_location.tools.pluck(:annual_service).include?(false) ? 'app' : 'annual' %>" href="/location/<%= tool_location.name %>" >
+                       <a class="btn btn-<%= app_annual_service?(tool_location) ? 'app' : 'annual' %>" href="/location/<%= tool_location.name %>" >
                          <%= "#{app}#{tool_location.name}" %>
                        </a>
                    </div>
@@ -25,7 +25,7 @@
                             <div class="btn-group" id="btn<%= tool.id %>" >
 
                              <a class="btn custombutton dropdown-toggle <%= btn_color(tool) %>" data-toggle="dropdown" href="#"  >
-                               <%= tool.annual_service ? raw('<i class="icon-ok icon-white"></i>') : '' %> <%= raw(button_link) %>
+                               <%= annual_service?(tool) ? raw('<i class="icon-ok icon-white"></i>') : '' %> <%= raw(button_link) %>
                              </a>
 
                              <ul class="btn-dropdown-menu">

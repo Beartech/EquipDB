@@ -23,17 +23,17 @@
     <br>
   <div class="form-inline">
     <%= f.label :inventory %><br>
-    <%= f.text_field :inventory %>
+    <%= f.number_field :inventory, :value => 0 %>
   </div>
     <br>
   <div class="form-inline">
     <%= f.label :minimum %><br>
-    <%= f.text_field :minimum %>
+    <%= f.number_field :minimum, :value => 0 %>
   </div>
     <br>
   <div class="form-inline">
     <%= f.label :maximum %><br>
-    <%= f.text_field :maximum %>
+    <%= f.number_field :maximum, :value => 0 %>
   </div>
     <br>
   <div> SKU Aliases for this part:
