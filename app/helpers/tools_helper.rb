@@ -14,7 +14,7 @@ module ToolsHelper
 
   def annual_service?(tool)
     tool.services.each do |service|
-      if service.completed
+      if service.completed && service.service_type
         if (service.service_type.name =~ /annual/i) && (service.completed.year == DateTime.now.year)
           return true
         end
@@ -23,8 +23,8 @@ module ToolsHelper
     false
   end
 
-  def app_annual_service?(app)
-    app.tools.each do |tool|
+  def app_annual_service?(location)
+    location.tools.each do |tool|
       return false unless annual_service?(tool)
     end
     true
