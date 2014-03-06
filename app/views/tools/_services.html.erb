@@ -8,6 +8,7 @@
     <th></th>
   </tr>
   <tr>
+    <th>Name</th>
     <th>Type</th>
     <th>Due date</th>
     <th>Completed</th>
@@ -20,6 +21,7 @@
   <% @tool.services.each do |service| %>
       <tr>
         <td><%= service.name %></td>
+        <td><%= service.service_type.name %></td>
         <td><%= service.due_date %></td>
         <td><%= service.completed %></td>
         <td><%= service.tool.category.name + "/" + service.tool.serial %></td>

@@ -3,6 +3,7 @@
 <table class="table table-striped" border='1' cellpadding='10'>
   <thead>
     <tr>
+      <th>Name</th>
       <th>Type</th>
       <th>Due date</th>
       <th>Completed</th>
@@ -17,6 +18,7 @@
     <% @services.each do |service| %>
       <tr>
         <td><%= service.name %></td>
+        <td><%= service.service_type.name %></td>
         <td><%= service.due_date %></td>
         <td><%= service.completed %></td>
         <td><%= link_to "#{service.tool.category.name.singularize} / #{service.tool.serial}", tool_path(service.tool.id) %></td>
