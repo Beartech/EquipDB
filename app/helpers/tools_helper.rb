@@ -24,10 +24,7 @@ module ToolsHelper
   end
 
   def app_annual_service?(location)
-    location.tools.each do |tool|
-      return false unless annual_service?(tool)
-    end
-    true
+    location.tools.all?{|tool| annual_service?(tool)}
   end
 
 end
