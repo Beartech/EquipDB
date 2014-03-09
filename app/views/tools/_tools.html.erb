@@ -5,7 +5,7 @@
     <% @categories.each do |category| %>
       <% tabnum = @categories.index("#{category}") %>
         <li <%= tabnum == 0 ? 'class=active' : '' %> data-tabNumber="<%= tabnum %>">
-          <a href="#<%= tabnum %>" data-toggle="tab"><%= "#{category} #{tool_count(tabnum)}" %></a>
+          <a href="#<%= tabnum %>" data-toggle="tab"><%= "#{category} #{tool_count(category)}" %></a>
         </li>
 
     <% end %>

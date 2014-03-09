@@ -7,11 +7,6 @@ module ToolsHelper
     end
   end
 
-  def tool_count(tabnum)
-      return(Tool.all.count) if tabnum == 0
-      Tool.where(category_id: tabnum).count
-  end
-
   def annual_service?(tool)
     tool.services.each do |service|
       if service.completed && service.service_type
@@ -25,6 +20,14 @@ module ToolsHelper
 
   def app_annual_service?(location)
     location.tools.all?{|tool| annual_service?(tool)}
+  end
+
+  def tool_count(category)
+    if category == 'all'
+      Tool.all.count
+    else
+        Category.find_by(name: category).tools.count
+    end
   end
 
 end
