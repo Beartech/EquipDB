@@ -36,6 +36,11 @@
     <%= f.number_field :maximum, :value => 0 %>
   </div>
     <br>
+    <div class="form-inline">
+      <%= f.label :consumable %><br>
+      <%= f.check_box :consumable %>
+    </div>
+    <br>
   <div> SKU Aliases for this part:
     <% @part.part_aliases.each do |part_alias| %>
           <br><%=  part_alias.sku %>
