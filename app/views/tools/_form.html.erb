@@ -72,11 +72,6 @@
           <%= f.select(:condition, ['5 - Brand New Condition', '4 - Good Condition', '3 - Serviceable', '2 - Marginal', '1 - Needs To Be Replaced'] ) %>
         </div>
         <br>
-        <div class="field">
-          <%= f.check_box :annual_service %>
-          <%= f.label :annual_service, 'Annual Service Complete', :class => 'checkbox inline' %>
-        </div>
-        <br>
         <div class="form-inline ">
           <%= f.label :note %>
           <%= f.text_area :note %>

@@ -39,7 +39,7 @@
                     <td><%= tool.model %></td>
                     <td><%= tool.location.name %></td>
                     <td><%= tool.in_service %></td>
-                    <td><%= tool.annual_service ? 'Completed' : '' %></td>
+                    <td><%= annual_service?(tool    ) ? 'Completed' : '' %></td>
                     <td><%= tool.condition %></td>
                   </tr>
                 <% end %>
