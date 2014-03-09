@@ -5,6 +5,7 @@ class Part < ActiveRecord::Base
   has_many :expended_parts
 
   validates :sku, uniqueness: true
+  validates_presence_of :inventory, :minimum, :maximum
 
 
 

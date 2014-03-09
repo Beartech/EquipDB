@@ -1,6 +1,64 @@
 <h1>Editing part</h1>
 
-<%= render 'form' %>
+<%= form_for(@part, :html => { :class => 'form-horizontal' } ) do |f| %>
+    <% if @part.errors.any? %>
+        <div id="error_explanation">
+          <h4 class="text-error"><%= pluralize(@part.errors.count, "error") %> prohibited this part from being saved:</h4>
+
+          <ul>
+            <% @part.errors.full_messages.each do |msg| %>
+                <h3 class="text-error"><li><%= msg %></li></h3>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-inline">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+    <br>
+    <div class="form-inline">
+      <%= f.label :sku %><br>
+      <%= f.text_field :sku %>
+    </div>
+    <br>
+    <div class="form-inline">
+      <%= f.label :inventory %><br>
+      <%= f.number_field :inventory %>
+    </div>
+    <br>
+    <div class="form-inline">
+      <%= f.label :minimum %><br>
+      <%= f.number_field :minimum %>
+    </div>
+    <br>
+    <div class="form-inline">
+      <%= f.label :maximum %><br>
+      <%= f.number_field :maximum %>
+    </div>
+    <br>
+    <div class="form-inline">
+      <%= f.label :consumable %><br>
+      <%= f.check_box :consumable %>
+    </div>
+    <br>
+    <div> SKU Aliases for this part:
+      <% @part.part_aliases.each do |part_alias| %>
+          <br><%=  part_alias.sku %>
+      <% end %>
+      <br>
+    </div>
+    <button class="btn" >
+      <%= link_to 'New SKU Alias', {:controller => 'part_aliases', :action => 'new', :part_alias => {:part_id => @part.id}}, :popup => ['SKU Alias', 'height=300,width=600'] %>
+    </button>
+
+    <p>
+      <br>
+    <div class="actions">
+      <%= f.submit :class => 'btn btn-primary'%>
+    </div>
+<% end %>
 
 <%= link_to 'Show', @part %> |
 <%= link_to 'Back', parts_path %>
