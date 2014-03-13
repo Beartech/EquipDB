@@ -94,5 +94,5 @@
 <%= link_to 'Destroy', @tool, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
 
     <p>
-    <%= link_to raw('<i class="icon-arrow-left" ></i> ') + 'Back', tools_path, :class => 'btn btn-large' %>
+    <%= link_to raw('<i class="icon-arrow-left" ></i> ') + 'Back', '/#'+@tool.location.name.delete(' '), :class => 'btn btn-large' %>
     </p>

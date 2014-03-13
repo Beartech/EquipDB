@@ -4,10 +4,11 @@
         <% btn_count = 0 %>
         <% @loc_id.each do |tool_location| %>
           <% /^\d+$/ =~ tool_location.name ? (app = 'App. ') : (app = '')%>
-            <div class="row">
-                 <div class="span2">
-                   <div class="span1 offset3">
-                       <a class="btn btn-<%= app_annual_service?(tool_location) ? 'annual' : 'app' %>" href="/location/<%= tool_location.name %>" >
+            <div id=<%= tool_location.name.delete(' ') %> class="row">
+
+              <div class="span2" >
+                   <div  class="span1 offset3">
+                       <a class="btn btn-<%= app_annual_service?(tool_location) ? 'annual' : 'app' %> " href="/location/<%= tool_location.name %>" >
                          <%= "#{app}#{tool_location.name}" %>
                        </a>
                    </div>
