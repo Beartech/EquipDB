@@ -1,13 +1,13 @@
 <h1>Service Tickets</h1>
 
-<table class="table table-striped" border='1' cellpadding='10'>
+<table id="service_table" class="table pretty" border='0'>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Due date</th>
-      <th>Completed</th>
-      <th>Tool</th>
+      <th class="sortable">Name</th>
+      <th class="sortable">Type</th>
+      <th class="sortable">Due date</th>
+      <th class="sortable">Completed</th>
+      <th class="sortable">Tool</th>
       <th><i class="icon-search"></i></th>
       <th><i class="icon-edit"></i></th>
       <th><i class="icon-trash"></i></th>
@@ -29,7 +29,11 @@
     <% end %>
   </tbody>
 </table>
-
+<script>
+    $(document).ready(function() {
+        table_sorter( "#service_table").sort(0).hover();
+    })
+</script>
 <br>
 
 
