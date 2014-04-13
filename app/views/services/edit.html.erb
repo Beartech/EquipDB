@@ -1,4 +1,4 @@
-<h1>Editing service</h1>
+<h1>Editing service for <%=" #{@tool.name.singularize} / #{@tool.serial}" %></h1>
 
 <%= form_for ([@tool, @service]) do |f| %>
     <% if @service.errors.any? %>

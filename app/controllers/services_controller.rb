@@ -1,7 +1,7 @@
 class ServicesController < ApplicationController
   before_action :role_required
   before_action :set_service, only: [:show, :edit, :update, :destroy]
-  before_action :set_tool, only: [:show, :edit, :update, :destroy]
+  before_action :set_tool, only: [:new, :show, :edit, :update, :destroy]
   # GET /services
   # GET /services.json
   def index
