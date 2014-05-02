@@ -3,14 +3,14 @@ EquipDB::Application.routes.draw do
 
   resources :dev_logs
 
-  get "oauths/oauth"
-  get "oauths/callback"
+  get 'oauths/oauth'
+  get 'oauths/callback'
 
   get 'parts/inventory_levels'  => 'parts#inventory_levels'
   get 'repairs' => 'repairs#index'
   get 'services' => 'services#index'
 
-
+  get 'tools/tool_report' => 'tools#tool_report'
 
   resources :user_sessions
   resources :users
@@ -22,6 +22,7 @@ EquipDB::Application.routes.draw do
     resources :services
     resources :repairs
   end
+
 
   resources :parts
   resources :service_types

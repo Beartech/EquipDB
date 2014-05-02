@@ -1,5 +1,5 @@
 class ToolsController < ApplicationController
-  before_action :set_tool, only: [:show, :edit, :update, :destroy, :toggle_in_service, ]
+  before_action :set_tool, only: [:show, :edit, :update, :destroy, :toggle_in_service, :tool_report ]
   before_action :role_required
 
   before_action :set_categories, :set_tab
@@ -82,7 +82,9 @@ class ToolsController < ApplicationController
      end
   end
 
-
+  def tool_report
+    render 'tool_report', layout: "print_table"
+  end
 
   private
 

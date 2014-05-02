@@ -1,0 +1,36 @@
+<h1><strong>Report for <%=@tool.category.name.singularize %> / <%= @tool.serial %></strong></h1>
+
+<%= link_to_function('Print this Page', 'javascript:print()') %>
+
+<table id="tool_history_table" class="table pretty print" border='0'>
+  <thead>
+  <tr>
+    <th class="sortable">Date</th>
+    <th class="sortable">Service</th>
+    <th class="sortable">Service Type</th>
+    <th class="sortable">Notes</th>
+    <th class="sortable">Parts</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @tool.services.each do |service| %>
+      <tr>
+        <td><%= service.completed %></td>
+        <td><%= service.name %></td>
+        <td><%= service.service_type.name %></td>
+        <td><%= service.note %></td>
+        <td><% service.expended_parts.each do |exp_part| %>
+            <%= exp_part.part.name %>
+            <br>
+            <% end %>
+            </td>
+        </tr>
+  <% end %>
+  </tbody>
+</table>
+<script>
+    $(document).ready(function() {
+        table_sorter( "#tool_history_table").sort(0).hover();
+    })
+</script>

@@ -4,7 +4,7 @@
     <td>
         <p>
           <strong>Type:</strong>
-          <%= @tool.category.name.singularize %>
+          <%= @tool.category.name.singularize %>    <%= link_to 'Tool Report', "tool_report?id=#{@tool.id}", :target => '_blank', :class => 'btn btn-primary' %>
         </p>
 
         <p>
