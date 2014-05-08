@@ -21,7 +21,7 @@
         <td><%= service.service_type.name %></td>
         <td><%= service.note %></td>
         <td><% service.expended_parts.each do |exp_part| %>
-            <%= exp_part.part.name %>
+              ⦿<%= exp_part.part.name %>
             <br>
             <% end %>
             </td>
