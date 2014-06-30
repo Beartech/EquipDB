@@ -6,6 +6,7 @@
 <ul class="dropdown-menu">
   <li><%= link_to status_link, toggle_in_service_path(:id => @tool.id), :method => :post, :remote => true %></li>
   <li><%= link_to 'view Details', tool_path(@tool.id) %></li>
+  <li><%= link_to 'Tool Report', "tools/tool_report?id=#{@tool.id}", :target => '_blank' %></li>
   <li>Serial: <%= @tool.serial %></li>
   <li>Condition: <%= @tool.condition %></li>
 </ul>
