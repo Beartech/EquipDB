@@ -1,7 +1,7 @@
 module ServicesHelper
 
   def get_service_names
-    Service.pluck(:name)
+    Service.pluck(:name).uniq
   end
 
 
