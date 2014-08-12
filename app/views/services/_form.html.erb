@@ -18,7 +18,7 @@
       <div class="form-inline">
         <%= f.hidden_field :tool_id , :value=>params[:tool_id] %>
         <%= f.label :name %><br>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, {rel: 'autocomplete', data_provide: 'typeahead', autocomplete: 'off', data: {source: get_service_names, provide: 'typeahead' }} %>
       </div>
     <br>
       <br>
