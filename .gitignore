@@ -16,7 +16,7 @@
 /tmp
 *idea*
 
-
+/public/localhost.png
 
 # Ignore application configuration
 /config/application.yml

@@ -9,7 +9,11 @@
   <%= yield(:head) %>
   <% if development? %>
       <style type="text/css">
+        <% if ENV['PWD'] == '/Users/uw/rails_class/EquipDB' %>
+          body {background-image:url('/localhost.png');}
+        <% else %>
           body {background-image:url('/test.png');}
+        <% end %>
       </style>
   <% end %>
 </head>
