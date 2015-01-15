@@ -42,7 +42,7 @@ class DropdownController < ApplicationController
   def update_apparatus
     if dropdown_params[:delete_me] == '1'
       @veh = Vehicle.find_by_name(dropdown_params[:add_vehicle].titleize)
-      @veh.destroy
+      @veh.destroy; gflash :error => 'No menu item added'
     else
       @veh = Vehicle.new(name: dropdown_params[:add_vehicle].titleize) unless dropdown_params[:add_vehicle] == ''
     end

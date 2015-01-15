@@ -10,7 +10,7 @@ module ToolsHelper
   def annual_service?(tool)
     tool.services.each do |service|
       if service.completed && service.service_type
-        if (service.service_type.name =~ /annual/i) && (service.completed.year == DateTime.now.year)
+        if (service.service_type.name =~ /annual/i || service.service_type.name =~ /New - Put in Service/i) && (service.completed.year == DateTime.now.year)
           return true
         end
       end
