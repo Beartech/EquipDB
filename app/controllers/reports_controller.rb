@@ -1,11 +1,11 @@
 class ReportsController < ApplicationController
-  before_action :set_tool, only: [:show, :edit, :update, :destroy, :toggle_in_service, :tool_report ]
+  before_action :set_report, only: [:show, :edit, :update, :destroy ]
   before_action :role_required
 
   # GET /reports
   # GET /reports.json
   def index
-    @reports = Report.all
+
 
   end
 
@@ -16,37 +16,34 @@ class ReportsController < ApplicationController
 
   # GET /reports/new
   def new
-    @report = Report.new
+    redirect_to reports_path
 
   end
 
   # GET /report/1/edit
   def edit
+    redirect_to reports_path
   end
 
   # POST /reports
   # POST /reports.json
   def create
+    redirect_to reports_path
 
-    respond_to do |format|
-
-    end
   end
 
   # PATCH/PUT /reoprts/1
   # PATCH/PUT /reports/1.json
   def update
-    respond_to do |format|
+    redirect_to reports_path
 
-    end
   end
 
   # DELETE /reports/1
   # DELETE /reports/1.json
   def destroy
-    respond_to do |format|
+    redirect_to reports_path
 
-    end
   end
 
 
