@@ -1,13 +1,17 @@
 <%= link_to_function('Print this Page', 'javascript:print()') %>
 <br>
 
-<table class="table" border='1'  >
+<table id="parts_table" class="table pretty" border='1'>
   <thead>
-      <tr>
-          <th>Name</th>
-          <th>Sku</th>
-          <th>Need to Order</th>
-      </tr>
+  <tr>
+    <th class="sortable">Name</th>
+    <th class="sortable">Sku</th>
+    <th class="sortable"># On Hand</th>
+    <th class="sortable">Reorder At</th>
+    <th class="sortable">Max Level</th>
+    <th class="sortable">Inventory Level </th>
+    <th class="sortable">Consumable</th>
+  </tr>
   </thead>
 
   <tbody>
@@ -15,8 +19,18 @@
       <tr>
         <td><%= part.name %></td>
         <td><%= part.sku %></td>
-        <td><%= part.maximum - part.inventory %></td>
+        <td><span class="badge <%= inventory_badge(part) %>"><%= part.inventory %></span></td>
+        <td><%= part.minimum %></td>
+        <td><%= part.maximum %></td>
+        <td><%= inventory_indicator(part) %></td>
+        <td><%= part.consumable %></td>
       </tr>
   <% end %>
   </tbody>
 </table>
+<script>
+    $(document).ready(function() {
+        table_sorter( "#parts_table").sort().hover();
+    })
+</script>
+<br>
