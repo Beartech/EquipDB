@@ -15,6 +15,7 @@ class ServiceTypesController < ApplicationController
 
   def create
     @service_type = ServiceType.new(service_type_params)
+    @service_type.hours ||= 0
 
     respond_to do |format|
       if @service_type.save
