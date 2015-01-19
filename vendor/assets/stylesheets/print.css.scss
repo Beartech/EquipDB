@@ -6164,3 +6164,110 @@
     position: fixed;
   }
 
+  .custombutton {
+    width: 170px !important;
+    height: 40px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    text-align: 'left' ;
+  }
+
+  .custom-drop {
+    height: 35px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+
+  hr.style-two {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+  }
+
+  hr.style-eight {
+    padding: 0;
+    width: 90%;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+  }
+  hr.style-eight:after {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
+  }
+
+  .btn-submit {
+    @extend .btn-warning;
+    background-color: hsl(300, 100%, 16%) !important;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b700b7", endColorstr="#510051");
+    background-image: -khtml-gradient(linear, left top, left bottom, from(#b700b7), to(#510051));
+    background-image: -moz-linear-gradient(top, #b700b7, #510051);
+    background-image: -ms-linear-gradient(top, #b700b7, #510051);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b700b7), color-stop(100%, #510051));
+    background-image: -webkit-linear-gradient(top, #b700b7, #510051);
+    background-image: -o-linear-gradient(top, #b700b7, #510051);
+    background-image: linear-gradient(#b700b7, #510051);
+    border-color: #510051 #510051 hsl(300, 100%, 11%);
+    color: #fff !important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .btn-in-service {
+    @extend .btn-success;
+  }
+  .btn-out-service{
+    @extend .btn-warning;
+  }
+  .btn-loaner {
+    @extend .btn-submit;
+  }
+  .btn-app {
+    @extend .btn-default;
+    width: 85px !important;
+    height: 40px !important;
+    padding-top: 3px !important;
+    padding-bottom: 5px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    background-color: #ff5318;
+    color: #ffffff;
+    background-image: none;
+  }
+
+  .btn-annual {
+    @extend .btn-app;
+    background-color: #BBBBBB;
+    color: #000000;
+    background-image: none;
+
+  }
+
+  .label-warn {
+    @extend .label-warning;
+    background-color:  #efb73e;
+  }
+
+  .label-loaner {
+    @extend .label-info;
+    background-color: hsl(300, 100%, 25%);
+  }
+
+  .badge-warn {
+    @extend .badge-warning;
+    background-color: #EFB73E;
+  }
