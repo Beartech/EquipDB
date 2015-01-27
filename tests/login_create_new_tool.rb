@@ -43,3 +43,4 @@ page.click_button 'Create Tool'
 
 page.first('td').text == 'Type: Chainsaw Tool Report Serial: 2015-01-07 00:24:36 -0800 Model: Stihl TS 420 Location: 708 Purchased: 2015-01-07 Put in service: 2015-01-11 Cost: 0.0 Value: 0.0 Status: In Service Loaner Tool?: No Retired: Condition: 4 - Good Condition Annual Service Completed: false'
 
+#load 'create_new_service_ticket.rb'
