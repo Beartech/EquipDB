@@ -1,29 +1,28 @@
-require 'capybara/dsl'
-include Capybara::DSL
+require 'watir-webdriver'
 
-Capybara.default_driver = :selenium
+url = 'https://equip-db-test.herokuapp.com'
 
-page.visit('http://equip-db-test.herokuapp.com')
+page = Watir::Browser.new :firefox
 
-page.fill_in 'Username', with: 'andy'
+page.goto url
 
-page.fill_in 'password', with: 'password'
+page.text_field(id: 'username').set 'andy'
 
-page.click_button 'Login'
+page.text_field(id: 'password').set 'password'
 
-page.find('H1').text == 'Dashboard'
+page.button(:value, 'Login').click
 
-page.click_link 'Equipment'
+page.link(:text, 'Equipment').click
 
-page.click_link '00083'
+page.link(:text, '00083').click
 
-page.click_link 'New Service Ticket'
+page.link(:text, 'New Service Ticket').click
 
 serial = Time.now
 
-page.fill_in 'Name', with: serial
+page.text_field(:name, 'Name').set serial
 
-page.fill_in 'Due date', with: '2015-01-26'
+page.text_field(:name, 'Due date').set '2015-01-26'
 
 page.select 'Annual-Stihl TS400', from: 'service_service_type_id'
 
@@ -39,9 +38,7 @@ page.find(:id, 'default_parts_list').text.include? 'Stihl Fuel Filter 7957114789
 
 page.click_button('Create Service')
 
-#page.table(:id, 'service_tickets_table')[0][0].text == serial
-t = page.tables[1]
+page.find(:id, 'service_tickets_table')[0][0].text == serial
 
-t[0][0].text == serial
 
 sleep 10

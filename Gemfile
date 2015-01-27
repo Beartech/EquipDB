@@ -67,7 +67,7 @@ group :development do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'better_errors'
-
+  gem 'watir-webdriver'
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'active_sanity'
