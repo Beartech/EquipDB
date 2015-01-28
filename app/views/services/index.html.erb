@@ -24,7 +24,28 @@
         <td><%= link_to "#{service.tool.category.name.singularize} / #{service.tool.serial}", tool_path(service.tool.id) %></td>
         <td><%= link_to 'Show', tool_service_path(service.tool.id, service.id) %></td>
         <td><%= link_to 'Edit', edit_tool_service_path(service.tool.id, service.id) %></td>
-        <td><%= link_to 'Destroy', tool_service_path(service.tool.id, service.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><!-- Button to trigger modal -->
+          <a href="#myModal" role="button"  data-toggle="modal">Delete</a>
+
+          <!-- Modal -->
+          <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h3 id="myModalLabel">Waring: This can't be undone!</h3>
+            </div>
+            <div class="modal-body">
+              <p>If you created a record by mistake and want to roll it back, choose the
+                'Roll Back' button. This will put all of the parts used BACK into inventory
+                and destroy the record. If you want to remove this
+              record from the view and archive it, choose the 'Archive' button.</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+              <button class="btn btn-primary">Archive</button>
+              <button class="btn btn-warning"><%= link_to 'Roll Back', tool_service_path(service.tool.id, service.id), method: :delete, data: { confirm: 'Are you sure?' } %></button>
+
+            </div>
+          </div></td>
       </tr>
     <% end %>
   </tbody>

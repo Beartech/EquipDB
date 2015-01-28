@@ -1,7 +1,7 @@
 class ServicesController < ApplicationController
   before_action :role_required
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
-  before_action :set_tool, only: [:new, :show, :edit, :update, :destroy]
+  before_action :set_service, only: [:show, :edit, :update, :destroy, :archive]
+  before_action :set_tool, only: [:new, :show, :edit, :update, :destroy, :archive]
   # GET /services
   # GET /services.json
   def index
@@ -70,6 +70,10 @@ class ServicesController < ApplicationController
     @service.destroy
 
     redirect_to services_url
+
+  end
+
+  def archive
 
   end
 
