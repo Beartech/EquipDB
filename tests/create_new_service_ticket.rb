@@ -1,48 +1,98 @@
+require 'rspec'
+require 'watir'
 require 'watir-webdriver'
+
+browser = Watir::Browser.new
+
+RSpec.configure do |config|
+  config.before(:each) { @browser = browser }
+  config.after(:suite) { browser.close unless browser.nil? }
+end
+
 
 url = 'https://equip-db-test.herokuapp.com'
 
-page = Watir::Browser.new :firefox
 
-page.goto url
+describe 'It should create a new service ticket' do
+  describe 'should complete all steps' do
 
-page.text_field(id: 'username').set 'andy'
+    it 'should log in' do
+      @browser.goto url
 
-page.text_field(id: 'password').set 'password'
+      @browser.text_field(id: 'username').set 'andy'
 
-page.button(:value, 'Login').click
+      @browser.text_field(id: 'password').set 'password'
 
-page.link(:text, 'Equipment').click
+      @browser.button(:value, 'Login').click
 
-page.link(:text, '00083').click
+      @browser.link(:text, 'Parts').click
 
-page.link(:text, 'New Service Ticket').click
+      $part_19_start = @browser.link(:href => /parts\/19/).parent.parent[2].text.to_i
 
-serial = Time.now
+      $part_12_start = @browser.link(:href => /parts\/12/).parent.parent[2].text.to_i
 
-page.text_field(:id, 'service_name').set serial
+      $part_14_start = @browser.link(:href => /parts\/14/).parent.parent[2].text.to_i
 
-page.text_field(:id, 'service_due_date').set '2015-01-26'
+    end
 
-page.select_list(id: 'service_service_type_id').select 'Annual-Stihl TS400'
+    it 'should create the ticket' do
+      @browser.link(:text, 'Equipment').click
 
-page.checkbox(:value, '12').wait_until_present
+      @browser.link(:text, '00083').click
 
-page.checkbox(:value, '12').clear
+      @browser.link(:text, 'New Service Ticket').click
 
-page.checkbox(:id, 'service_part_ids_14').exist?
+      serial = Time.now
 
-page.text_field(:id, 'parts_used').set '795711478995'
+      @browser.text_field(:id, 'service_name').set serial
 
-page.text_field(:id, 'parts_used').send_keys :arrow_down
+      @browser.text_field(:id, 'service_due_date').set '2015-01-26'
 
-page.checkbox(:value, '19').exist?
+      @browser.select_list(id: 'service_service_type_id').select 'Annual-Stihl TS400'
 
-page.button(:name, 'commit').click
+      @browser.checkbox(:value, '12').wait_until_present
 
-page.table(:id, 'service_tickets_table')[0][0].text == serial
+      @browser.checkbox(:value, '12').clear
+
+      @browser.checkbox(:id, 'service_part_ids_14').exist?
+
+      @browser.text_field(:id, 'parts_used').set '795711478995'
+
+      @browser.text_field(:id, 'parts_used').send_keys :arrow_down
+
+      sleep 2  #need to wait for the JS checkbox to appear
+
+      @browser.checkbox(:value, '19').exist?
+
+      @browser.button(:name, 'commit').click
+
+      @browser.table(:id, 'service_tickets_table')[2][0].text.should == "#{serial}"
+    end
+
+    it 'should check that inventory is correct' do
+      @browser.link(:text, 'Parts').click
+
+      @part_19_count = @browser.link(:href => /parts\/19/).parent.parent[2].text.to_i
+
+      @part_12_count = @browser.link(:href => /parts\/12/).parent.parent[2].text.to_i
+
+      @part_14_count = @browser.link(:href => /parts\/14/).parent.parent[2].text.to_i
+
+      @part_12_count.should == $part_12_start
+
+      @part_14_count.should == ($part_14_start - 1)
+
+      @part_19_count.should == ($part_19_start - 1)
+    end
+
+    it 'should put parts back when deleted' do
+      @browser.link(:text, 'Service').click
 
 
-sleep 10
+    end
 
-page.close
+  end
+
+
+
+end

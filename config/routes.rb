@@ -27,7 +27,7 @@ EquipDB::Application.routes.draw do
   resources :parts
   resources :service_types
 
-  root :to => "dashboard#dashboard"
+  root :to => 'dashboard#dashboard'
   post 'services' => 'services#create'
   post 'repairs' => 'repairs#create'
 
@@ -41,8 +41,8 @@ EquipDB::Application.routes.draw do
   put 'update_apparatus' => 'dropdown#update_apparatus'
   #patch 'edit_drop_down_menus' => 'dropdown'
 
-  get "oauth/callback" => "oauths#callback"
-  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+  get 'oauth/callback' => 'oauths#callback'
+  get 'oauth/:provider' => 'oauths#oauth', :as => :auth_at_provider
 
   post 'toggle_in_service' => 'tools#toggle_in_service'
 

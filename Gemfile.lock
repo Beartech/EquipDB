@@ -97,8 +97,10 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     commonjs (0.2.6)
+    commonwatir (4.0.0)
     daemons (1.1.9)
     debug_inspector (0.0.2)
+    diff-lcs (1.2.4)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
@@ -190,6 +192,14 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
+    rspec (2.13.0)
+      rspec-core (~> 2.13.0)
+      rspec-expectations (~> 2.13.0)
+      rspec-mocks (~> 2.13.0)
+    rspec-core (2.13.1)
+    rspec-expectations (2.13.0)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.13.1)
     rubyzip (1.1.4)
     sass (3.2.9)
     sass-rails (4.0.0.rc2)
@@ -234,6 +244,9 @@ GEM
     uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    watir (5.0.0)
+      commonwatir (~> 4)
+      watir-webdriver
     watir-webdriver (0.6.11)
       selenium-webdriver (>= 2.18.0)
     websocket (1.0.7)
@@ -266,6 +279,7 @@ DEPENDENCIES
   rails3_serve_static_assets!
   rails_12factor
   rails_log_stdout!
+  rspec
   sass-rails (~> 4.0.0.rc1)
   sdoc
   selenium-webdriver
@@ -275,5 +289,6 @@ DEPENDENCIES
   thin
   turbolinks
   uglifier (>= 1.3.0)
+  watir
   watir-webdriver
   will_paginate

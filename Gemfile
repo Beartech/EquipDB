@@ -71,6 +71,8 @@ group :development do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'active_sanity'
+  gem 'rspec'
+  gem 'watir'
 end
 
 gem 'sorcery', github:'NoamB/sorcery', branch:'master'
