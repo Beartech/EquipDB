@@ -10,8 +10,10 @@ RSpec.configure do |config|
 end
 
 
-url = 'https://equip-db-test.herokuapp.com'
+#url = 'https://equip-db-test.herokuapp.com' ; user = 'andy' ; password = 'password'
+url = 'localhost:3000' ; user = 'andy' ; password = 'equH3i2r7e9d5'
 
+serial = Time.now
 
 describe 'It should create a new service ticket' do
   describe 'should complete all steps' do
@@ -19,11 +21,11 @@ describe 'It should create a new service ticket' do
     it 'should log in' do
       @browser.goto url
 
-      @browser.text_field(id: 'username').set 'andy'
+      @browser.text_field(id: 'username').set user
 
-      @browser.text_field(id: 'password').set 'password'
+      @browser.text_field(id: 'password').set password
 
-      @browser.button(:value, 'Login').click
+      @browser.button(:text, 'Login').click
 
       @browser.link(:text, 'Parts').click
 
@@ -41,8 +43,6 @@ describe 'It should create a new service ticket' do
       @browser.link(:text, '00083').click
 
       @browser.link(:text, 'New Service Ticket').click
-
-      serial = Time.now
 
       @browser.text_field(:id, 'service_name').set serial
 
@@ -88,9 +88,33 @@ describe 'It should create a new service ticket' do
     it 'should put parts back when deleted' do
       @browser.link(:text, 'Service').click
 
+      @browser.td(class: 'service_name', text: serial.to_s).parent[7].link.click
+      sleep 2
+      @browser.driver.switch_to.alert.accept
+      sleep 2
+      @browser.link(:text, 'Parts').click
+      sleep 2
+      @part_19_count = @browser.link(:href => /parts\/19/).parent.parent[2].text.to_i
+
+      @part_12_count = @browser.link(:href => /parts\/12/).parent.parent[2].text.to_i
+
+      @part_14_count = @browser.link(:href => /parts\/14/).parent.parent[2].text.to_i
+
+      @part_14_count.should == $part_14_start
+
+      @part_12_count.should == $part_12_start
+
+      @part_19_count.should == $part_19_start
 
     end
 
+    it 'should no longer exist' do
+      @browser.link(:text, 'Service').click
+
+      @browser.text.should_not =~ /serial.to_s/
+
+    end
+    sleep 30
   end
 
 

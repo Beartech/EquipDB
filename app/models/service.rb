@@ -30,8 +30,8 @@ class Service < ActiveRecord::Base
 
   def withdraw_parts
     Service.transaction do
-      part_ids = self.part_ids.uniq
-      part_ids.each do |part_id|
+      part_list = self.part_ids.uniq
+      part_list.each do |part_id|
         p = Part.find(part_id)
         p.update(inventory: p.inventory - self.part_ids.count(part_id) )
       end
