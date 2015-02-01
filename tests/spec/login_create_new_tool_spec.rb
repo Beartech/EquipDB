@@ -11,8 +11,8 @@ RSpec.configure do |config|
 end
 
 
-#url = 'https://equip-db-test.herokuapp.com' ; user = 'andy' ; password = 'password'
-url = 'localhost:3000' ; user = 'andy' ; password = 'equH3i2r7e9d5'
+url = 'https://equip-db-test.herokuapp.com'
+#url = 'localhost:3000'
 
 serial = Time.now
 
@@ -64,7 +64,7 @@ describe 'it should log in and create a new tool' do
 
     @browser.link(text: 'Equipment').click
 
-    @browser.div(id: 'tools').link(text: serial).click
+    @browser.div(id: 'tools').link(text: serial.to_s).click
 
     @browser.table(id: 'show_tool_table')[0][0].text.should == "Type: Chainsaw Tool Report\nSerial: #{serial}\nModel: Stihl TS 420\nLocation: 708\nPurchased: 2015-01-07\nPut in service: 2015-01-11\nCost: 500.0\nValue: 500.0\nStatus: In Service\nLoaner Tool?: No\nRetired:\nCondition: 4 - Good Condition\nAnnual Service Completed: false"
 
@@ -72,7 +72,7 @@ describe 'it should log in and create a new tool' do
 
     @browser.driver.switch_to.alert.accept
 
-    @browser.div(id: 'tools').link(text: serial).exist? == false
+    @browser.div(id: 'tools').link(text: serial.to_s).exist? == false
 
 
 

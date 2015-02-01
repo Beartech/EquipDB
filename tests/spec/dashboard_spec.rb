@@ -9,8 +9,8 @@ RSpec.configure do |config|
   config.after(:suite) { browser.close unless browser.nil? }
 end
 
-#url = 'https://equip-db-test.herokuapp.com' ; user = 'andy' ; password = 'password'
-url = 'localhost:3000' ; user = 'andy' ; password = 'equH3i2r7e9d5'
+url = 'https://equip-db-test.herokuapp.com'
+#url = 'localhost:3000'
 
 describe 'The Dashboard' do
 
@@ -52,7 +52,7 @@ describe 'The Dashboard' do
       @browser.div(id: button_id).link.class_name =~ /btn-out-service/
 
       @browser.div(id: button_id).li(text: 'Put In Service').present?
-
+      sleep 1
       @browser.div(id: button_id).li(text: 'Put In Service').link.click
 
       @browser.div(id: button_id).li(text: 'Put Out of Service').present?

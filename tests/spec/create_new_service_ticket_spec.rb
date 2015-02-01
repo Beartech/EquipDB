@@ -11,8 +11,8 @@ RSpec.configure do |config|
 end
 
 
-#url = 'https://equip-db-test.herokuapp.com' ; user = 'andy' ; password = 'password'
-url = 'localhost:3000' ; user = 'andy' ; password = 'equH3i2r7e9d5'
+url = 'https://equip-db-test.herokuapp.com'
+#url = 'localhost:3000'
 
 serial = Time.now
 
