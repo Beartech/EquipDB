@@ -3,6 +3,7 @@ require 'watir'
 require 'watir-webdriver'
 
 browser = Watir::Browser.new
+browser.window.maximize
 
 RSpec.configure do |config|
   config.before(:each) { @browser = browser }
@@ -60,6 +61,20 @@ describe 'it should log in and create a new tool' do
     @browser.button(text: 'Create Tool').click
 
     @browser.table(id: 'show_tool_table')[0][0].text.should == "Type: Chainsaw Tool Report\nSerial: #{serial}\nModel: Stihl TS 420\nLocation: 708\nPurchased: 2015-01-07\nPut in service: 2015-01-11\nCost: 500.0\nValue: 500.0\nStatus: In Service\nLoaner Tool?: No\nRetired:\nCondition: 4 - Good Condition\nAnnual Service Completed: false"
+
+    @browser.link(text: 'Equipment').click
+
+    @browser.div(id: 'tools').link(text: serial).click
+
+    @browser.table(id: 'show_tool_table')[0][0].text.should == "Type: Chainsaw Tool Report\nSerial: #{serial}\nModel: Stihl TS 420\nLocation: 708\nPurchased: 2015-01-07\nPut in service: 2015-01-11\nCost: 500.0\nValue: 500.0\nStatus: In Service\nLoaner Tool?: No\nRetired:\nCondition: 4 - Good Condition\nAnnual Service Completed: false"
+
+    @browser.link(text: 'Destroy').click
+
+    @browser.driver.switch_to.alert.accept
+
+    @browser.div(id: 'tools').link(text: serial).exist? == false
+
+
 
   end
 

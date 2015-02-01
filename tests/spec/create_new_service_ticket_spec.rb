@@ -3,6 +3,7 @@ require 'watir'
 require 'watir-webdriver'
 
 browser = Watir::Browser.new
+browser.window.maximize
 
 RSpec.configure do |config|
   config.before(:each) { @browser = browser }
@@ -89,11 +90,11 @@ describe 'It should create a new service ticket' do
       @browser.link(:text, 'Service').click
 
       @browser.td(class: 'service_name', text: serial.to_s).parent[7].link.click
-      sleep 2
+      sleep 1
       @browser.driver.switch_to.alert.accept
-      sleep 2
+      sleep 1
       @browser.link(:text, 'Parts').click
-      sleep 2
+      sleep 1
       @part_19_count = @browser.link(:href => /parts\/19/).parent.parent[2].text.to_i
 
       @part_12_count = @browser.link(:href => /parts\/12/).parent.parent[2].text.to_i

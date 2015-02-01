@@ -4,8 +4,7 @@ class ApparatusController < ApplicationController
   before_action :set_categories
 
   def index
-    loc = Location.find_by_name(@loc)
-    @tools = Tool.where(location_id: loc.id).order(:name)
+    @tools = Tool.where(location_id: @loc.id).order(:name)
   end
 
   def update
@@ -21,7 +20,7 @@ class ApparatusController < ApplicationController
   private
 
   def set_app
-    @loc = app_params[:app]
+    @loc = Location.find_by_name(app_params[:app])
   end
 
   def app_params

@@ -91,7 +91,7 @@
 <%= render 'services' %>
 
 <%= link_to 'Edit', edit_tool_path(@tool), :class => 'btn btn-warning' %>
-<%= link_to 'Destroy', @tool, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+<%= link_to 'Destroy', tool_path(@tool), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
 
     <p>
     <%= link_to raw('<i class="icon-arrow-left" ></i> ') + 'Back', '/#'+@tool.location.name.delete(' '), :class => 'btn btn-large' %>

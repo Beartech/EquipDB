@@ -1,20 +1,21 @@
 <%= form_for(:apparatus, {:url => :tool_location_update }) do |f| %>
     <div class="row">
       <div class="span4 offset1" >
-
+        <div id="app_tools">
         <input class="app_tools" type="checkbox" id="selectAll" value="selectAll"> Select / Deselect All<br/><br/>
-
+        <div id= "tool_checkbox_<%= @loc.name %>" >
         <% @tools.each do |tool| %>
 
-            <div class="field">
-
+            <div class="field app-tools">
+              <span class=<%= tool.loaner ? 'loaner' : 'non-loaner' %> >
               <%= f.check_box 'relocate', {:class => 'inline app_tools', :multiple => true}, tool.id, nil %>
-              <span class=<%= tool.loaner ? 'loaner' : '' %> ><%= f.label :apparatus, tool.category.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %></span>
+              <%= f.label :apparatus, tool.category.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %>
+              </span>
 
             </div>
-
         <% end %>
-
+        </div>
+        </div>
       </div>
       <div class="span7">
 
@@ -31,10 +32,10 @@
         Pull from Loaner Pool:
         <% get_loaners.each do |tool| %>
 
-            <div class="field">
+            <div class="field loaner-tools">
 
               <%= f.check_box 'swap', {:class => 'inline', :multiple => true}, tool.id, nil %>
-              <span class=<%= tool.loaner ? 'loaner' : '' %> ><%= f.label :loaners, tool.category.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %></span>
+              <span class=<%= tool.loaner ? 'loaner' : 'non-loaner' %> ><%= f.label :loaners, tool.category.name.singularize + ' ' + tool.serial, :class => 'checkbox inline' %></span>
 
             </div>
 
