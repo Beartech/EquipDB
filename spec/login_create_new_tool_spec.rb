@@ -1,6 +1,7 @@
 require 'rspec'
 require 'watir'
 require 'watir-webdriver'
+require 'logins'
 
 browser = Watir::Browser.new
 browser.window.maximize
@@ -11,8 +12,9 @@ RSpec.configure do |config|
 end
 
 
-url = 'https://equip-db-test.herokuapp.com'
-#url = 'localhost:3000'
+#url = 'https://equip-db-test.herokuapp.com'
+url = 'localhost:3000'
+
 
 serial = Time.now
 
@@ -21,9 +23,9 @@ describe 'it should log in and create a new tool' do
   it 'should log in' do
     @browser.goto url
 
-    @browser.text_field(id: 'username').set user
+    @browser.text_field(id: 'username').set Logins::user
 
-    @browser.text_field(id: 'password').set password
+    @browser.text_field(id: 'password').set Logins::password
 
     @browser.button(:text, 'Login').click
 

@@ -1,5 +1,6 @@
 require 'rspec'
 require 'watir-webdriver'
+require 'logins'
 
 browser = Watir::Browser.new
 browser.window.maximize
@@ -9,8 +10,8 @@ RSpec.configure do |config|
   config.after(:suite) { browser.close unless browser.nil? }
 end
 
-url = 'https://equip-db-test.herokuapp.com'
-#url = 'localhost:3000'
+#url = 'https://equip-db-test.herokuapp.com'
+url = 'localhost:3000'
 
 describe 'The Dashboard' do
 
@@ -19,13 +20,13 @@ describe 'The Dashboard' do
     it 'should log in' do
       @browser.goto url
 
-      @browser.text_field(id: 'username').set user
+      @browser.text_field(id: 'username').when_present.set Logins::user
 
-      @browser.text_field(id: 'password').set password
+      @browser.text_field(id: 'password').set Logins::password
 
       @browser.button(:text, 'Login').click
 
-      @browser.link(:text, 'Dashboard').click
+      @browser.link(:text, 'Dashboard').when_present.click
 
       @browser.ul(class: 'nav').li(text: 'Edit Profile').present?
 
@@ -83,7 +84,7 @@ describe 'The Dashboard' do
 
       app_name = @browser.link(class: 'btn-app').text
 
-      @browser.link(text: app_name).click
+      @browser.link(text: app_name).when_present.click
 
       @browser.h1(text: "#{app_name} Swap Equipment").exist?
 
@@ -119,7 +120,7 @@ describe 'The Dashboard' do
 
       @browser.link(text: 'Dashboard').click
 
-      @browser.link()
+      @browser.link
 
 
     end

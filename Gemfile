@@ -73,6 +73,7 @@ group :development do
   gem 'active_sanity'
   gem 'rspec'
   gem 'watir'
+  gem 'rspec-rails'
 end
 
 gem 'sorcery', github:'NoamB/sorcery', branch:'master'
