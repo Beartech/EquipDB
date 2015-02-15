@@ -22,7 +22,7 @@ describe 'The Dashboard' do
 
       @browser.text_field(id: 'username').when_present.set Logins::user
 
-      @browser.text_field(id: 'password').set Logins::password
+      @browser.text_field(id: 'password').set Logins::password(url)
 
       @browser.button(:text, 'Login').click
 

@@ -25,7 +25,7 @@ describe 'it should log in and create a new tool' do
 
     @browser.text_field(id: 'username').set Logins::user
 
-    @browser.text_field(id: 'password').set Logins::password
+    @browser.text_field(id: 'password').set Logins::password(url)
 
     @browser.button(:text, 'Login').click
 

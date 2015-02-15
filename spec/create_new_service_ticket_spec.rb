@@ -26,7 +26,7 @@ describe 'It should create a new service ticket' do
 
       @browser.text_field(id: 'username').set Logins::user
 
-      @browser.text_field(id: 'password').set Logins::password
+      @browser.text_field(id: 'password').set Logins::password(url)
 
       @browser.button(:text, 'Login').click
 
