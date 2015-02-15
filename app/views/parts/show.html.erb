@@ -29,7 +29,7 @@
   <%= @part.consumable %>
 </p>
 
-<div> <strong>SKU Aliases for this part:</strong>
+<div id="sku_aliases"> <strong>SKU Aliases for this part:</strong>
   <% @part.part_aliases.each do |part_alias| %>
       <br><%=  part_alias.sku %>
   <% end %>

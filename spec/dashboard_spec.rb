@@ -15,8 +15,6 @@ url = 'localhost:3000'
 
 describe 'The Dashboard' do
 
-  describe 'should have lots of buttons that do things' do
-
     it 'should log in' do
       @browser.goto url
 
@@ -136,5 +134,4 @@ describe 'The Dashboard' do
 
     end
 
-  end
 end

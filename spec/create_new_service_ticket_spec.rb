@@ -19,7 +19,6 @@ url = 'localhost:3000'
 serial = Time.now
 
 describe 'It should create a new service ticket' do
-  describe 'should complete all steps' do
 
     it 'should log in' do
       @browser.goto url
@@ -117,9 +116,5 @@ describe 'It should create a new service ticket' do
       @browser.text.should_not =~ /serial.to_s/
 
     end
-    sleep 30
-  end
-
-
 
 end
