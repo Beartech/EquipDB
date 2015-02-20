@@ -39,6 +39,9 @@ $(document).ready(function() {
     });
 
     $('#filter1').focus();
+
+    $('#parts_filter').focus();
+
     $('#part').focus();
 
     $('#part_sku').focus();

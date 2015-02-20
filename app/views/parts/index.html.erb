@@ -1,4 +1,9 @@
 <h1>Listing parts</h1>
+<br>
+<label for="parts_filter">Find Part</label>
+<input type="text" name="parts_filter" value="" id="parts_filter">
+Press the "esc" key to clear filter
+<br>
 
 <h2><%= link_to 'Create New Part', new_part_path, :class => 'btn btn-primary'  %>
     <%= link_to 'Show Current Inventory Levels', parts_inventory_levels_path, :target => '_blank', :class => 'btn btn-warning' %>
@@ -40,7 +45,7 @@
 </table>
 <script>
     $(document).ready(function() {
-        table_sorter( "#parts_table").sort(0).hover();
+        table_sorter( "#parts_table").sort(0).hover().filter( '#parts_filter' );
     })
 </script>
 <br>
