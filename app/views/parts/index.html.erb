@@ -28,9 +28,12 @@ Press the "esc" key to clear filter
 
   <tbody>
     <% @parts.each do |part| %>
+     <% alias_sku = part.part_aliases.pluck(:sku) %>
       <tr>
         <td><%= part.name %></td>
-        <td><%= part.sku %></td>
+        <td><%= part.sku %>
+          <div class="alias_sku"> <%= alias_sku.join('<br />').html_safe %> </div>
+        </td>
         <td><span class="badge <%= inventory_badge(part) %>"><%= part.inventory %></span></td>
         <td><%= part.minimum %></td>
         <td><%= part.maximum %></td>
