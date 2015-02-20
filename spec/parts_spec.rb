@@ -15,6 +15,7 @@ end
 #url = 'https://equip-db-test.herokuapp.com'
 url = 'localhost:3000'
 
+#slow???
 
 sku = Time.now
 
