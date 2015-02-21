@@ -27,5 +27,5 @@
     </div>
     <br>
     <%= f.submit :class => 'btn btn-primary' %>
-    <%= link_to 'Cancel', :back, {:class=>'btn btn-default'} %>
+    <%= link_to 'Cancel', edit_part_path(@part_alias.part.id), {:class=>'btn btn-default'} %>
 <% end %>
