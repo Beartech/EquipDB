@@ -15,10 +15,23 @@ def create
   end
 end
 
+def destroy
+  set_part_alias
+  part_id = @part_alias.part_id
+  @part_alias.destroy
+  respond_to do |format|
+    format.html { redirect_to edit_part_path(part_id) }
+  end
+end
+
 private
 
+def set_part_alias
+  @part_alias = PartAlias.find(params[:id])
+end
+
 def part_alias_params
-  params.require(:part_alias).permit(:sku, :part_id)
+  params.require(:part_alias).permit(:sku, :part_id, :id)
 end
 
 end

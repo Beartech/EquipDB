@@ -50,13 +50,14 @@
       <br>
     </div>
     <button class="btn" >
-      <%= link_to 'New SKU Alias', {:controller => 'part_aliases', :action => 'new', :part_alias => {:part_id => @part.id}}, :popup => ['SKU Alias', 'height=300,width=600'] %>
+      <%= link_to 'Add or Remove SKU Alias', {:controller => 'part_aliases', :action => 'new', :part_alias => {:part_id => @part.id}}, :popup => ['SKU Alias', 'height=300,width=600'] %>
     </button>
 
     <p>
       <br>
     <div class="actions">
       <%= f.submit :class => 'btn btn-primary'%>
+      <%= link_to 'Cancel', parts_path, {:class=>'btn btn-default'} %>
     </div>
 <% end %>
 

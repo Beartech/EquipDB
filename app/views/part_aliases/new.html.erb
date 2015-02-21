@@ -2,11 +2,11 @@
 
 <p>current aliases:</p>
 <% @part_alias.part.part_aliases.each do |part_alias| %>
-    <%= part_alias.sku %> <br>
+    <%= part_alias.sku %> <%= link_to 'Delete', part_alias_path(part_alias.id), method: :delete, data: { confirm: 'Delete Alias?'} %><br>
     <% end %>
 
 
-<%= form_for(@part_alias, url: new_part_alias_path) do |f| %>
+<%= form_for @part_alias do |f| %>
 
     <% if @part_alias.errors.any? %>
         <div id="error_explanation">
@@ -26,5 +26,6 @@
     <%= f.text_field :sku %>
     </div>
     <br>
-    <%= f.submit :class => 'btn' %>
+    <%= f.submit :class => 'btn btn-primary' %>
+    <%= link_to 'Cancel', :back, {:class=>'btn btn-default'} %>
 <% end %>
