@@ -9,7 +9,7 @@
   <%= yield(:head) %>
   <% if development? %>
       <style type="text/css">
-        <% if ENV['PWD'] == '/Users/uw/rails_class/EquipDB' %>
+        <% if ENV['PWD'] == '/Users/andy/rails_class/EquipDB' %>
           body {background-image:url('/localhost.png');}
         <% else %>
           body {background-image:url('/test.png');}
@@ -41,10 +41,10 @@
   </div>
 </div>
 <div class="row">
-  <div class="span4">
+  <div class="span2 offset1">
     <%=  yield :role_sidebar  %>
   </div>
-  <div class="span8">
+  <div class="span9">
     <%=  yield :role_main     %>
   </div>
 </div>

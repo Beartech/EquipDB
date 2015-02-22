@@ -1,4 +1,5 @@
 class PartAliasesController < ApplicationController
+  before_action :role_required
 
 def new
    @part_alias = PartAlias.new(part_id: part_alias_params[:part_id])

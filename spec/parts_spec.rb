@@ -74,7 +74,7 @@ describe 'Parts Menu' do
 
     row[8].link.click
 
-    @browser.link(text: 'New SKU Alias').click
+    @browser.link(text: 'Add or Remove SKU Alias').click
 
     @browser.h1(text: /Add Alias for/).present?
 
