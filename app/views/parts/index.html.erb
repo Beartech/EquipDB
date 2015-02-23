@@ -19,7 +19,7 @@ Press the "esc" key to clear filter
       <th class="sortable">Reorder At</th>
       <th class="sortable">Max Level</th>
       <th class="sortable">Inventory Level </th>
-      <th class="sortable">Consumable</th>
+      <th class="sortable">Category</th>
       <th><i class="icon-search"></i> </th>
       <th><i class="icon-edit"></i></th>
       <th><i class="icon-trash"></i></th>
@@ -38,7 +38,7 @@ Press the "esc" key to clear filter
         <td><%= part.minimum %></td>
         <td><%= part.maximum %></td>
         <td><%= inventory_indicator(part) %></td>
-        <td><%= part.consumable %></td>
+        <td><%= part.category %></td>
         <td><%= link_to 'Show', part %></td>
         <td><%= link_to 'Edit', edit_part_path(part) %></td>
         <td><%= link_to 'Destroy', part, method: :delete, data: { confirm: 'Are you sure?' } %></td>

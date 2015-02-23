@@ -22,6 +22,11 @@
   </div>
     <br>
   <div class="form-inline">
+    <%= f.label :category %><br>
+    <%= f.text_field :category,'data-provide' => 'typeahead', 'data-source' => part_type_ahead('category') %>
+  </div>
+    <br>
+  <div class="form-inline">
     <%= f.label :inventory %><br>
     <%= f.number_field :inventory, :value => 0 %>
   </div>
@@ -41,6 +46,7 @@
       <%= f.check_box :consumable %>
     </div>
     <br>
+
   <div> SKU Aliases for this part:
     <% @part.part_aliases.each do |part_alias| %>
           <br><%=  part_alias.sku %>

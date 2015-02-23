@@ -24,6 +24,11 @@
     </div>
     <br>
     <div class="form-inline">
+      <%= f.label :category %><br>
+      <%= f.text_field :category,'data-provide' => 'typeahead', 'data-source' => part_type_ahead('category') %>
+    </div>
+    <br>
+    <div class="form-inline">
       <%= f.label :inventory %><br>
       <%= f.number_field :inventory %>
     </div>
