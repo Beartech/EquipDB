@@ -22,9 +22,7 @@ module PartsHelper
   end
 
   def part_type_ahead(attribute)
-    arr = Part.pluck(attribute.to_sym).uniq
-    arr.delete(nil)
-    arr.to_json
+    Part.pluck(attribute.to_sym).uniq.to_json
   end
 
 end
