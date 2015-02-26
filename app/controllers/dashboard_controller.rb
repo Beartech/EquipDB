@@ -6,12 +6,8 @@ class DashboardController < ApplicationController
 
   def dashboard
 
-    @dashboard = {}
-    all_tools = Tool.all
+    @dashboard = Tool.all.group_by(&:location)
     @loc_id = Location.all.order(:name)
-    @loc_id.each do |location|
-      @dashboard[location.id] = all_tools.where('location_id = ?', location.id).order(:name)
-    end
 
   end
 
