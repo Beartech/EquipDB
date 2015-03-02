@@ -2,7 +2,7 @@
 
 <center><h1>Dashboard</h1></center>
         <% btn_count = 0 %>
-        <% @loc_id.each do |tool_location| %>
+        <% @dashboard.each do |tool_location, tools| %>
           <% /^\d+$/ =~ tool_location.name ? (app = 'App. ') : (app = '')%>
             <div id=<%= tool_location.name.delete(' ') %> class="row">
 
@@ -16,14 +16,14 @@
 
                  <div class="span10" >
 
-                   <% unless @dashboard[tool_location].nil? %>
-                    <% @dashboard[tool_location].each_slice(5) do |five_tools| %>
+
+                    <% tools.each_slice(5) do |five_tools| %>
                        <div class="row">
 
                        <% five_tools.each do |tool| %>
                             <% status_link = tool.in_service ? 'Put Out of Service' : 'Put In Service' %>
 
-                            <% button_link = "#{tool.model}"+'<br>'+"#{tool.category.name.singularize}" %>
+                            <% button_link = "#{tool.model}"+'<br>'+"#{tool.cat_name.singularize}" %>
                             <div class="btn-group" id="btn<%= tool.id %>" >
 
                              <a class="btn custombutton dropdown-toggle <%= btn_color(tool) %>" data-toggle="dropdown" href="#"  >
@@ -46,7 +46,7 @@
                          <p></p>
                        </div>
                     <% end %>
-                  <% end %>
+
                    <hr class="style-eight">
 
                  </div>

@@ -22,3 +22,6 @@
 /config/application.yml
 /spec/logins.rb
 
+
+db/test.sql.rb
+db/test.sql

@@ -3,6 +3,7 @@ class Tool < ActiveRecord::Base
   has_many :services
   has_many :expended_parts, through: :services
   has_many :service_types, through: :services
+  has_many :dash_views
   belongs_to :category
   belongs_to :location
   accepts_nested_attributes_for :repairs

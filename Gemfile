@@ -74,6 +74,7 @@ group :development do
   gem 'rspec'
   gem 'watir'
   gem 'rspec-rails'
+  gem 'rack-mini-profiler'
 end
 
 gem 'sorcery', github:'NoamB/sorcery', branch:'master'

@@ -1,13 +1,12 @@
 class DashboardController < ApplicationController
 
   before_action :role_required
-  before_action :set_categories
 
 
   def dashboard
 
-    @dashboard = Tool.all.group_by(&:location)
-    @loc_id = Location.all.order(:name)
+    #@dashboard = Tool.order('locations.name').joins(:location).group_by {|t| t.location}
+     @dashboard = DashView.all.group_by {|t| t.location}
 
   end
 
