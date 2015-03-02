@@ -4,6 +4,7 @@ class ToolsController < ApplicationController
 
   before_action :set_categories, :set_tab
   before_action :set_form_drop_down, only: [:new, :edit, :update]
+  before_action :annual_service, only: [:index, :show, :edit]
   after_action :titleize_params, only: [:new, :edit, :update]
 
   # GET /tools
@@ -118,5 +119,8 @@ class ToolsController < ApplicationController
 
     end
 
+    def annual_service
+      @ann_serv_comp = AnnualServiceComplete.pluck(:id)
+    end
 
 end

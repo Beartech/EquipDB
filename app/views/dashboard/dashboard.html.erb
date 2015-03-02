@@ -3,13 +3,13 @@
 <center><h1>Dashboard</h1></center>
         <% btn_count = 0 %>
         <% @dashboard.each do |tool_location, tools| %>
-          <% /^\d+$/ =~ tool_location.name ? (app = 'App. ') : (app = '')%>
-            <div id=<%= tool_location.name.delete(' ') %> class="row">
+          <% /^\d+$/ =~ tool_location ? (app = 'App. ') : (app = '')%>
+            <div id=<%= tool_location.delete(' ') %> class="row">
 
               <div class="span2" >
                    <div  class="span1 offset3">
-                       <a id="app<%= tool_location.name %>" class="btn btn-<%= app_annual_service?(tool_location) ? 'annual' : 'app' %> " href="/location/<%= tool_location.name %>" >
-                         <%= "#{app}#{tool_location.name}" %>
+                       <a id="app<%= tool_location %>" class="btn btn-<%= app_annual_service?(tools) ? 'annual' : 'app' %> " href="/location/<%= tool_location %>" >
+                         <%= "#{app}#{tool_location}" %>
                        </a>
                    </div>
                  </div>
@@ -27,7 +27,7 @@
                             <div class="btn-group" id="btn<%= tool.id %>" >
 
                              <a class="btn custombutton dropdown-toggle <%= btn_color(tool) %>" data-toggle="dropdown" href="#"  >
-                               <%= annual_service?(tool) ? raw('<i class="icon-ok icon-white"></i>') : '' %> <%= raw(button_link) %><i class='icon-drop-down icon-white' > </i>
+                               <%= annual_service?(tool.id) ? raw('<i class="icon-ok icon-white"></i>') : '' %> <%= raw(button_link) %><i class='icon-drop-down icon-white' > </i>
                              </a>
 
                              <ul class="btn-dropdown-menu">

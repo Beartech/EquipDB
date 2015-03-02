@@ -7,19 +7,12 @@ module ToolsHelper
     end
   end
 
-  def annual_service?(tool)
-    tool.services.each do |service|
-      if service.completed && service.service_type
-        if (service.service_type.name =~ /annual/i || service.service_type.name =~ /New/i) && (service.completed.year == DateTime.now.year)
-          return true
-        end
-      end
-    end
-    false
+  def annual_service?(tool_id)
+    @ann_serv_comp.include? tool_id
   end
 
-  def app_annual_service?(location)
-    location.tools.all?{|tool| annual_service?(tool)}
+  def app_annual_service?(tools)
+    tools.all?{|tool| annual_service?(tool.id)}
   end
 
   def tool_count(category)

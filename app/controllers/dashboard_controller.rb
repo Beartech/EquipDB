@@ -6,7 +6,8 @@ class DashboardController < ApplicationController
   def dashboard
 
     #@dashboard = Tool.order('locations.name').joins(:location).group_by {|t| t.location}
-     @dashboard = DashView.all.group_by {|t| t.location}
+     @dashboard = DashView.all.group_by {|t| t.loc_name}
+     @ann_serv_comp = AnnualServiceComplete.pluck(:id)
 
   end
 
