@@ -19,3 +19,11 @@ SELECT ann_serv_complete.*
   AS ann_serv_complete
 WHERE (serv_type LIKE '%Annual%' OR serv_type LIKE '%New%')  AND  date_part('year', comp) = date_part('year', now())
   ;
+
+SELECT parts.*, alias_skus
+  FROM parts
+    JOIN (
+           SELECT part_id, array_agg(sku) alias_skus
+           FROM part_aliases GROUP BY part_id)
+      AS sub1
+      ON parts.id = sub1.part_id;

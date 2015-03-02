@@ -28,20 +28,22 @@ Press the "esc" key to clear filter
 
   <tbody>
     <% @parts.each do |part| %>
-     <% alias_sku = part.part_aliases.pluck(:sku) %>
+
       <tr>
         <td><%= part.name %></td>
         <td><%= part.sku %>
-          <div class="alias_sku"> <%= alias_sku.join('<br />').html_safe %> </div>
+          <% if part.alias_skus %>
+          <div class="alias_sku"> <%= part.alias_skus.join('<br>').html_safe %> </div>
+          <% end %>
         </td>
         <td><span class="badge <%= inventory_badge(part) %>"><%= part.inventory %></span></td>
         <td><%= part.minimum %></td>
         <td><%= part.maximum %></td>
         <td><%= inventory_indicator(part) %></td>
         <td><%= part.category %></td>
-        <td><%= link_to 'Show', part %></td>
+        <td><%= link_to 'Show', part_path(part) %></td>
         <td><%= link_to 'Edit', edit_part_path(part) %></td>
-        <td><%= link_to 'Destroy', part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', part_path(part), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

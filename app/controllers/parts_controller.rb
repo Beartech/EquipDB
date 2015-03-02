@@ -5,7 +5,8 @@ class PartsController < ApplicationController
   # GET /parts
   # GET /parts.json
   def index
-    @parts = Part.all
+    #@parts = Part.all
+    @parts = TableOfPart.all
   end
 
   # GET /parts/1
