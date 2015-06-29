@@ -2,6 +2,10 @@ EquipDB::Application.routes.draw do
 
 
   resources :dev_logs
+  resources :menus
+  resources :categories, controller: 'menus', type: 'Category'
+  resources :vehicles, controller: 'menus', type: 'Vehicle'
+  resources :stations, controller: 'menus', type: 'Station'
 
   get 'oauths/oauth'
   get 'oauths/callback'

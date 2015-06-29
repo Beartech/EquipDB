@@ -1,0 +1,46 @@
+<h1>Drop Down Menu Settings</h1>
+<div id='important_red'><p>Think before adding to these!</p></div>
+
+    <div class="span3 ">
+      <button class="label label-important">Tool Categories</button>
+        <% @categories.each do |category| %>
+
+            <ul>
+                <li><%= link_to category.name, menu_path(category.id, :type => 'Category') %></li>
+            </ul>
+
+        <% end %>
+      <br>
+      <%= link_to 'New Category', new_category_path, :class => 'btn btn-primary' %>
+    </div>
+
+
+    <% loc_type = @locations.group_by {|loc| loc.type} %>
+
+
+    <div class="span3">
+      <button class="label label-important">Vehicles</button>
+      <% loc_type['Vehicle'].each do |vehicle| %>
+
+          <ul>
+            <li> <%= link_to vehicle.name, menu_path(vehicle.id, :type => 'Vehicle') %> </li>
+          </ul>
+
+        <% end %>
+      <br>
+      <%= link_to 'New Vehicle', new_vehicle_path, :class => 'btn btn-primary' %>
+    </div>
+
+
+
+    <div class="span3">
+      <button class="label label-important">Stations</button>
+      <% loc_type['Station'].each do |station| %>
+
+          <ul>
+            <li> <%= link_to station.name, menu_path(station.id, :type => 'Station') %> </li>
+          </ul>
+      <% end %>
+      <br>
+      <%= link_to 'New Station', new_station_path, :class => 'btn btn-primary' %>
+    </div>

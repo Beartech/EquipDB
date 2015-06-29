@@ -1,0 +1,42 @@
+<h1>Menu Item Details</h1>
+
+ <h3> <% if @menu_item.respond_to? :type %>
+           <% if @menu_item.type == 'Vehicle' %>
+               Vehicle Name:
+           <% else %>
+               Station Name:
+           <% end %>
+       <% else %>
+            Category Name:
+       <% end %>
+   <p>
+   <%= @menu_item.name %>
+   </p>
+   <p>
+   <h3>Items associated with this menu item:</h3>
+
+   <% @menu_item.tools.each do |t| %>
+       <h4><%= t.category.name.singularize %>-<%= t.serial %></h4>
+   <% end %>
+
+
+   <br>
+   <br>
+   <div class="span1">
+   <p>
+     <% if @menu_item.respond_to? :type %>
+         <% if @menu_item.type == 'Vehicle' %>
+             <%= link_to 'Edit', edit_vehicle_path(@menu_item), :class => 'btn btn-warning' %>
+         <% else %>
+             <%= link_to 'Edit', edit_station_path(@menu_item), :class => 'btn btn-warning' %>
+         <% end %>
+     <% else %>
+         <%= link_to 'Edit', edit_category_path(@menu_item), :class => 'btn btn-warning' %>
+     <% end %>
+   </div>
+   <div class="span3">
+   <%= link_to 'Delete', menu_path(@menu_item), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+   <p class="text-error">You must remove all associated tools before you can delete this menu item.</p>
+   </div>
+ </h3>
+

@@ -1,0 +1,24 @@
+<%= form_for @menu_item do |f| %>
+    <% if @menu_item.errors.any? %>
+        <div id="error_explanation">
+          <h4 class="text-error"><%= pluralize(@menu_item.errors.count, 'error') %> prohibited this menu item from being saved:</h4>
+
+          <ul>
+            <% @menu_item.errors.full_messages.each do |msg| %>
+                <h3 class="text-error"><li><%= msg %></li></h3>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-inline">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+
+    <br>
+    <div class="actions">
+      <%= f.submit :class => 'btn btn-primary'%>
+    </div>
+
+<% end %>
