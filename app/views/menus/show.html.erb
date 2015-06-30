@@ -1,6 +1,6 @@
 <h1>Menu Item Details</h1>
 
- <h3> <% if @menu_item.respond_to? :type %>
+<h3><% if @menu_item.respond_to? :type %>
            <% if @menu_item.type == 'Vehicle' %>
                Vehicle Name:
            <% else %>
@@ -11,7 +11,7 @@
        <% end %>
    <p>
    <%= @menu_item.name %>
-   </p>
+   </p> </h3>
    <p>
    <h3>Items associated with this menu item:</h3>
 
@@ -24,19 +24,26 @@
    <br>
    <div class="span1">
    <p>
-     <% if @menu_item.respond_to? :type %>
-         <% if @menu_item.type == 'Vehicle' %>
+     <% case @menu_item %>
+         <% when Vehicle %>
              <%= link_to 'Edit', edit_vehicle_path(@menu_item), :class => 'btn btn-warning' %>
-         <% else %>
+         <% when Station %>
              <%= link_to 'Edit', edit_station_path(@menu_item), :class => 'btn btn-warning' %>
-         <% end %>
-     <% else %>
-         <%= link_to 'Edit', edit_category_path(@menu_item), :class => 'btn btn-warning' %>
+         <% else %>
+             <%= link_to 'Edit', edit_category_path(@menu_item), :class => 'btn btn-warning' %>
      <% end %>
    </div>
    <div class="span3">
-   <%= link_to 'Delete', menu_path(@menu_item), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
-   <p class="text-error">You must remove all associated tools before you can delete this menu item.</p>
+     <% case @menu_item %>
+         <% when Vehicle %>
+            <%= link_to 'Delete', vehicle_path(@menu_item), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+         <% when Station %>
+            <%= link_to 'Delete', station_path(@menu_item), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+         <% else %>
+             <%= link_to 'Delete', menu_path(@menu_item), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+     <% end %>
+
+     <p class="text-error">You must remove all associated tools before you can delete this menu item.</p>
    </div>
- </h3>
+
 

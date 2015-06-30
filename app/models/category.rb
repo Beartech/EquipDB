@@ -1,5 +1,4 @@
 class Category < ActiveRecord::Base
-  before_destroy :check_empty
 
   has_many :tools
   has_many :dash_views
