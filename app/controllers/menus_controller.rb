@@ -36,7 +36,10 @@ class MenusController < ApplicationController
       if @menu.save
         format.html { redirect_to @menu; gflash :success => 'Menu Item was successfully created.' }
       else
-        format.html { render action: 'new' }; gflash :error => 'There was a problem saving this menu'
+        format.html { redirect_to menus_path }
+        @menu.errors.full_messages.each do |msg|
+          gflash :error => msg
+        end
       end
     end
   end
