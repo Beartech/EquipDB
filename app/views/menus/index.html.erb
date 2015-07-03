@@ -1,7 +1,7 @@
 <h1>Drop Down Menu Settings</h1>
 <div id='important_red'><p>Think before adding to these!</p></div>
 
-    <div class="span3 ">
+    <div class="span3 " id="category_list" >
       <button class="label label-important">Tool Categories</button>
         <% @categories.each do |category| %>
 
@@ -18,7 +18,7 @@
     <% loc_type = @locations.group_by {|loc| loc.type} %>
 
 
-    <div class="span3">
+    <div class="span3" id="vehicle_list">
       <button class="label label-important">Vehicles</button>
       <% loc_type['Vehicle'].each do |vehicle| %>
 
@@ -33,7 +33,7 @@
 
 
 
-    <div class="span3">
+    <div class="span3" id="station_list">
       <button class="label label-important">Stations</button>
       <% loc_type['Station'].each do |station| %>
 
