@@ -1,3 +1,4 @@
+CREATE VIEW dash_views AS
 SELECT dashviews.*
   FROM (
     SELECT tools.location_id, tools.name, tools.serial, tools.in_service, tools.id, tools.loaner, tools.annual_service,
@@ -9,6 +10,7 @@ SELECT dashviews.*
   ORDER BY dashviews.loc_name;
 
 
+CREATE VIEW annual_service_completes AS
 SELECT ann_serv_complete.*
   FROM (
     SELECT tools.id, tools.name, services.id serv_id, service_types.name serv_type, services.completed comp
@@ -19,6 +21,7 @@ SELECT ann_serv_complete.*
 WHERE (serv_type LIKE '%Annual%' OR serv_type LIKE '%New%')  AND  date_part('year', comp) = date_part('year', now());
 
 
+CREATE VIEW table_of_parts AS
 SELECT parts.*, alias_skus
   FROM parts
     LEFT JOIN (
