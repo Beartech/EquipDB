@@ -13,6 +13,7 @@
     <th>Type</th>
     <th>Due date</th>
     <th>Completed</th>
+    <th>Hours</th>
     <th>Tool</th>
     <th></th>
   </tr>
@@ -25,9 +26,16 @@
         <td><%= service.service_type.name %></td>
         <td><%= service.due_date %></td>
         <td><%= service.completed %></td>
+        <td><%= service.service_type.hours %></td>
         <td><%= service.tool.category.name + "/" + service.tool.serial %></td>
         <td><%= link_to 'Edit', edit_tool_service_path(:tool_id => service.tool_id, :id => service.id), :class => 'btn btn-small' %></td>
       </tr>
   <% end %>
+  <tr>
+    <td colspan="3"></td>
+    <td>Total Service Hours:</td>
+    <td><%= @tool.services.includes(:service_type).sum(:hours) %></td>
+    <td colspan="2"></td>
+  </tr>
   </tbody>
 </table>

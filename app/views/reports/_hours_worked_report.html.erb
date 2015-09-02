@@ -1,0 +1,37 @@
+
+<%= link_to_function('Print this Page', 'javascript:print()') %>
+<br>
+
+<table id="sum_hours_report_table" class="table pretty" border='1'>
+  <thead>
+  <tr>
+    <th>Tools by Serviced Hours</th>
+    <th></th>
+    <th></th>
+    <th>click any heading to sort by it.</th>
+  </tr>
+  <tr>
+    <th class="sortable" data-type="string">Tool</th>
+    <th class="sortable" data-type="string">Serial</th>
+    <th class="sortable" data-type="string">Location</th>
+    <th class="sortable" data-type="float">Total Hours Being Serviced</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @report.each do |tool| %>
+      <tr>
+        <td><%= tool.name.singularize %></td>
+        <td><%= tool.serial %></td>
+        <td><%= tool.location %></td>
+        <td><%= tool.sum_hours %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<script>
+    $(document).ready(function() {
+        table_sorter( "#sum_hours_report_table").sort().hover();
+    })
+</script>

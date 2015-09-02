@@ -26,6 +26,7 @@
               <th class="sortable">In Service</th>
                 <th class="sortable">Annual Serv.</th>
               <th class="sortable">Condition</th>
+                <th class="sortable">Hours</th>
               </tr>
               </thead>
 
@@ -41,6 +42,7 @@
                     <td><%= tool.in_service %></td>
                     <td><%= annual_service?(tool.id) ? 'Completed' : '' %></td>
                     <td><%= tool.condition %></td>
+                    <td><%= tool.services.includes(:service_type).sum(:hours) %></td>
                   </tr>
                 <% end %>
               <% end %>

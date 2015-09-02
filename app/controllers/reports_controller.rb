@@ -1,48 +1,42 @@
 class ReportsController < ApplicationController
-  before_action :set_report, only: [:show, :edit, :update, :destroy ]
+  before_action :set_report, only: [:show]
   before_action :role_required
 
   # GET /reports
   # GET /reports.json
   def index
 
-
   end
 
   # GET /reports/1
   # GET /reports/1.json
   def show
-  end
+    case @report
+      when 'hours'
+        @report =  Service.find_by_sql('SELECT sub1.sum_hours,
+                                  tools.serial AS serial,
+                                  categories.name AS name,
+                                  locations.name AS location
+                                  FROM (SELECT tool_id, sum(hours) AS sum_hours
+                                          FROM services
+                                            JOIN service_types
+                                            ON services.service_type_id = service_types.id
+                                            GROUP BY services.tool_id)
+                                   AS sub1
+                                   JOIN tools
+                                   ON sub1.tool_id = tools.id
+                                   JOIN categories
+                                   ON categories.id = tools.category_id
+                                    JOIN locations
+                                    ON locations.id = tools.location_id
+                                   ORDER BY sum_hours DESC NULLS LAST')
+      render '_hours_worked_report', layout: 'print_table'
+      when 'parts_used'
+        @report =  nil
+      else
+        nil
+    end
 
-  # GET /reports/new
-  def new
-    redirect_to reports_path
-
-  end
-
-  # GET /report/1/edit
-  def edit
-    redirect_to reports_path
-  end
-
-  # POST /reports
-  # POST /reports.json
-  def create
-    redirect_to reports_path
-
-  end
-
-  # PATCH/PUT /reoprts/1
-  # PATCH/PUT /reports/1.json
-  def update
-    redirect_to reports_path
-
-  end
-
-  # DELETE /reports/1
-  # DELETE /reports/1.json
-  def destroy
-    redirect_to reports_path
 
   end
 
@@ -55,6 +49,6 @@ class ReportsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def report_params
-    params.require(:report).permit(:name, :serial, :type, :location)
+    params.require(:report).permit(:name)
   end
 end
