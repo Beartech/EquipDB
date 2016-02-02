@@ -16,7 +16,7 @@
   <tbody>
     <% @dev_logs.each do |dev_log| %>
       <tr>
-        <td><%= dev_log.updated_at.to_formatted_s(:long) %></td>
+        <td><%= dev_log.updated_at.to_formatted_s(:db) %></td>
         <td><%= dev_log.note %></td>
         <td><%= dev_log.user.username %></td>
         <td><%= link_to 'Show', dev_log %></td>

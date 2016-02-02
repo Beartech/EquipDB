@@ -4,7 +4,7 @@ class DevLogsController < ApplicationController
   # GET /dev_logs
   # GET /dev_logs.json
   def index
-    @dev_logs = DevLog.all
+    @dev_logs = DevLog.all.order(:created_at)
   end
 
   # GET /dev_logs/1
