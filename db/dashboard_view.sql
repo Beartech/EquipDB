@@ -32,3 +32,15 @@ SELECT parts.*, alias_skus
       AS sub1
       ON parts.id = sub1.part_id;
 
+
+CREATE VIEW equipment_tabs AS
+SELECT serial, categories.name AS type, model, locations.name AS location, in_service,
+  CAST(ann_serv.id AS BIT) AS ann_serv, condition, sum_hours.sum_id AS hours
+FROM tools
+  JOIN categories ON categories.id = tools.category_id
+  JOIN locations ON locations.id = tools.location_id
+  LEFT JOIN annual_service_completes ann_serv ON ann_serv.id = tools.id
+  JOIN (SELECT distinct tool_id, SUM(hours) AS sum_id
+        FROM services
+          LEFT OUTER JOIN service_types ON service_types.id = services.service_type_id
+        GROUP BY tool_id ORDER BY tool_id ) AS sum_hours ON sum_hours.tool_id = tools.id;
