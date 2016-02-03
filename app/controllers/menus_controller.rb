@@ -84,7 +84,7 @@ class MenusController < ApplicationController
   end
 
   def menu_params
-    params.permit(:id, :name, :vehicle, :type, category: [:name], vehicle: [:name], station: [:name])
+    params.permit(:id, :name, :vehicle, :type, category: [:name, :ann_serv], vehicle: [:name], station: [:name])
   end
 
 end

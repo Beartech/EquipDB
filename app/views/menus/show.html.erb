@@ -13,6 +13,12 @@
    <%= @menu_item.name %>
    </p> </h3>
    <p>
+     <% if @menu_item.is_a?(Category) %>
+        <% if @menu_item.ann_serv %>
+            <h4 class="text-error">Counts Towards Annual Service</h4>
+        <% end %>
+    <% end %>
+<br>
    <h3>Items associated with this menu item:</h3>
 
 
@@ -23,6 +29,10 @@
 
    <br>
    <br>
+
+   <div class="span1">
+     <%= link_to 'Back', menus_path, :class => 'btn btn-inverse' %>
+     </div>
    <div class="span1">
    <p>
      <% case @menu_item %>
@@ -34,7 +44,7 @@
              <%= link_to 'Edit', edit_category_path(@menu_item), :class => 'btn btn-warning', :id => 'edit_btn' %>
      <% end %>
    </div>
-   <div class="span3">
+   <div class="span8">
      <% case @menu_item %>
          <% when Vehicle %>
             <%= link_to 'Delete', vehicle_path(@menu_item), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger', :id => 'del_btn' %>
@@ -44,7 +54,7 @@
              <%= link_to 'Delete', menu_path(@menu_item), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger', :id => 'del_btn' %>
      <% end %>
 
-     <p class="text-error">You must remove all associated tools before you can delete this menu item.</p>
+     <span class="text-error">You must remove all associated tools before you can delete this menu item.</span>
    </div>
 
 

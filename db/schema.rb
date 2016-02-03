@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223033918) do
+ActiveRecord::Schema.define(version: 20160203030020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150223033918) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "ann_serv",   default: false
   end
 
   create_table "dev_logs", force: true do |t|
@@ -57,11 +58,6 @@ ActiveRecord::Schema.define(version: 20150223033918) do
   add_index "expended_parts", ["part_id"], name: "index_expended_parts_on_part_id", using: :btree
   add_index "expended_parts", ["service_id"], name: "index_expended_parts_on_service_id", using: :btree
 
-  create_table "journals", force: true do |t|
-    t.text     "entry"
-    t.datetime "time_stamp"
-  end
-
   create_table "locations", force: true do |t|
     t.string   "name"
     t.boolean  "vehicle"
@@ -88,7 +84,7 @@ ActiveRecord::Schema.define(version: 20150223033918) do
     t.integer  "minimum"
     t.integer  "maximum"
     t.boolean  "consumable", default: false
-    t.string   "category"
+    t.string   "category",   default: ""
   end
 
   create_table "parts_service_types", id: false, force: true do |t|

@@ -1,4 +1,4 @@
-<h3>Editing Menu Item  <%= " #{@menu_item.name}" %></h3>
+<h3>Editing Menu Item:  <%= " #{@menu_item.name}" %></h3>
 
 <%= form_for @menu_item do |f| %>
     <% if @menu_item.errors.any? %>
@@ -16,6 +16,13 @@
     <div class="form-inline">
       <%= f.label :name %><br>
       <%= f.text_field :name %>
+    </div>
+    <br>
+    <div class="form-inline">
+      <% if @menu_item.is_a?(Category) %>
+          <%= f.check_box :ann_serv %>
+          <%= f.label :ann_serv, 'Counts Towards Annual Service', :class => 'checkbox inline' %>
+      <% end %>
     </div>
 
     <br>

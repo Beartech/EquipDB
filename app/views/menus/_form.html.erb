@@ -15,10 +15,20 @@
       <%= f.label :name %><br>
       <%= f.text_field :name %>
     </div>
+    <br>
+    <div class="form-inline">
+      <% if @menu_item.is_a?(Category) %>
+          <%= f.check_box :ann_serv %>
+          <%= f.label :ann_serv, 'Counts Towards Annual Service', :class => 'checkbox inline' %>
+      <% end %>
+    </div>
+
 
     <br>
     <div class="actions">
       <%= f.submit :class => 'btn btn-primary', :id => 'create_menu'%>
     </div>
+     <br>
+    <%= link_to 'Cancel', menus_path, :class => 'btn' %>
 
 <% end %>

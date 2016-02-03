@@ -8,12 +8,12 @@ module ToolsHelper
   end
 
   def annual_service?(tool_id)
-    @ann_serv_comp.include? tool_id
+    @ann_serv_comp.include? tool_id  #@ann_serv_comp is returned by Dashboard controller
   end
 
   def app_annual_service?(tools)
-    tools.all?{|tool| annual_service?(tool.id)}
-  end
+    tools.all?{|tool| annual_service?(tool.id)}  #checks all tools using annual_service? helper
+  end                                            #shown above.
 
   def tool_count(category)
     if category == 'all'

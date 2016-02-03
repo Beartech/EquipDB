@@ -89,17 +89,29 @@ describe 'it should log in and CRUD menu items' do
   end
 
   it 'should not delete a category with tools still associated with it' do
-    category_name = Category.joins(:tools).where(true).order(name: :asc).last
+    list = @browser.div(id: 'category_list').lis.to_a
 
-    @browser.link(:text, category_name).click
+    list.each do |list_item|
 
-    @browser.h4(class: 'tool_list')
+      @browser.link(:text, list_item.text).click
 
-    @browser.link(text: 'Delete').click
+      if @browser.h4(class: 'tool_list')
 
-    @browser.driver.switch_to.alert.accept
+        @browser.link(text: 'Delete').click
 
-    @browser.p(text: 'You can not destroy this menu item until it is empty').present?
+        @browser.driver.switch_to.alert.accept
+
+        @browser.p(text: 'You can not destroy this menu item until it is empty').present?
+
+        break
+
+      else
+
+        @browser.back
+
+      end
+
+    end
 
   end
 
@@ -160,18 +172,29 @@ describe 'it should log in and CRUD menu items' do
   end
 
   it 'should not delete a vehicle with tools still associated with it' do
-    vehicle_name = Vehicle.joins(:tools).where(true).order(name: :asc).last
+    list = @browser.div(id: 'vehicle_list').lis.to_a
 
-    @browser.link(:text, vehicle_name).click
+    list.each do |list_item|
 
-    @browser.h4(class: 'tool_list')
+      @browser.link(:text, list_item.text).click
 
-    @browser.link(text: 'Delete').click
+      if @browser.h4(class: 'tool_list')
 
-    @browser.driver.switch_to.alert.accept
+        @browser.link(text: 'Delete').click
 
-    @browser.p(text: 'You can not destroy this menu item until it is empty').present?
+        @browser.driver.switch_to.alert.accept
 
+        @browser.p(text: 'You can not destroy this menu item until it is empty').present?
+
+        break
+
+      else
+
+        @browser.back
+
+      end
+
+    end
 
   end
 
@@ -232,17 +255,29 @@ describe 'it should log in and CRUD menu items' do
   end
 
   it 'should not delete a station with tools still associated with it' do
-    station_name = Station.joins(:tools).where(true).order(name: :asc).last
+    list = @browser.div(id: 'station_list').lis.to_a
 
-    @browser.link(:text, station_name).click
+    list.each do |list_item|
 
-    @browser.h4(class: 'tool_list')
+      @browser.link(:text, list_item.text).click
 
-    @browser.link(text: 'Delete').click
+      if @browser.h4(class: 'tool_list')
 
-    @browser.driver.switch_to.alert.accept
+        @browser.link(text: 'Delete').click
 
-    @browser.p(text: 'You can not destroy this menu item until it is empty').present?
+        @browser.driver.switch_to.alert.accept
+
+        @browser.p(text: 'You can not destroy this menu item until it is empty').present?
+
+        break
+
+      else
+
+        @browser.back
+
+      end
+
+    end
 
   end
 
