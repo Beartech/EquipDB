@@ -33,7 +33,7 @@ SELECT parts.*, alias_skus
       ON parts.id = sub1.part_id;
 
 
-CREATE VIEW equipment_tabs AS
+CREATE VIEW equipment AS
 select equipment.* from (SELECT serial, categories.name AS type, model, locations.name AS location, in_service,
   CAST(ann_serv.id AS BIT) AS ann_serv, condition, sum_hours.sum_id AS hours
 FROM tools
