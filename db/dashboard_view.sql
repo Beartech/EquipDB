@@ -1,7 +1,7 @@
 CREATE VIEW dash_views AS
 SELECT dashviews.*
   FROM (
-    SELECT tools.location_id, tools.name, tools.serial, tools.in_service, tools.id, tools.loaner, tools.annual_service,
+    SELECT tools.location_id, tools.name, tools.serial, tools.in_service, tools.id, tools.loaner, tools.category_id,
       tools.model, tools.condition, locations.name loc_name, categories.name cat_name
      FROM tools
        INNER JOIN locations ON locations.id = tools.location_id
@@ -34,7 +34,7 @@ SELECT parts.*, alias_skus
 
 
 CREATE VIEW equipment_tabs AS
-SELECT serial, categories.name AS type, model, locations.name AS location, in_service,
+select equipment.* from (SELECT serial, categories.name AS type, model, locations.name AS location, in_service,
   CAST(ann_serv.id AS BIT) AS ann_serv, condition, sum_hours.sum_id AS hours
 FROM tools
   JOIN categories ON categories.id = tools.category_id
@@ -43,4 +43,15 @@ FROM tools
   JOIN (SELECT distinct tool_id, SUM(hours) AS sum_id
         FROM services
           LEFT OUTER JOIN service_types ON service_types.id = services.service_type_id
-        GROUP BY tool_id ORDER BY tool_id ) AS sum_hours ON sum_hours.tool_id = tools.id;
+        GROUP BY tool_id ORDER BY tool_id ) AS sum_hours ON sum_hours.tool_id = tools.id)
+AS equipment;
+
+
+CREATE VIEW annual_tools AS
+SELECT locations.name, array_agg(tools.id) ids
+FROM locations
+  JOIN tools ON locations.id = tools.location_id
+WHERE tools.category_id IN (SELECT categories.id
+                            FROM categories
+                            WHERE categories.ann_serv = TRUE)
+GROUP BY locations.name;

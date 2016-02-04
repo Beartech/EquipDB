@@ -1,4 +1,6 @@
 module ToolsHelper
+
+
   def btn_color(tool)
     if tool.loaner
       'btn-loaner'
@@ -11,9 +13,13 @@ module ToolsHelper
     @ann_serv_comp.include? tool_id  #@ann_serv_comp is returned by Dashboard controller
   end
 
-  def app_annual_service?(tools)
-    tools.all?{|tool| annual_service?(tool.id)}  #checks all tools using annual_service? helper
-  end                                            #shown above.
+  def app_annual_service?(app)
+    cats = Category.where(ann_serv: true).pluck(:id)
+    loc = Location.where(name: "#{app}")
+    all_tools = loc.first.tools
+    annual_tools = all_tools.keep_if {|tool| cats.include? tool.category_id}
+    annual_tools.all? {|tool| annual_service?(tool.id)}
+  end
 
   def tool_count(category)
     if category == 'all'
